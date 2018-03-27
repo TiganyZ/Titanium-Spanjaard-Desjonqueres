@@ -1,0 +1,9 @@
+%char0 ltb="1,bold=3,col=0,0,0"
+fplot
+% var ymin=-22 ymax=12
+ -frme 0,1,0,1 -p0 -x 0,1 -y {ymin},{ymax} -noxn -1p
+ -lt 2,bold=3,col=0,0,0,1,.5,.3,.5 -tp 2~0,0,1,0 -lt 1
+ -colsy 2:16 -lt {ltb} -qr bnd1.dat
+ -font s24 -lblu 0,{ymin-(ymax-ymin)/60} cd G
+
+ -font t24 -lblu 1,{ymin-(ymax-ymin)/60} cd H
