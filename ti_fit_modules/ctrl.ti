@@ -1,0 +1,75 @@
+#HEADER  Bulk Ti Spanjaard-Desjonqueres unit cell
+% const fp=0 cpl=1 xcf=4 gga=3 rfile=1
+% const pureFe=0 PRBmodel=0 CModel2=0 scale=0 bccocoa={sqrt(3/8)}
+% const nbas=2 nspec=1 trhe=1 gammap=0 ubccom=1
+% const sd=1 ovlp=F ul=T u1=0 tbu=0 io=0 nitq=500 strn=1
+% const verb=31 so=0 nsp=1 tetra=1 width=0.002 N=1 metal={fp?5:3} 
+% const au=0.529177 NdFe=6.8
+% const beta=0.1 nx=5 kmix=300 nav=0 alpha=0 gmax=6.2
+% const dyn=0 temp=300 taup=10 taub=100 time=1000 tstep=5
+% const hess=F relax=0 nit=50 xtol=1d-3 gtol=5d-4 step=0.01 nkill=100 nitf=50
+% const fs=0.048377 K=1/0.6333328d-5 amass=1.09716d-3 bzj=0 bccs=0 fccs=0
+VERS 	TB=10 LM=7 FP=7 ASA=7 
+IO      SHOW=0 HELP=F VERBOS={verb} WKP=F
+CONST   nit=100 conv=1d-4 qtol=1d-3 pair=F
+        #abcc=2.87 alat=abcc/{au}
+        nkx=6 nky=6 nkz=6 mull=-1 ewtol=1d-24 ef0=-0.308963 #0.643
+        R=2.2 RC=0.8 RH=0.5
+% include CONST
+        force=1 pv=1 mol=0
+ITER    CONV=conv CONVC=qtol NIT={nitq} MIX=B{nx},b={beta},wc=-1,w=-1,-1 #B=Broyden, A=Anderson 
+DYN
+% if dyn==1|dyn==2|dyn==3
+        MD[MODE={dyn} TSTEP={tstep/fs} TEMP={temp/K} TAUP={taup/fs}
+           TIME={time/fs} TAUB={taub/fs}]
+% elseif relax>0
+        MSTAT[MODE={relax} HESS={hess} XTOL={xtol} GTOL={gtol}
+              STEP={step} NKILL={nkill}] NIT={nitf}
+% endif       
+% const exx=0 eyy=0 ezz=0 eyz=0 exz=0 exy=0
+STRUC   ALPHA={alpha} STRAIN={exx} {eyy} {ezz} {eyz} {exz} {exy}# 0 0 0 1/2 1/2 1/2
+% ifdef rfile
+        FILE=site
+% else
+	NBAS={nbas} NSPEC={nspec} NL={fp?5:3} ALAT=alatTi
+        ALAT=alatTi
+% ifdef omegabcc
+        PLAT=1.0 0.0 0.0  0.5 sqrt(3)/2 0.0  0.0 0.0 1*{bccocoa}
+% elseif bccs>0
+        PLAT= -0.5 0.5 0.5  0.5 -0.5 0.5  0.5 0.5 -0.5 
+% elseif fccs>0
+        PLAT=0.0 0.5 0.5  0.5 0.0 0.5  0.5 0.5 0.0
+% else
+        PLAT=sqrt(3)/2 -0.5 0.0  0.0 1.0 0.0  0.0 0.0 1*coa
+% endif
+% endif 
+SITE   
+% ifdef rfile
+       FILE=site
+% else
+% ifdef omegabcc
+        ATOM=Ti POS=0.0 0.0 0.0
+        ATOM=Ti POS=0.5 sqrt(3)/6 {2-ubccom*0.25*bccocoa}
+        ATOM=Ti POS=1.0 sqrt(3)/3 {2+ubccom*0.25*bccocoa}
+% elseif bccs>0
+        ATOM=Ti POS=0.0 0.0 0.0 
+% elseif fccs>0
+        ATOM=Ti POS=0.0 0.0 0.0 
+% else
+        ATOM=Ti POS=sqrt(3)/3 0.0 0.25*coa   
+        ATOM=Ti POS=sqrt(3)/6 0.5 0.75*coa
+% endif
+% endif 
+SYMGRP  find #E
+BZ      NKABC=nkx nky nkz TETRA={tetra} METAL={metal}
+        EFMAX=10 EF0=ef0 DELEF=0.01 N={N} W={width}
+        NPTS=5001 BZJOB={bzj} SAVDOS=T NOINV=F
+        INVIT=F MULL=mull DOS=-6 2 EFMAX=10
+% include SPEC
+ME
+% include ME
+TB      FORCES=force EVDISC=T RMAXH=rmaxh TRH=T RHO=T 3PV=pv
+        MOL=mol GAMMA={gammap} PAIR=pair SCALE={scale}
+        UL={ul} IODEL={io} OVLP={ovlp} TBU={tbu} NOUAVG={nav} U1={u1}
+EWALD   TOL=ewtol NKDMX=20000 #NKRMX=1999
+OPTIONS ASA[ADNF[0] NSPH[0] TWOC[0] CCOR[1]]
