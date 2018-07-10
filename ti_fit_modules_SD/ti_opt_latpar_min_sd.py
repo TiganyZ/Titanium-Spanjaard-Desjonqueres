@@ -13,7 +13,7 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
     names_limits = '    Find Latpars Grid:\n    n_grid = %s\n'%(n_grid)  
     al_l = [] 
     sz = ()
-    for i in range(n_lp)
+    for i in range(n_lp):
         name_limits = '     %s_l---%s_u = %s---%s\n'%(names_lp[i], names_lp[i], limits_lp[i][0], limits_lp[i][1] )
         al = np.linspace(limits_lp[i], limits_lp[i+1], n_grid[i])
         al_l.append(al)
@@ -40,7 +40,7 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
     else:
         for i in range(n_grid[0]):
             for j in range(n_grid[1]):
-                for k in range(n_grid[2])):
+                for k in range(n_grid[2]):
                     xx_args = args + g.construct_cmd_arg(names_lp[0], al_l[0][i])  \
                                    + g.construct_cmd_arg(names_lp[1], al_l[1][j])  \
                                    + g.construct_cmd_arg(names_lp[2], al_l[2][k])

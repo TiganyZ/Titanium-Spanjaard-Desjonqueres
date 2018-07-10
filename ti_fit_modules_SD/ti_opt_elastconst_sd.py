@@ -1,4 +1,4 @@
-# usr/bin/env/ python 
+1# usr/bin/env/ python 
 import numpy as np
 import matplotlib.pyplot as plt
 import subprocess, shlex, math, time, sys
@@ -152,7 +152,6 @@ def ec_alpha_cds(LMarg, args,  strain, plotcurve, alphalist, cell_vol, nnid):
     ##  rmaxh = alatTi*1.0001
     for i in alphalist:
         etot, alpha, xijc, ijns, dil, rmaxh= elastic_constant_shear_info(LMarg, args, i, strain, nnid)
-        if 
         args += ' -vrmaxh=' + str(rmaxh) + ' '
         etot_list.append(etot)
     

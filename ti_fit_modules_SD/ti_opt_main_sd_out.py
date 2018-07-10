@@ -30,6 +30,11 @@ args    = ' -vfp=0 -vrfile=0 -vppmodti=10 '
 pR0 = 8.18
 qR0 = 2.77
 
+
+alat_ideal = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
+clat_ideal = 8.85210082  ## 2.951111 Angstrom R.M. Wood 1962 
+coa_ideal  = (8./3.)**(0.5)       
+
 spanjdec    = qR0/alat_ideal
 spanjdecpp  = pR0/alat_ideal
 
@@ -45,11 +50,7 @@ ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec']
 #########################################################################################
 #############################     Ideal lattice parameters     ##########################
 
-
-alat_ideal = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
-clat_ideal = 8.85210082  ## 2.951111 Angstrom R.M. Wood 1962 
-coa_ideal  = (8./3.)**(0.5)       
-
+names_lp  = ['alatTi'  , 'coa']
 ideals_lp = [alat_ideal, coa_ideal]
 
 

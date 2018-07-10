@@ -18,7 +18,7 @@ def output_script(  npass,
                     ec_exp_arr, 
                     nn_ideal,
                     n_lp, n_grid, n_iter,
-                    names_lp, limits_lp, ideals_lp
+                    names_lp, limits_lp, ideals_lp,
                     n_energies, energy_args):
 
     """
