@@ -120,13 +120,13 @@ npass       = 0
 
 
 
-##  Number of passes, for use in optimisation. 
-##  Arguments used in the calculation
-##  Mininum lattice parameters
-##  Difference of lattice parameters from ideal
-##  Volume of structure when at minimum lattice parameters
-##  Energies calculated for use in optimisation.
-
+##  npass:  		Number of passes, for use in optimisation. 
+##  args:   		Arguments used in the calculation
+##  a (, b/a, c/a):  	Mininum lattice parameters
+##  a_d(, b_d, c_d):	Difference of lattice parameters from ideal
+##  cell_vol:		Volume of structure when at minimum lattice parameters
+##  etot(, etot2, etc)	Energies calculated for use in optimisation.
+##  e_c, e_c_d		Elastic constants calculated and their difference from expected values.
 
 (npass,                                                 
 args,                                                   
