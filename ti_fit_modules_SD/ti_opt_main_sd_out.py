@@ -21,7 +21,7 @@ import ti_opt_output_sd as outp
 
 ext     = '.ti' 
 LMarg   = ' tbe --mxq'
-args    = ' -vfp=0 -vrfile=0 -vppmodti=10 '
+args    = ' -vfp=0 -vrfile=0 -vppmodti=10 -vB1TTSDpp=0 -vB2TTSDpp=0 '
 
 
 #########################################################################################
@@ -38,9 +38,8 @@ coa_ideal  = (8./3.)**(0.5)
 spanjdec    = qR0/alat_ideal
 spanjdecpp  = pR0/alat_ideal
 
-pair_pot    = np.array( [ 118.485, spanjdecpp, 0, 0, 0  ] )
-ppnames     = [ 'A1TTSDpp', 'B1TTSDpp', 'C1TTSDpp' \
-                'A2TTSDpp', 'B2TTSDpp', 'C2TTSDpp' ]
+pair_pot    = np.array( [ 118.485, spanjdecpp, 0, 0  ] )
+ppnames     = [ 'A1TTSDpp', 'C1TTSDpp', 'A2TTSDpp', 'C2TTSDpp' ]
 
 ddcoeffs    = np.array( [ 6., 4., 1., spanjdec] )
 ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec']

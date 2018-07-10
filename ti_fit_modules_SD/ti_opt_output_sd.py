@@ -13,8 +13,8 @@ def output_script(  npass,
                     ext,
                     LMarg, 
                     args, 
-                    par_arr_p, 
-                    ddcoeffs, ddnames, ddnorm_lim,
+                    par_arr_p, ppnames, 
+                    ddcoeffs_p, ddnames, ddnorm_lim,
                     ec_exp_arr, 
                     nn_ideal,
                     n_lp, n_grid, n_iter,
@@ -41,7 +41,7 @@ def output_script(  npass,
     LMarg   +=  ' ctrl' + ext + ' '
 
     ppargs = g.construct_extra_args('', ppnames, par_arr_p)
-
+    print(ppargs)
     symmpt = 0
     bond_int_u, bond_int_l, evtol  =   ddnorm_lim
 

@@ -78,9 +78,8 @@ def construct_cmd_arg(arg_name, value):
 
 def construct_extra_args(xargs, arg_names, arg_values):
     """Method to construct the extra arguments where arg_names is  a list of strings."""
-    for i in range(len(arg_names)):
-        arg = construct_cmd_arg(arg_names[i], arg_values[i])
-        xargs +=  arg
+    for i in range( len(arg_names) ):
+        xargs += construct_cmd_arg(arg_names[i], arg_values[i])
     return xargs
 
 def get_pp_args(par_arr_p):
