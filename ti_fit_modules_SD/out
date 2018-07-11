@@ -330,4 +330,4 @@ Atom Ti
 
  suqlst:  nq= 80   q1= 0.0000 0.0000 0.3062   q2= 0.5774 0.3333 0.3062
  Exit 0 TBZINT: finished bands. 
- CPU time:  0.101s   Wall clock 0.134s  at  07:01:22 11.07.2018  on  gherkin
+ CPU time:  0.100s   Wall clock 0.134s  at  07:05:19 11.07.2018  on  gherkin

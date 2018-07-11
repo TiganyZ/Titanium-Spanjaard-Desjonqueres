@@ -6,6 +6,7 @@ from optparse import OptionParser
 import random 
 import ti_opt_general_sd as g
 import ti_opt_elastconst_sd as ec
+import ti_opt_latpar_min_sd as lm
 import ti_opt_constraints_variation_sd as cv
 import ti_opt_bandwidth_norm_sd as b
 
