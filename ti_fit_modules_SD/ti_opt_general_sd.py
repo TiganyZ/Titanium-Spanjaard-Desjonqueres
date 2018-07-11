@@ -55,7 +55,6 @@ def remove_bad_syntax(values):
 
 def find_arg_value(arg_to_find, args):
     arg_ind = np.where( [arg_to_find in i for i in args.split()] )[0][0]
-    print('argind', arg_ind)
     arg = args.split()[arg_ind]
     if '=' in arg:
         arg = arg.replace("=", "= ").split()[1]

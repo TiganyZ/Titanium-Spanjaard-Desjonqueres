@@ -247,4 +247,4 @@ Atom Ti
  
 c fp=0 rfile=0 ppmodti=10 b1ttsdpp=0 b2ttsdpp=0 a1ttsdpp=118.485 c1ttsdpp=1.46679 a2ttsdpp=0 c2ttsdpp=0 ddsigttsd=6 ddpittsd=4 dddelttsd=1 spanjdec=.496702 spanjddd=.214844 ef=-.04858 nbas=1 fccs=1 alatti=8.20137 mmom=0 sev=-.668314 erep=.144008 etot=-.524306 emad=0 3pv=-.710298 TS=0
  Exit 0 TBE 
- CPU time:  0.073s   Wall clock 0.118s  at  12:55:17 11.07.2018  on  gherkin
+ CPU time:  0.073s   Wall clock 0.119s  at  13:07:46 11.07.2018  on  gherkin
