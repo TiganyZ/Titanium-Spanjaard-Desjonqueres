@@ -67,16 +67,15 @@ def output_script(  npass,
 
     min_lps  = lm.opt_latpars_grid( LMarg, 
                                     args + ppargs + dargs, 
-                                    par_arr_p, 
                                     n_lp, names_lp,
                                     limits_lp, ideals_lp, 
                                     n_grid, n_iter)
         
-    
+    print('minlps', min_lps)
     for i in range(n_lp):
         if i == 0:
             lp_args  = g.construct_cmd_arg( names_lp[i], min_lps[i] )
-            lp_diffs = ( min_lps[i + 1], )  
+            lp_diffs = (min_lps[n_lp + i], )  
         else:
             lp_args  += g.construct_cmd_arg( names_lp[i], min_lps[ 2*i ] )
             lp_diffs += ( min_lps[i + 1], )

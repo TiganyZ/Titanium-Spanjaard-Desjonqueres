@@ -10,12 +10,12 @@ import ti_opt_general_sd as g
 ##########################     Minimum lattice parameters     ##############################
 
 def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
-    names_limits = '    Find Latpars Grid:\n    n_grid = %s\n'%(n_grid)  
+    name_limits = '    Find Latpars Grid:\n    n_grid = %s\n'%(n_grid)  
     al_l = [] 
     sz = ()
     for i in range(n_lp):
-        name_limits = '     %s_l---%s_u = %s---%s\n'%(names_lp[i], names_lp[i], limits_lp[i][0], limits_lp[i][1] )
-        al = np.linspace(limits_lp[i], limits_lp[i+1], n_grid[i])
+        name_limits += '     %s_l---%s_u = %s---%s\n'%(names_lp[i], names_lp[i], limits_lp[i][0], limits_lp[i][1] )
+        al = np.linspace(limits_lp[i][0], limits_lp[i][1], n_grid[i])
         al_l.append(al)
         sz += (n_grid[i],)
     print( name_limits )
@@ -78,30 +78,31 @@ def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, 
     ##  This routine makes a grid of lattice parameters of c and a such that the ideal one can be sought. 
     min_lps = find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid)
     limits_lp = np.asarray(limits_lp)
-    tol = [0 for i in range(n_lp)]
+    ##  Have initial tolerance 4 * width as initially, grid is coarse-graines.
+    tol = 4 * np.abs(limits_lp[:,0] - limits_lp[:,1])   /  np.asarray(n_grid)
     for i in range(n_iter):
-        
+
         ##  Recalculate the limits 
         for j in range(n_lp):
             if not limits_lp[j][2]:
                 ##  Can change the upper limit
-                limits_lp[j][0] += tol[j]
+                limits_lp[j][0] =  min_lps[j] - tol[j]
             if not limits_lp[j][3]:
                 ## Cab change the lower limit
-                limits_lp[j][1] -= tol[j]
-
+                limits_lp[j][1] = min_lps[j] + tol[j]
+        tol = tol   /  np.asarray(n_grid)
         min_lps  = find_latpars_grid(LMarg, args, 
                                                    n_lp,
                                                    names_lp, 
                                                    limits_lp,
                                                    n_grid)
         
-        tol = 4 * np.abs(limits_lp[,:2][1] - limits_lp[,:2][0])   /  np.asarray(n_grid)
-    lps = np.array(min_lps[:n_lp])
-    lp_diff = lps - ideals_lp
-    ret = (lps, lp_diff) + (min_lps[-1],)
 
+    lps = min_lps[:n_lp]
+    lp_diff = np.asarray(lps) - ideals_lp
+    ret = lps + tuple(lp_diff) + (min_lps[-1],)
 
+    print('latpar', ret)
     return ret
 
 def latpar_energy_range(LMarg, args, latpars, latpar):

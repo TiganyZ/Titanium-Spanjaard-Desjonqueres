@@ -111,7 +111,7 @@ n_grid      = [10, 10]
 ##  Number of reduced range grid searches to find lattice parameters
 n_iter      = 2
 ##  Limits for the lattice parameters in form [ a_u, a_l ( (optional) , True_if_Fixed_Upper_Limit , True_if_Fixed_Lower_Limit ) ]
-limits_lp   = [  [ 5.2, 6.2 ], [ 1.5, np.sqrt(8./3.), False, True] ]
+limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.), False, True] ]
 
 ##  Limits for the bandwidth normalisation and tolerance in eV.
 ddnorm_lim  = (5.0, 0.0, 0.02)

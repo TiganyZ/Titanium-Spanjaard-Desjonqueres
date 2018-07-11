@@ -17,31 +17,32 @@ def elastic_constant_shear_info( LMarg, args, alpha, strain, nnid):
             xijc == coefficients of a given elastic constant in the strain 
             ijv  == the indices of the elastic constants in the strain
             dil  == dilatation  """
-
+        
+        filename = 'ecout'
         cmd =  LMarg + ' ' + args  + ' -valpha=' + str(alpha) + ' '  + strain + ' ' 
-        g.cmd_write_to_file(cmd, 'ecout')
-
+        g.cmd_write_to_file(cmd, filename)
 
         ##  Get alat from list 
-        nn = g.get_nearest_neighbours(LMarg, args, filename)
-        if nn != nnid: 
-            if 'rmaxh' in args:
-                rmaxh = float( g.find_arg_value('rmaxh', args) )
-                print('args1 = %s' %(args))
-                args = g.remove_arg('rmaxh', args)
-                print('args2 = %s' %(args))
-
-            else:
-                alat = g.find_arg_value('alat', args)
-                rmaxh = 1.001 * float(alat)
-
         
-        rmaxh = g.check_rmaxh(LMarg, args +  ' -valpha=' + str(alpha) + ' '  + strain + ' ', 
+        if 'rmaxh' in args:
+            rmaxh = float( g.find_arg_value('rmaxh', args) )
+            args = g.remove_arg('rmaxh', args)
+        else:
+            alat = g.find_arg_value('alat', args)
+            rmaxh = 1.001 * float(alat)
+
+        xargs = args  + ' -valpha=' + str(alpha) + ' '  + strain + ' ' 
+        nn = g.get_nearest_neighbours(LMarg, xargs, filename, rmaxh)
+        if nn - 1 != nnid:
+            print('nearest neighbours: nn = %s, nn_id = %s, rmaxh = %s' %(nn, nnid, rmaxh))
+            rmaxh = g.check_rmaxh(LMarg, xargs, 
                     'ecout', rmaxh, nnid) 
         ##  12 is for the 12 nearest neighours in ideal titanium
 
         args += ' -vrmaxh=' + str(rmaxh) + ' '
-
+        cmd =  LMarg + ' ' + args  + ' -valpha=' + str(alpha) + ' '  + strain + ' '
+        g.cmd_write_to_file(cmd, 'ecout')
+        print(cmd, alpha, strain)
         cmd = "grep -A 4 'SHEAR: distortion' ecout"; g.cmd_write_to_file(cmd, 'shearinfo')
 
         if alpha != 0.0:
