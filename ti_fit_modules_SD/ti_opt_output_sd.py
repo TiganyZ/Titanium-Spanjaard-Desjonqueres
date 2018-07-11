@@ -41,7 +41,6 @@ def output_script(  npass,
     LMarg   +=  ' ctrl' + ext + ' '
 
     ppargs = g.construct_extra_args('', ppnames, par_arr_p)
-    print(ppargs)
     symmpt = 0
     bond_int_u, bond_int_l, evtol  =   ddnorm_lim
 
@@ -57,10 +56,10 @@ def output_script(  npass,
 
     d_norm, E_F = b.band_width_normalise( LMarg, args, 
                                           symmpt, ext, 
-                                          ddnames,  ddcoeffs_p[:-1], 
+                                          ddnames,  ddcoeffs_p, 
                                           bond_int_u, bond_int_l, evtol)
 
-    dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs_p[:-1]) + d_norm + E_F
+    dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs_p) + d_norm + E_F
 
     #################################################################################
     ##################      Obtain optimum lattice parameters      ##################

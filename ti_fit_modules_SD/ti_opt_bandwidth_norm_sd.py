@@ -54,7 +54,7 @@ def band_width(LMarg, args, E_F, filename, symmpt, ext):
     while len(chk) > 2:
         band_calc(LMarg, args, E_F, filename)
         chk=check_bandcalc_resolves(filename)
-    bndfile = open('bnds.' + ext, mode='r')
+    bndfile = open('bnds' + ext, mode='r')
     d_width = width_symm_pt(bndfile, symmpt, False, [])
     bndfile.close()
     return d_width
@@ -111,6 +111,7 @@ def band_width_normalise( LMarg, xargs, symmpt, ext, ddnames, ddcoeffs, bond_int
     filename = 'out'
     dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs)
     d_norm =  g.construct_cmd_arg(ddnames[-1], bond_int)
+    print(dargs + d_norm)
     b_width, E_F =  get_bandwidth(LMarg, (xargs + dargs + d_norm), symmpt, filename, ext) 
     b_width = abs(b_width)
 

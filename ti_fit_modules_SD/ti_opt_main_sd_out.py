@@ -42,7 +42,7 @@ pair_pot    = np.array( [ 118.485, spanjdecpp, 0, 0  ] )
 ppnames     = [ 'A1TTSDpp', 'C1TTSDpp', 'A2TTSDpp', 'C2TTSDpp' ]
 
 ddcoeffs    = np.array( [ 6., 4., 1., spanjdec] )
-ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec']
+ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec', 'spanjddd']
 
 
 

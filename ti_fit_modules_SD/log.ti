@@ -1,0 +1,2156 @@
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.334s   Wall clock 0.370s  at  06:37:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:37:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:04 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:04 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:04 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:04 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:05 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:05 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:05 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:05 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:05 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.102s   Wall clock 0.136s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ CPU time:  0.074s   Wall clock 0.108s  at  06:38:06 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:07 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:07 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:07 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ CPU time:  0.074s   Wall clock 0.108s  at  06:38:07 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:07 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:08 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:08 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:08 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.132s  at  06:38:08 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:08 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:38:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:38:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.137s  at  06:38:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:38:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:38:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:38:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:42:09 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ CPU time:  0.073s   Wall clock 0.106s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ CPU time:  0.073s   Wall clock 0.106s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:42:10 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.132s  at  06:42:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:42:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:42:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:42:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:42:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:42:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:42:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:42:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.074s   Wall clock 0.108s  at  06:46:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:46:11 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ CPU time:  0.073s   Wall clock 0.106s  at  06:46:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:46:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ CPU time:  0.073s   Wall clock 0.107s  at  06:46:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:46:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ CPU time:  0.074s   Wall clock 0.107s  at  06:46:12 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:46:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ CPU time:  0.072s   Wall clock 0.106s  at  06:46:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:46:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:46:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:46:13 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:46:14 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:46:15 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:46:15 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:46:15 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  06:46:15 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:46:15 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:46:16 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+bz met T  tet T  ef -0.000001  sev -0.000033483  zval 8.0 qval 8.0 dosef 843500
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.102s   Wall clock 0.135s  at  06:47:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+bz met T  tet T  ef 0.000000  sev -0.000000034  zval 8.0 qval 8.000031 dosef 5.208e8
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+bz met T  tet T  ef 0.000000  sev -0.000000001  zval 8.0 qval 8.000062 dosef 1.582e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 9.827e10
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.138s  at  06:47:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.00003 dosef 2.368e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000136 dosef 3.532e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000103 dosef 4.316e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:23 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:24 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000067 dosef 4.771e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:24 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:24 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000044 dosef 5.017e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  06:47:24 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:47:24 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000031 dosef 5.145e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:25 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:25 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000024 dosef 5.21e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:25 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:25 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000021 dosef 5.243e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:25 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:47:26 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000019 dosef 5.259e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:26 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:26 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.267e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:26 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+ CPU time:  0.073s   Wall clock 0.109s  at  06:47:26 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.272e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000018 dosef 5.274e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.075s   Wall clock 0.109s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:27 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:28 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:28 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.275e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  06:47:28 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:28 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:28 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:29 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.132s  at  06:47:29 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:29 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:29 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.072s   Wall clock 0.106s  at  06:47:29 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:30 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:31 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:31 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:31 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.075s   Wall clock 0.108s  at  06:47:31 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:31 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:32 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:32 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:32 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:32 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:32 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:33 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:33 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:33 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:33 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.136s  at  06:47:33 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.075s   Wall clock 0.109s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.075s   Wall clock 0.109s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:34 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:35 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:35 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:35 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:35 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:35 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:36 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:36 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:36 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:36 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:36 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:37 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:37 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.074s   Wall clock 0.107s  at  06:47:37 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:37 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.111s  at  06:47:37 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.075s   Wall clock 0.109s  at  06:47:38 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:39 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:39 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:47:39 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:39 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:39 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:40 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:47:40 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:40 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.134s  at  06:47:40 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:40 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.099s   Wall clock 0.133s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.107s  at  06:47:41 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:42 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.073s   Wall clock 0.106s  at  06:47:42 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  06:47:42 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+bz met T  tet T  ef 0.000000  sev 0.000000000  zval 8.0 qval 8.000017 dosef 5.276e11
+ CPU time:  0.075s   Wall clock 0.109s  at  06:47:42 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+ CPU time:  0.076s   Wall clock 0.110s  at  07:01:19 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+bz met T  tet T  ef -1.243736  sev -35.196426597  zval 8.0 qval 8.0 dosef 0.8949
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.097s   Wall clock 0.131s  at  07:01:19 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+ CPU time:  0.073s   Wall clock 0.106s  at  07:01:20 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+bz met T  tet T  ef -0.621868  sev -17.598213298  zval 8.0 qval 8.0 dosef 1.79
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.098s   Wall clock 0.132s  at  07:01:20 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+ CPU time:  0.074s   Wall clock 0.107s  at  07:01:20 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+bz met T  tet T  ef -0.310934  sev -8.799106649  zval 8.0 qval 8.0 dosef 3.58
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  07:01:20 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+ CPU time:  0.073s   Wall clock 0.106s  at  07:01:20 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+bz met T  tet T  ef -0.155467  sev -4.399553325  zval 8.0 qval 8.0 dosef 7.159
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.102s   Wall clock 0.136s  at  07:01:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+ CPU time:  0.073s   Wall clock 0.106s  at  07:01:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+bz met T  tet T  ef -0.077733  sev -2.199776662  zval 8.0 qval 8.0 dosef 14.32
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.133s  at  07:01:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+ CPU time:  0.075s   Wall clock 0.109s  at  07:01:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+bz met T  tet T  ef -0.038867  sev -1.099888331  zval 8.0 qval 8.0 dosef 28.64
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.100s   Wall clock 0.135s  at  07:01:21 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+ CPU time:  0.074s   Wall clock 0.107s  at  07:01:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+bz met T  tet T  ef -0.058300  sev -1.649832497  zval 8.0 qval 8.0 dosef 19.09
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.135s  at  07:01:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+ CPU time:  0.073s   Wall clock 0.107s  at  07:01:22 11.07.2018  on  gherkin
+
+ TBE:      nbas = 2  nspec = 1  verb 31
+ TB:       rmaxh = 5.584668, s-c multipoles, trh, rho
+ bz:       metal(3), tetra 
+ bz nq 28 ( 6 6 6 )  shift  F F F
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+bz met T  tet T  ef -0.048583  sev -1.374860414  zval 8.0 qval 8.0 dosef 22.91
+ dm  L 10  I 0  H 8  N 0 
+ CPU time:  0.101s   Wall clock 0.134s  at  07:01:22 11.07.2018  on  gherkin
