@@ -16,7 +16,7 @@ def cmd_result(cmd):
 
 def cmd_write_to_file(cmd, filename):
     output_file = open(filename, mode='w')
-    retval = subprocess.run(cmd, shell=True, stdout = output_file)
+    retval = subprocess.call(cmd, shell=True, stdout = output_file)
     output_file.close()
 
 
@@ -55,10 +55,11 @@ def remove_bad_syntax(values):
 
 def find_arg_value(arg_to_find, args):
     arg_ind = np.where( [arg_to_find in i for i in args.split()] )[0][0]
-    print(arg_ind)
     arg = args.split()[arg_ind]
     if '=' in arg:
         arg = arg.replace("=", "= ").split()[1]
+    if not arg[0].isdigit():
+        arg = arg[1:]
     return arg
 
 def find_arg_ind(arg_to_find, args):
@@ -129,28 +130,28 @@ def find_energy(LMarg, args, filename):
 
 
 def get_nearest_neighbours(LMarg, args, filename):
-    cmd =  LMarg + ' ' + args  +  ' -vrmaxh=' + str(rmaxh) 
+    cmd =  LMarg + ' ' + args  + ' ' 
     cmd_write_to_file(cmd, filename)
     cmd = "grep 'pairc,' " + filename + "| tail -1 | awk '{print $4}'"
     res = cmd_result(cmd)  
     return int(res)
 
-def check_rmaxh(LMarg, args, filename, rmaxh, nmax):
+def check_rmaxh(LMarg, args, filename, rmx_name,  rmaxh, nmax):
 
-    res = get_nearest_neighbours(LMarg, args, filename, rmaxh) 
+    res = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh), filename) 
     cond = (int(res) - 1) is nmax
 
     if cond == False:
         iters = 0
         rmaxh_u = 2 * rmaxh
-        rmaxh_l = 1 * rmaxh
-        resu = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_u), filename)
-        print('\n Initial Neighbours\n   rmaxh_l = Ts, rmaxh_u = %s \n    nn_l = %s,     nn_u = %s' %(rmaxh_l, rmaxh_u, int(res), int(resu)))
+        rmaxh_l = 0.5 * rmaxh
+        resu = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_u), filename)
+        print('\n Initial Neighbours\n   rmaxh_l = %s, rmaxh_u = %s \n    nn_l = %s,     nn_u = %s' %(rmaxh_l, rmaxh_u, res, resu))
         
     while cond == False:
         iters += 1
         rmaxh_m = ( rmaxh_u + rmaxh_l) / 2.
-        resm = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_m), filename)
+        resm = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_m), filename)
         print('RMAXH binary search:\nrmaxh = %s, iteration = %s, nn_m = %s\n' %(rmaxh_m, iters, int(resm)))
         if int(resm) - 1 < nmax:
             ##  Must increase rmaxh to get the right number of neighbours
@@ -159,9 +160,10 @@ def check_rmaxh(LMarg, args, filename, rmaxh, nmax):
             ##  Must decrease rmaxh to get the right number of neighbours
             rmaxh_u = rmaxh_m
 
-        res = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_m), filename)
+        res = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_m), filename)
         cond = (int(res) - 1) is nmax
-    return rmaxh_m
+        rmaxh = rmaxh_m
+    return rmaxh
 
 
 ########################################################################################################

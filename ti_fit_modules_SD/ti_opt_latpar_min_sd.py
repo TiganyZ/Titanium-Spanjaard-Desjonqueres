@@ -10,12 +10,12 @@ import ti_opt_general_sd as g
 ##########################     Minimum lattice parameters     ##############################
 
 def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
-    names_limits = '    Find Latpars Grid:\n    n_grid = %s\n'%(n_grid)  
+    name_limits = '    Find Latpars Grid:\n    n_grid = %s\n'%(n_grid)  
     al_l = [] 
     sz = ()
     for i in range(n_lp):
-        name_limits = '     %s_l---%s_u = %s---%s\n'%(names_lp[i], names_lp[i], limits_lp[i][0], limits_lp[i][1] )
-        al = np.linspace(limits_lp[i], limits_lp[i+1], n_grid[i])
+        name_limits += '     %s_l---%s_u = %s---%s\n'%(names_lp[i], names_lp[i], limits_lp[i][0], limits_lp[i][1] )
+        al = np.linspace(limits_lp[i][0], limits_lp[i][1], n_grid[i])
         al_l.append(al)
         sz += (n_grid[i],)
     print( name_limits )
@@ -48,7 +48,7 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
                     if etot is not str:
                         etot_a[i][j][k] = etot
 
-    min_ind = np.unravel_index( np.argmin(etot_a) )
+    min_ind = np.unravel_index( np.argmin(etot_a), sz )
     print('\n Minimum lattice parameters')
 
     if n_lp == 1:
@@ -74,34 +74,36 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
     return ret
 
 
-def opt_latpars_grid(LMarg, args, par_arr_p, a_u, a_l, alat_ideal, coa_u, coa_l, coa_ideal):
+def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, n_iter):
     ##  This routine makes a grid of lattice parameters of c and a such that the ideal one can be sought. 
-    n_grid = 10
+    min_lps = find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid)
+    limits_lp = np.asarray(limits_lp)
+    ##  Have initial tolerance 4 * width as initially, grid is coarse-graines.
+    tol = 4 * np.abs(limits_lp[:,0] - limits_lp[:,1])   /  np.asarray(n_grid)
+    for i in range(n_iter):
 
-    alat_min, coa_min, min_vol  = find_latpars_grid(LMarg, args, a_u, a_l, coa_u, coa_l, n_grid)
-    tol = 4 * (a_u - a_l) / (n_grid)
-    for i in range(2):
-        if coa_min + 0.06 > (8./3.)**0.5:
-            coa_un = (8./3.)**0.5 
-        else:
-            coa_un = coa_min + 0.06
+        ##  Recalculate the limits 
+        for j in range(n_lp):
+            if not limits_lp[j][2]:
+                ##  Can change the upper limit
+                limits_lp[j][0] =  min_lps[j] - tol[j]
+            if not limits_lp[j][3]:
+                ## Cab change the lower limit
+                limits_lp[j][1] = min_lps[j] + tol[j]
+        tol = tol   /  np.asarray(n_grid)
+        min_lps  = find_latpars_grid(LMarg, args, 
+                                                   n_lp,
+                                                   names_lp, 
+                                                   limits_lp,
+                                                   n_grid)
+        
 
-        alat_min, coa_min, min_vol  = find_latpars_grid(LMarg, args, 
-                                                                    alat_min + tol, 
-                                                                    alat_min - tol, 
-                                                                        coa_un, 
-                                                                        coa_min - 0.06/(i+1), 
-                                                                                n_grid)
-        tol = tol / (n_grid)
+    lps = min_lps[:n_lp]
+    lp_diff = np.asarray(lps) - ideals_lp
+    ret = lps + tuple(lp_diff) + (min_lps[-1],)
 
-
-
-    alat_diff = alat_min - alat_ideal
-    print('alat difference = %s' %(alat_diff))
-    coa_diff = coa_min - coa_ideal
-    print('coa difference = %s' %(coa_diff))
-
-    return alat_min, alat_diff, coa_min, coa_diff, min_vol
+    print('latpar', ret)
+    return ret
 
 def latpar_energy_range(LMarg, args, latpars, latpar):
 	## range of the energy values of the lattice parameter

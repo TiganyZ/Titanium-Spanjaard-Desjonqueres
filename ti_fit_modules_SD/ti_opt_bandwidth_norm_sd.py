@@ -54,7 +54,7 @@ def band_width(LMarg, args, E_F, filename, symmpt, ext):
     while len(chk) > 2:
         band_calc(LMarg, args, E_F, filename)
         chk=check_bandcalc_resolves(filename)
-    bndfile = open('bnds.' + ext, mode='r')
+    bndfile = open('bnds' + ext, mode='r')
     d_width = width_symm_pt(bndfile, symmpt, False, [])
     bndfile.close()
     return d_width
@@ -105,12 +105,13 @@ def width_symm_pt( bandfile, symmpt, dft, dftbe):
 def band_width_normalise( LMarg, xargs, symmpt, ext, ddnames, ddcoeffs, bond_int, bond_int_temp, evtol):
     ##  Bandwidth normalised with regards to the band width at a symmetry point defined by symmpt
 
-    print( "\n Bandwidth Normalisation routine \n")
+    print( "\n    Bandwidth Scaling routine \n")
 
     dftfile = 'dftticol2'
     filename = 'out'
     dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs)
     d_norm =  g.construct_cmd_arg(ddnames[-1], bond_int)
+    print(dargs + d_norm)
     b_width, E_F =  get_bandwidth(LMarg, (xargs + dargs + d_norm), symmpt, filename, ext) 
     b_width = abs(b_width)
 
@@ -123,12 +124,12 @@ def band_width_normalise( LMarg, xargs, symmpt, ext, ddnames, ddcoeffs, bond_int
     its=0
     bond_int1 = (bond_int + bond_int_temp)/2.
     while Fitting==False:
-        print( "\n Normalisation iteration = %s" %(its))
-        print('Bond integrals: upper = %s, lower = %s' %(bond_int, bond_int_temp))
+        print( "Bandwidth Scaling: iteration = %s" %(its))
+        print('Scaling bounds: upper = %s, lower = %s' %(bond_int, bond_int_temp))
 
         if abs( abs(dftwidth) - abs(b_width) ) < evtol:
             bond_int1 = (bond_int + bond_int_temp)/2.
-            print('\n Found Bond integral Normalisation coefficient: %s \n ' %(bond_int1) )
+            print('\n    Found Bond integral Scaling coefficient: %s \n ' %(bond_int1) )
             Fitting == True
             break
         else:  
@@ -137,7 +138,7 @@ def band_width_normalise( LMarg, xargs, symmpt, ext, ddnames, ddcoeffs, bond_int
             d_norm1 =  g.construct_cmd_arg(ddnames[-1], bond_int1) 
             b_width1, E_F =  get_bandwidth(LMarg, (xargs + dargs + d_norm1) , symmpt, filename, ext) 
             b_width1 = abs(b_width1)
-            print('TBE Bandwidth = %s,  DFT Bandwidth = %s' %(b_width1, dftwidth))
+            print('TBE Bandwidth = %s,  DFT Bandwidth = %s\n' %(b_width1, dftwidth))
             if b_width1 - dftwidth >  0: 
                 ##  Width is greater than required so new upper limit is set
                 bond_int=bond_int1

@@ -42,7 +42,7 @@ pair_pot    = np.array( [ 118.485, spanjdecpp, 0, 0  ] )
 ppnames     = [ 'A1TTSDpp', 'C1TTSDpp', 'A2TTSDpp', 'C2TTSDpp' ]
 
 ddcoeffs    = np.array( [ 6., 4., 1., spanjdec] )
-ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec']
+ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec', 'spanjddd']
 
 
 
@@ -52,6 +52,7 @@ ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec']
 names_lp  = ['alatTi'  , 'coa']
 ideals_lp = [alat_ideal, coa_ideal]
 
+rmx_name = 'rmaxh'
 
 #########################################################################################
 ########################    Extra Energies to Calculate      ############################
@@ -111,7 +112,7 @@ n_grid      = [10, 10]
 ##  Number of reduced range grid searches to find lattice parameters
 n_iter      = 2
 ##  Limits for the lattice parameters in form [ a_u, a_l ( (optional) , True_if_Fixed_Upper_Limit , True_if_Fixed_Lower_Limit ) ]
-limits_lp   = [  [ 5.2, 6.2 ], [ 1.5, np.sqrt(8./3.), False, True] ]
+limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.), False, True] ]
 
 ##  Limits for the bandwidth normalisation and tolerance in eV.
 ddnorm_lim  = (5.0, 0.0, 0.02)
@@ -141,7 +142,7 @@ e_consts, e_consts_diff) = outp.output_script(              npass,
                                                             pair_pot, ppnames, 
                                                             ddcoeffs, ddnames, ddnorm_lim,
                                                             ec_exp_arr, 
-                                                            nn_ideal,
+                                                            rmx_name, nn_ideal,
                                                             n_lp, n_grid, n_iter,
                                                             names_lp, limits_lp, ideals_lp,
                                                             n_energies, energy_args)

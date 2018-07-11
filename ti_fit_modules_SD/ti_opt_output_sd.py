@@ -6,6 +6,7 @@ from optparse import OptionParser
 import random 
 import ti_opt_general_sd as g
 import ti_opt_elastconst_sd as ec
+import ti_opt_latpar_min_sd as lm
 import ti_opt_constraints_variation_sd as cv
 import ti_opt_bandwidth_norm_sd as b
 
@@ -16,7 +17,7 @@ def output_script(  npass,
                     par_arr_p, ppnames, 
                     ddcoeffs_p, ddnames, ddnorm_lim,
                     ec_exp_arr, 
-                    nn_ideal,
+                    rmx_name, nn_ideal,
                     n_lp, n_grid, n_iter,
                     names_lp, limits_lp, ideals_lp,
                     n_energies, energy_args):
@@ -41,7 +42,6 @@ def output_script(  npass,
     LMarg   +=  ' ctrl' + ext + ' '
 
     ppargs = g.construct_extra_args('', ppnames, par_arr_p)
-    print(ppargs)
     symmpt = 0
     bond_int_u, bond_int_l, evtol  =   ddnorm_lim
 
@@ -57,31 +57,29 @@ def output_script(  npass,
 
     d_norm, E_F = b.band_width_normalise( LMarg, args, 
                                           symmpt, ext, 
-                                          ddnames,  ddcoeffs_p[:-1], 
+                                          ddnames,  ddcoeffs_p, 
                                           bond_int_u, bond_int_l, evtol)
 
-    dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs_p[:-1]) + d_norm + E_F
+    dargs = g.construct_extra_args('', ddnames[:-1], ddcoeffs_p) + d_norm + E_F
 
     #################################################################################
     ##################      Obtain optimum lattice parameters      ##################
 
     min_lps  = lm.opt_latpars_grid( LMarg, 
                                     args + ppargs + dargs, 
-                                    par_arr_p, 
                                     n_lp, names_lp,
                                     limits_lp, ideals_lp, 
                                     n_grid, n_iter)
         
-    
+    print('minlps', min_lps)
     for i in range(n_lp):
         if i == 0:
             lp_args  = g.construct_cmd_arg( names_lp[i], min_lps[i] )
-            lp_diffs = ( min_lps[i + 1], )  
+            lp_diffs = (min_lps[n_lp + i], )  
         else:
-            lp_args  += g.construct_cmd_arg( names_lp[i], min_lps[ 2*i ] )
-            lp_diffs += ( min_lps[i + 1], )
+            lp_args  += g.construct_cmd_arg( names_lp[i], min_lps[i] )
+            lp_diffs += ( min_lps[n_lp + i], )
             
-
     ################################################################################################
     ###################     Energies of different structures    ####################################
     
@@ -110,7 +108,7 @@ def output_script(  npass,
     ################     Get Elastic Constants     #####################
     print(' Obtaining Elastic Constants at optimised lattice parameters \n' )
 
-    e_consts, e_consts_diff = ec.Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, nn_ideal)
+    e_consts, e_consts_diff = ec.Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nn_ideal)
 
 
     print('Elastic Constants: difference = %s' %(e_consts_diff))
