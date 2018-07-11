@@ -130,29 +130,29 @@ def find_energy(LMarg, args, filename):
 ###########################     Checking the neighbour list and setting rmaxh      ###################################
 
 
-def get_nearest_neighbours(LMarg, args, filename, rmaxh):
-    cmd =  LMarg + ' ' + args  +  ' -vrmaxh=' + str(rmaxh) 
+def get_nearest_neighbours(LMarg, args, filename):
+    cmd =  LMarg + ' ' + args  + ' ' 
     cmd_write_to_file(cmd, filename)
     cmd = "grep 'pairc,' " + filename + "| tail -1 | awk '{print $4}'"
     res = cmd_result(cmd)  
     return int(res)
 
-def check_rmaxh(LMarg, args, filename, rmaxh, nmax):
+def check_rmaxh(LMarg, args, filename, rmx_name,  rmaxh, nmax):
 
-    res = get_nearest_neighbours(LMarg, args, filename, rmaxh) 
+    res = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh), filename) 
     cond = (int(res) - 1) is nmax
 
     if cond == False:
         iters = 0
         rmaxh_u = 2 * rmaxh
         rmaxh_l = 0.5 * rmaxh
-        resu = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_u), filename, rmaxh_u)
+        resu = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_u), filename)
         print('\n Initial Neighbours\n   rmaxh_l = %s, rmaxh_u = %s \n    nn_l = %s,     nn_u = %s' %(rmaxh_l, rmaxh_u, res, resu))
         
     while cond == False:
         iters += 1
         rmaxh_m = ( rmaxh_u + rmaxh_l) / 2.
-        resm = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_m), filename, rmaxh_m)
+        resm = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_m), filename)
         print('RMAXH binary search:\nrmaxh = %s, iteration = %s, nn_m = %s\n' %(rmaxh_m, iters, int(resm)))
         if int(resm) - 1 < nmax:
             ##  Must increase rmaxh to get the right number of neighbours
@@ -161,7 +161,7 @@ def check_rmaxh(LMarg, args, filename, rmaxh, nmax):
             ##  Must decrease rmaxh to get the right number of neighbours
             rmaxh_u = rmaxh_m
 
-        res = get_nearest_neighbours(LMarg, args + construct_cmd_arg('rmaxh', rmaxh_m), filename, rmaxh_m)
+        res = get_nearest_neighbours(LMarg, args + construct_cmd_arg(rmx_name, rmaxh_m), filename)
         cond = (int(res) - 1) is nmax
         rmaxh = rmaxh_m
     return rmaxh

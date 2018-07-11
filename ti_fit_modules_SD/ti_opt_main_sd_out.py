@@ -52,6 +52,7 @@ ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec', 'spanjddd']
 names_lp  = ['alatTi'  , 'coa']
 ideals_lp = [alat_ideal, coa_ideal]
 
+rmx_name = 'rmaxh'
 
 #########################################################################################
 ########################    Extra Energies to Calculate      ############################
@@ -141,7 +142,7 @@ e_consts, e_consts_diff) = outp.output_script(              npass,
                                                             pair_pot, ppnames, 
                                                             ddcoeffs, ddnames, ddnorm_lim,
                                                             ec_exp_arr, 
-                                                            nn_ideal,
+                                                            rmx_name, nn_ideal,
                                                             n_lp, n_grid, n_iter,
                                                             names_lp, limits_lp, ideals_lp,
                                                             n_energies, energy_args)
