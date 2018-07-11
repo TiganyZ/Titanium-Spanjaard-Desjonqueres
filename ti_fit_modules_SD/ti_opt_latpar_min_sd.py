@@ -74,7 +74,7 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
     return ret
 
 
-def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid, n_iter):
+def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, n_iter):
     ##  This routine makes a grid of lattice parameters of c and a such that the ideal one can be sought. 
     min_lps = find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid)
     limits_lp = np.asarray(limits_lp)
@@ -97,8 +97,12 @@ def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid, n_iter):
                                                    n_grid)
         
         tol = 4 * np.abs(limits_lp[,:2][1] - limits_lp[,:2][0])   /  np.asarray(n_grid)
-    
-    return min_lps
+    lps = np.array(min_lps[:n_lp])
+    lp_diff = lps - ideals_lp
+    ret = (lps, lp_diff) + (min_lps[-1],)
+
+
+    return ret
 
 def latpar_energy_range(LMarg, args, latpars, latpar):
 	## range of the energy values of the lattice parameter
