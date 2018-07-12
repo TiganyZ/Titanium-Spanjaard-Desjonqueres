@@ -15,7 +15,7 @@ def bayes_lin_regress( M, S, S_inv,
                                     W, t, T, 
                                             phi, Phi, 
                                                     alpha, beta, 
-                                                                oneD    ):
+                                                                oneD, reg ):
     ##  This function goes through one pass of a bayesian regression algorithm. 
     ##  M is the mean values used in the multivariate gaussian defining the prior over parameters. 
     ##  S is the covariance matrix ---  ""  ---
@@ -28,13 +28,10 @@ def bayes_lin_regress( M, S, S_inv,
     Phi = append_vector( Phi, phi )
     T   = append_vector( T  , t   )
     
-    M, S, S_inv, W = W_posterior_update(alpha, beta, Phi, T, W, S0_inv)
+    M, S, S_inv, W = W_posterior_update(alpha, beta, Phi, T, W, S0_inv, reg)
     ##  This is updates the gaussian distribution (updates to the mean and covariance matrices), and the parameter matrix
-    if oneD:
-        alpha, beta = get_alpha_beta_sc([alpha], [beta], Phi, np.array([M]), np.array([T]))
-        alpha = alpha[0]; beta = beta[0]
-    else:
-        alpha, beta = get_alpha_beta_sc(alpha, beta, Phi, M, T)
+   
+    alpha, beta = get_alpha_beta_sc(alpha, beta, Phi, M, T, oneD)
     ##  Updating the confidence in the prior and posterior distributions self consistently. 
     
     return M, S, S_inv, W, T, Phi, alpha, beta 
@@ -48,7 +45,7 @@ def append_vector( T, t_vec):
     return T  
 
 
-def W_posterior_update(alpha, beta, Phi, T, W, S0_inv):
+def W_posterior_update(alpha, beta, Phi, T, W, S0_inv, wreg):
     ##  S0 is an array of covariance matrices corresponding to each row in the W parameter matrix.  
     ##  If single is true then T = t_ is just one vector and W = w_
     if len(S0_inv.shape) < 3:
@@ -57,10 +54,14 @@ def W_posterior_update(alpha, beta, Phi, T, W, S0_inv):
         if not len(S0_inv) > 1 :
             S0_inv = S0_inv[0]
         
-        print(' Phi = %s\n T = %s\n W = %s\n S0_inv = %s' %(Phi, T, W, S0_inv) )
+        #print(' Phi = %s\n T = %s\n W = %s\n S0_inv = %s' %(Phi, T, W, S0_inv) )
         S, S_inv = S_N_wgt(Phi, alpha, beta, S0_inv)
         M = m_N_wgt( S, S0_inv, Phi, T, beta, W)
-        W = np.random.multivariate_normal(mean=M, cov=S)
+        ##  These parameters define the prior distribution over the w parameters. 
+        if wreg:
+            W = w_ML_reg(Phi, T, 0.5)
+        else:
+            W = np.random.multivariate_normal(mean=M, cov=S)
     else:
         for i in range(len(S0_inv)):
             print(alpha, beta)
@@ -79,7 +80,10 @@ def W_posterior_update(alpha, beta, Phi, T, W, S0_inv):
                 M = np.append( M, m_N ).reshape(M.shape[0] + 1, M.shape[1])
                 S = np.append( S, s_N ).reshape(S.shape[0] + 1, S.shape[1], S.shape[2])
                 S_inv = np.append( S_inv, s_N_inv ).reshape(S_inv.shape[0] + 1, S_inv.shape[1], S_inv.shape[2])
-            W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)
+            if wreg:
+                W[i,:] = w_ML_reg(Phi, T[:,i], 0.5)
+            else:
+                W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)
         
     return M, S, S_inv, W
 
@@ -95,53 +99,80 @@ def m_N_wgt( S_N, S0_inv, Phi, t_, beta, m0): #This is the mean for the posterio
     m = S_N.dot( S0_inv.dot(m0) + beta * Phi.T.dot(t_) )
     return m
 
+def get_poly_phi(a, x, mu, deg):
+    return np.sum([ a[i] *(x - mu)**i for i in range(deg + 1) ] )
 
-def get_alpha_beta_sc(alpha, beta, Phi, M_N, T):
+
+def gauss_basis(x, mu_i, s):
+    return np.exp( -(x - mu_i)**2 / (2 * s**2) )
+
+
+def get_alpha_beta_sc(alpha, beta, Phi, M_N, T, oneD):
     #Chosen initial value of alpha and then will update it using the eigenvectors of the Phi matrix
     #M_N is the most likely value of parameters for W
     #T must by a N x K matrix, Phi must be a N x M matrix, M_N must be a M x K matrix
     tol = 0.1
-    Phi_e = np.linalg.eigvals(Phi.T.dot(Phi))
+    Phi_e = np.linalg.eigvals( Phi.T.dot( Phi ) )
     print('Phi and Phi_e')
     print(Phi, Phi_e)
-    for j in range( len(beta) ):
-
-        Phi_eig = beta[j] * Phi_e
-        gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
-        print('gamma',gamma)
-
-        alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
-        print('alpha_new',alpha_new)
-
-        beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
-
-        a_diff = np.linalg.norm( alpha_new - alpha[j] ) 
-        b_diff = np.linalg.norm( beta_new  - beta[j]  )
-        tdiff = b_diff + a_diff
-        alpha[j] = alpha_new ; beta[j] = beta_new
+    tdiff = True
+    if oneD:
         iters = 20
-        while tdiff > tol:
+        while tdiff:
             iters -= 1
-            Phi_eig = beta[j] * Phi_e
-            gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
-            print('gamma',gamma)
-            alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
-            
-            beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
-            a_diff = np.linalg.norm(alpha_new-alpha[j]) ; b_diff = np.linalg.norm(beta_new-beta[j])
-            tdiff = b_diff + a_diff
+            Phi_eig = beta * Phi_e
+            gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha)  for i in range(len(Phi_eig))] ) 
 
+            alpha_new = gamma/M_N.dot(M_N)
+            beta_new =  1. / (   (   1./ (len(T) - gamma)   ) * np.sum( [ ( T[i] - M_N.dot( Phi[i] ) )**2 for i in range( len(T) ) ]  ) )
+
+            a_diff = np.linalg.norm( alpha_new - alpha ) 
+            b_diff = np.linalg.norm( beta_new  - beta  )
+            tdiff = (b_diff + a_diff) > tol
+            alpha = alpha_new ; beta = beta_new
             print('alpha_new=%s, beta_new=%s' %(alpha_new, beta_new) )
-            print('adiff, bdiff', a_diff, b_diff)
-            alpha[j] = alpha_new ; beta[j] = beta_new
+
             if iters < 0:
                 ##  Breaking out of the loop as there has been too much time spent here... 
                 print( 'Breaking out of the self-consistency loop for alpha and beta' )
-                alpha[j] = (alpha[j] + alpha_new)/2.
-                beta[j] = (beta[j] + beta_new)/2.
+                alpha = (alpha + alpha_new)/2.
+                beta = (beta + beta_new)/2.
                 break 
+    else:
+        for j in range( len(beta) ):
+            tdiff = True
+            iters = 20
+            while tdiff:
+                iters -= 1
+                Phi_eig = beta[j] * Phi_e
+                gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
+                print('gamma',gamma)
+                alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
+                
+                beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
+                a_diff = np.linalg.norm(alpha_new-alpha[j]) ; b_diff = np.linalg.norm(beta_new-beta[j])
+                tdiff = b_diff + a_diff > tol
+
+                print('alpha_new=%s, beta_new=%s' %(alpha_new, beta_new) )
+                print('adiff, bdiff', a_diff, b_diff)
+                alpha[j] = alpha_new ; beta[j] = beta_new
+                if iters < 0:
+                    ##  Breaking out of the loop as there has been too much time spent here... 
+                    print( 'Breaking out of the self-consistency loop for alpha and beta' )
+                    alpha[j] = (alpha[j] + alpha_new)/2.
+                    beta[j] = (beta[j] + beta_new)/2.
+                    break 
 
     return alpha, beta
+
+def w_ML_reg(Phi, t_, lamb):
+    try:
+        print(Phi, lamb, Phi.T.dot(Phi))
+        inv = np.linalg.inv( lamb + Phi.T.dot( Phi ) )
+
+    except np.linalg.linalg.LinAlgError:
+        inv = np.linalg.pinv( lamb + Phi.T.dot( Phi ) )
+    return inv.dot( Phi.T.dot(t_) )
 
 
 def poly(a, x, deg):
@@ -151,18 +182,21 @@ def poly(a, x, deg):
     return res
 
 def ref_func(x):
-    return np.sin(x) + 0.5 * np.cos(5 * x) 
+    return  np.sin(x) + 0.3 * np.cos(5 * x)  #oly([1,2,3,4,5,6,7,8],x, 7)#
 
-def bayesian_check(n, noise, deg):
+def ref_func_poly(x):
+    return poly([11,2,-3,-0.3, 0.2],x, 4)
+
+def bayesian_check(iters, n, noise, deg):
 
     x = np.linspace(0,10, n)
-    t = ref_func(x)
+    t = ref_func_poly(x)
     ##  This is the target data
-    y = t + np.random.normal(0.5, noise, n)
+    y = t + np.random.normal(0, noise, n)
     
     alpha   = 10
     beta    = 1./noise**2
-    M       = np.ones(deg + 1) * 5 
+    M       = np.ones(deg + 1)
     W       = np.ones(deg + 1)
     T       = np.array([])
     Phi     = np.array([])
@@ -172,21 +206,78 @@ def bayesian_check(n, noise, deg):
     yrlist  = []
     mlist   = []
     oneD    = True
-    for k in range(100):
+    reg     = not True
+    s       = 1
+    for k in range(iters):
+        print(W)
         print('Iter  %s' %(k))
         ind = np.random.choice( range( len(y) ) )
         xr  = x[ind]
         yr  = y[ind]
         tr  = [t[ind]]
-        phi = np.array([ xr**i for i in range(deg + 1)  ] )
+        phi = np.array( [ xr**i for i in range(deg + 1) ] )
         M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
                                                                  W, tr, T, 
                                                                  phi, Phi, 
-                                                                 alpha, beta, oneD )
+                                                                 alpha, beta, oneD, reg )
         mlist.append(M[0])
         xrlist.append(xr)
         yrlist.append(yr)
-        ybayes = poly(W, x, deg)
+        ybayes = poly(W, x, deg)  #poly(W, x, deg)
+        print('parameter matrix = %s' %(W) )
+        xp =     [x, x, xrlist, x ]
+        yp =     [t, y, yrlist, ybayes ]
+        colour = ['r--', 'g--', 'b^', 'k-']
+        if k %1 == 0:
+            g.plot_function(4, xp, yp, colour, 'Bayesian Linear regression.', 
+                                'x parameter', 'y')
+    return M
+
+def bayesian_check_gauss(iters, n, noise, deg):
+
+    x = np.linspace(0,10, n)
+    t = ref_func(x)
+    ##  This is the target data
+    y = t + np.random.normal(0, noise, n)
+    
+    alpha   = 10
+    beta    = 1./noise**2
+    M       = np.arange(deg + 1) 
+    Mu      = np.arange(deg) 
+    W       = np.ones(deg + 1)
+    T       = np.array([])
+    Phi     = np.array([])
+    S       = np.diag( [ 1. / beta for i in range(deg + 1) ] ) 
+    S_inv   = np.diag( [  beta for i in range(deg + 1) ] )
+    xrlist  = []
+    yrlist  = []
+    mlist   = []
+    oneD    = True
+    reg     = not True
+    s       = 1
+    for k in range(iters):
+        print(W)
+        print('Iter  %s' %(k))
+        ind = np.random.choice( range( len(y) ) )
+        xr  = x[ind]
+        yr  = y[ind]
+        tr  = [t[ind]]
+        phi = np.append( np.asarray( [ gauss_basis( xr, Mu[i], s ) for i in range(deg)  ] ), 1. )
+        phi = np.roll(phi, 1)
+        M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
+                                                                 W, tr, T, 
+                                                                 phi, Phi, 
+                                                                 alpha, beta, oneD, reg )
+        mlist.append(M[0])
+        xrlist.append(xr)
+        yrlist.append(yr)
+        ybayes = []
+        for j in range( len(x)):
+            app =  np.asarray([ gauss_basis( x[j], Mu[i], s ) for i in range(deg) ])
+            app = np.append(app, 1.)
+            app = np.roll(app, 1)
+            prod = W.dot(app)
+            ybayes.append(prod)
         print('parameter matrix = %s' %(W) )
         xp =     [x, x, xrlist, x ]
         yp =     [t, y, yrlist, ybayes ]
@@ -195,6 +286,7 @@ def bayesian_check(n, noise, deg):
             g.plot_function(4, xp, yp, colour, 'Bayesian Linear regression.', 
                                 'x parameter', 'y')
     return M
+    
     
 
 ######################################################################################
@@ -392,10 +484,11 @@ def gaussian_process_regression(self):
     m_pred_tnp1 = self.m_pred_next_target(k_, C_N_inv, t_)
     var_pred_tnp1 = self.var_pred_next_target(C_N_inv, k_, beta)
 
+iters = 100
 n=100
 noise = 0.2
-deg = 5
-bayesian_check(n, noise, deg)
+deg = 20
+bayesian_check_gauss(iters, n, noise, deg)
 
 
 
