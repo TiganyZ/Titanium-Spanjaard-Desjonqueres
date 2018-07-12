@@ -2,6 +2,154 @@ import numpy as np
 import ti_opt_general as g
 import ti_opt_main_sd_out as out
 
+
+
+
+
+
+#####################################################################################################
+##########################     Linear Basis Bayesian Regression     #################################
+
+
+def bayes_lin_regress( M, S, S_inv, 
+                                    W, t, T, 
+                                            phi, Phi, 
+                                                    alpha, beta    ):
+    ##  This function goes through one pass of a bayesian regression algorithm. 
+    ##  M is the mean values used in the multivariate gaussian defining the prior over parameters. 
+    ##  S is the covariance matrix ---  ""  ---
+    ##  W is the matrix of parameters. A row corresponds to one specific target value which is constructed from the design matrix. 
+    ##  Phi is the design matrix which contains the information of the basis functions upon which we are doing the regression. 
+    ##  alpha and beta define the amount of confidence we have in the prior and posterior distributions. 
+    
+    S0_inv = S_inv 
+    
+    Phi = append_vector( Phi, phi )
+    T   = append_vector( T  , t   )
+
+    M, S, S_inv, W = W_posterior_update(alpha, beta, Phi, T, W, S0_inv)
+    ##  This is updates the gaussian distribution (updates to the mean and covariance matrices), and the parameter matrix
+
+    alpha, beta = get_alpha_beta_sc(alpha, beta, Phi, M, T)
+    ##  Updating the confidence in the prior and posterior distributions self consistently. 
+    
+    return M, S, S_inv, W, T, Phi, alpha, beta 
+  
+
+def append_vector(self, T, t_vec):
+    if len(T) > 1:
+        T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
+    else:
+        T = np.array([t_vec])
+    return T  
+
+
+def W_posterior_update(alpha, beta, Phi, T, W, S0_inv):
+    ##  S0 is an array of covariance matrices corresponding to each row in the W parameter matrix.  
+    
+    for i in range(len(S0_inv)):
+        if alpha is float:
+            s_N, s_N_inv = S_N_wgt(Phi, alpha, beta, S0_inv[i])
+            m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta, m0=W[i,:])
+        else:
+            s_N, s_N_inv = S_N_wgt(Phi, alpha[i], beta[i], S0_inv[i])
+            m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta[i], m0=W[i,:])
+
+        if i == 0:
+            M = np.array([m_N])
+            S = np.array([s_N])
+            S_inv = np.array([s_N_inv])
+        else:
+            M = np.append( M, m_N ).reshape(M.shape[0] + 1, M.shape[1])
+            S = np.append( S, s_N ).reshape(S.shape[0] + 1, S.shape[1], S.shape[2])
+            S_inv = np.append( S_inv, s_N_inv ).reshape(S_inv.shape[0] + 1, S_inv.shape[1], S_inv.shape[2])
+        W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)
+        
+    return M, S, S_inv, W
+
+def S_N_wgt(Phi, alpha, beta, S0_inv):  #This is the S matrix for the posterior distribution over w, where the prior is p(w|alpha)=N(w|0, 1/alpha *I)  
+    
+    Sn_inv = beta * Phi.T.dot(Phi)
+    Sn_inv = S0_inv + Sn_inv
+    
+    Sn = np.linalg.inv(Sn_inv)
+    return Sn, Sn_inv
+
+def m_N_wgt( S_N, S0_inv, Phi, t_, beta, m0): #This is the mean for the posterior distribution over w, where the prior is p(w|alpha)=N(w|0, 1/alpha *I)  
+    m = S_N.dot( S0_inv.dot(m0) + beta * Phi.T.dot(t_) )
+    return m
+
+
+def get_alpha_beta_sc(alpha, beta, Phi, M_N, T):
+    #Chosen initial value of alpha and then will update it using the eigenvectors of the Phi matrix
+    #M_N is the most likely value of parameters for W
+    #T must by a N x K matrix, Phi must be a N x M matrix, M_N must be a M x K matrix
+    tol = 0.1
+    Phi_e = np.linalg.eigvals(Phi.T.dot(Phi))
+    print('Phi and Phi_e')
+    print(Phi, Phi_e)
+    for j in range(len(beta)):
+
+        Phi_eig = beta[j] * Phi_e
+        gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
+        print('gamma',gamma)
+
+        alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
+        print('alpha_new',alpha_new)
+
+        beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
+
+        a_diff = np.linalg.norm( alpha_new - alpha[j] ) 
+        b_diff = np.linalg.norm( beta_new  - beta[j]  )
+        tdiff = b_diff + a_diff
+        alpha[j] = alpha_new ; beta[j] = beta_new
+        iters = 20
+        while tdiff > tol:
+            iters -= 1
+            Phi_eig = beta[j] * Phi_e
+            gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
+            print('gamma',gamma)
+            alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
+            
+            beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
+            a_diff = np.linalg.norm(alpha_new-alpha[j]) ; b_diff = np.linalg.norm(beta_new-beta[j])
+            tdiff = b_diff + a_diff
+
+            print('alpha_new=%s, beta_new=%s' %(alpha_new, beta_new) )
+            print('adiff, bdiff', a_diff, b_diff)
+            alpha[j] = alpha_new ; beta[j] = beta_new
+            if iters < 0:
+                ##  Breaking out of the loop as there has been too much time spent here... 
+                print( 'Breaking out of the self-consistency loop for alpha and beta' )
+                alpha[j] = (alpha[j] + alpha_new)/2.
+                beta[j] = (beta[j] + beta_new)/2.
+                break 
+
+    return alpha, beta
+
+
+
+
+def bayesian_check(alpha, beta):
+    n=100
+    x = np.linspace(1,20, n)
+    t = np.sin(x) + 0.5 * np.cos(5x) 
+    ##  This is the target data
+    y = t + np.random.normal(0.5, 0.1, n)
+    alpha = 
+    M = 
+    
+    M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
+                                                                    W, t, T, 
+                                                                            phi, Phi, 
+                                                                                    alpha, beta  )
+    
+    
+
+######################################################################################
+######################################################################################
+
+
 def init_bayes(   t_n, res, 
                   x_n,
                   kernel, basis, error_function,
@@ -20,8 +168,8 @@ def init_bayes(   t_n, res,
         
 
 def bayes_fit( npass, LMarg, args, ext, 
-                      t_n, res, 
-                      pair_pot, bond_ints,
+                      t, T, y, 
+                      x, X,
                       kernel, basis, error_function,
                       alpha, beta, 
                       k_args ):
@@ -30,10 +178,25 @@ def bayes_fit( npass, LMarg, args, ext,
     
     The input vector is x_n, and this consists of the pair potential and the bond integral coefficients (without the normalisation term.)
     
-         Variables:
+          Variables:
 
-      t_n: The target values that we want to fit pair potential and bond integrals to.
-      res: Results of the target quantities from from input pair_pot and bond integrals input. 
+      x  : The input vector. These are the values that are mapped to get the target values. 
+             t_n = y_n + eps_n  <--(Gaussian noise)
+             y_n = w_T . phi(z) <--(Basis function of z: the pair potential/bond integral values used)
+
+                                Generally, with regards to TB, this will be the pair potential and bond integrals. 
+                                This is a non-linear mapping, but using a linear combination of basis fuctions, 
+                                one can reconstruct a function which, at some point, will be able to describe how 
+                                variation of each parameter in the pair potential and the bond integrals changes the target variables.
+                                
+
+      X  : This is the array of previous input vectors x
+
+      t: The target values that we want to fit pair potential and bond integrals to.
+
+      T: The array of target values from previous iterations
+
+      y: Results of the target quantities from from input pair_pot and bond integrals input. 
 
       alpha, beta: The hyper parameters that are used to specify the confidence in a particular prior/posterior
     
@@ -51,6 +214,7 @@ def bayes_fit( npass, LMarg, args, ext,
 
       k_args: These arguments correspond to theta parameters for the parametric kernel or other 
     """
+    return 
 
 #############################################################################################
 ##########################     Stochastic Gradient Descent     ##############################
@@ -72,6 +236,20 @@ def get_design_matrix(self, Phi, phi_v):
     else:
         Phi = np.array([phi_v])
     return Phi
+
+
+def fpoly_reg(b, deg, reg):
+    ##  Have the equation Ax = b that needs to be solved in a polynomial basis 
+    ##  This constructs the Vandermond matrix with regularisation specified by reg 
+    ##  deg is the degree of the polynomial for the fitting. 
+    ##  With regularisation (e.g. Weight decay/ridge/quadratic) this becomes
+    ##  x = np.inv( (A.T.dot(A) + G.T.dot(G)) ).dot( A.dot(b) )
+    ##  Where G is the Tikhonov matrix which for quadratic regularisation is alpha * I 
+    return 
+    
+
+     
+        
         
 
 
@@ -156,9 +334,6 @@ def C_matrix(self, beta, K):
     return K + 1./beta * np.eye(len(K))
 
 def gaussian_process_regression(self):
-
-
-
     ## Obtaining the mean and variance of the predictive distribution 
     ## p(t_{n+1}|t_) 
     k_ = self.get_next_k_(x_, x_np1)
@@ -167,50 +342,6 @@ def gaussian_process_regression(self):
 
 
 
-
-#####################################################################################################
-##########################     Linear Basis Bayesian Regression     #################################
-
-
-def get_alpha_beta_sc(self, alpha, beta, Phi, M_N, T):
-    #Chosen initial value of alpha and then will update it using the eigenvectors of the Phi matrix
-    #M_N is the most likely value of parameters for W
-    #T must by a N x K matrix, Phi must be a N x M matrix, M_N must be a M x K matrix
-    tol = 0.1
-    Phi_e = np.linalg.eigvals(Phi.T.dot(Phi))
-    print('Phi and Phi_e')
-    print(Phi, Phi_e)
-    for j in range(len(beta)):
-        Phi_eig = beta[j] * Phi_e
-        gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
-        print('gamma',gamma)
-        alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
-        print('alpha_new',alpha_new)
-        beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
-        a_diff = np.linalg.norm(alpha_new-alpha[j]) ; b_diff = np.linalg.norm(beta_new-beta[j])
-        tdiff = b_diff + a_diff
-        alpha[j] = alpha_new ; beta[j] = beta_new
-        iter = 20
-        while tdiff > tol:
-            iter -= 1
-            Phi_eig = beta[j] * Phi_e
-            gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
-            print('gamma',gamma)
-            alpha_new = gamma/M_N[j,:].dot(M_N[j,:].T)
-            
-            beta_new =  1. / ( (1./(len(T) - gamma)) * sum([ ( T[i, j] - M_N[j,:].dot(Phi[i,:]) )**2 for i in range(len(T)) ]) )
-            a_diff = np.linalg.norm(alpha_new-alpha[j]) ; b_diff = np.linalg.norm(beta_new-beta[j])
-            tdiff = b_diff + a_diff
-            print('alpha_new=%s, beta_new=%s' %(alpha_new, beta_new) )
-            print('adiff, bdiff', a_diff, b_diff)
-            alpha[j] = alpha_new ; beta[j] = beta_new
-            if iter < 0:
-                alpha[j] = (alpha[j] + alpha_new)/2.
-                beta[j] = (beta[j] + beta_new)/2.
-                break #tdiff = tol - 1 #breaking from the loop
-                
-
-    return alpha, beta
 
 
 def Bayesian_bond_int(self, npass):
@@ -246,6 +377,13 @@ def Bayesian_bond_int(self, npass):
 
 
     return npass
+
+
+
+
+
+
+
 
 def Bayesian_Fitting_Gaussian_Basis(self, npass, 
                                                 M_N, S_N, S_N_inv, 
@@ -415,6 +553,7 @@ def Bayesian_Fitting_Gaussian_Basis(self, npass,
 
     print('distance_from_exp = %s, %s' %(np.abs(t_v), np.sum(np.abs(t_v))))
     #This means that the parameters should have a gaussian centred at a mean of zero, at these targets, in principle should be the same value
+
     if npass == 1:
         alpha = np.array([0.001 for i in range(len(t_v))])  #np.array([0.01,0.01,0.01,0.01,0.01])
         print(alpha)
@@ -435,7 +574,7 @@ def Bayesian_Fitting_Gaussian_Basis(self, npass,
     #Finding new W matrix and covariance 
 
 
-    T = self.get_T_matrix(T, t_v) # This is an M x K matrix
+    T = add_row_to_matrix(T, t_v) # This is an M x K matrix
 
     M_N, S_N, S_N_inv, W = self.W_posterior_update(alpha, beta, Phi, T, W, S0inv)
 
@@ -503,27 +642,7 @@ def Bayesian_Fitting_Gaussian_Basis(self, npass,
     #print('npass = %s, M_N = %s, S_N = %s, W = %s, T = %s, Phi = %s, alpha = %s, beta = %s, g_mu=%s' %(npass, M_N, S_N, W, T, Phi, alpha, beta, g_mu) )
     return M_N, S_N, S_N_inv, W, T, Phi, alpha, beta, G, Phi_g, g_mu_N, g_alpha, g_beta, g_s_N, g_s_N_inv
 
-def W_posterior_update(self, alpha, beta, Phi, T, W, S0_inv):
-    #print('alpha, beta',alpha, beta)
-    for i in range(len(S0_inv)):
-        s_N, s_N_inv = self.S_N_wgt(Phi, alpha[i], beta[i], S0_inv[i])
-        m_N = self.m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta[i], m0=W[i,:])
-        #print('m_N = %s, i = %s' %( m_N, i))
-        #print('s_N', s_N)
-        if i == 0:
-            M = np.array([m_N])
-            #print('M shape i = 0 ', M.shape)
-            S = np.array([s_N])
-            #print('S shape i = 0 ', S.shape)
-            S_inv = np.array([s_N_inv])
-            #print('S inv shape i = 0 ', S_inv.shape)
-        else:
-            M = np.append( M, m_N ).reshape(M.shape[0] + 1, M.shape[1])
-            S = np.append( S, s_N ).reshape(S.shape[0] + 1, S.shape[1], S.shape[2])
-            S_inv = np.append( S_inv, s_N_inv ).reshape(S_inv.shape[0] + 1, S_inv.shape[1], S_inv.shape[2])
-        W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)#, size=(len(W),1))
-        
-    return M, S, S_inv, W
+
 
 def W_posterior(self, alpha, beta, Phi, T, W, S0_inv):
     S_N = self.S_N_wgt(Phi, alpha, beta, S0_inv)
@@ -537,22 +656,7 @@ def W_posterior(self, alpha, beta, Phi, T, W, S0_inv):
 def poly_basis(self, x, d):
     return np.array( [x**i for i in range(0,d+1)] ) #bias is set to 1
 
-def S_N_wgt(self, Phi, alpha, beta, S0_inv):  #This is the S matrix for the posterior distribution over w, where the prior is p(w|alpha)=N(w|0, 1/alpha *I)  
-    
-    #if len(Phi) > 1:
-    sn_inv = beta * Phi.T.dot( Phi)
-    sn_inv = S0_inv + sn_inv
-    #else:
-    #    sn_inv = beta * np.outer(Phi, Phi) + S0_inv#.reshape((2,2))
-    self.sn_inv = sn_inv
-    self.S_N = np.linalg.inv(sn_inv)
-    return self.S_N, self.sn_inv
 
-def m_N_wgt(self, S_N, S0_inv, Phi, t_, beta, m0): #This is the mean for the posterior distribution over w, where the prior is p(w|alpha)=N(w|0, 1/alpha *I)  
-
-    m = S_N.dot( S0_inv.dot(m0) + beta * Phi.T.dot(t_) )
-
-    return m
 
 def cmd_result(self,cmd):
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -561,12 +665,7 @@ def cmd_result(self,cmd):
     return result
 
 
-def get_T_matrix(self, T, t_vec):
-    if len(T)>1:
-        T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
-    else:
-        T = np.array([t_vec])
-    return T
+
 
 
 def delta_reg_error_func(self, alpha, beta, t, T, W, Phi):
