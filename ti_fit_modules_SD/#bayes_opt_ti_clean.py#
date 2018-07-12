@@ -14,8 +14,7 @@ import ti_opt_general_sd as g
 def bayes_lin_regress( M, S, S_inv, 
                                     W, t, T, 
                                             phi, Phi, 
-                                                    alpha, beta, 
-                                                                oneD    ):
+                                                    alpha, beta    ):
     ##  This function goes through one pass of a bayesian regression algorithm. 
     ##  M is the mean values used in the multivariate gaussian defining the prior over parameters. 
     ##  S is the covariance matrix ---  ""  ---
@@ -27,20 +26,17 @@ def bayes_lin_regress( M, S, S_inv,
     
     Phi = append_vector( Phi, phi )
     T   = append_vector( T  , t   )
-    
+
     M, S, S_inv, W = W_posterior_update(alpha, beta, Phi, T, W, S0_inv)
     ##  This is updates the gaussian distribution (updates to the mean and covariance matrices), and the parameter matrix
-    if oneD:
-        alpha, beta = get_alpha_beta_sc([alpha], [beta], Phi, np.array([M]), np.array([T]))
-        alpha = alpha[0]; beta = beta[0]
-    else:
-        alpha, beta = get_alpha_beta_sc(alpha, beta, Phi, M, T)
+
+    alpha, beta = get_alpha_beta_sc(alpha, beta, Phi, M, T)
     ##  Updating the confidence in the prior and posterior distributions self consistently. 
     
     return M, S, S_inv, W, T, Phi, alpha, beta 
   
 
-def append_vector( T, t_vec):
+def append_vector(self, T, t_vec):
     if len(T) > 1:
         T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
     else:
@@ -50,36 +46,24 @@ def append_vector( T, t_vec):
 
 def W_posterior_update(alpha, beta, Phi, T, W, S0_inv):
     ##  S0 is an array of covariance matrices corresponding to each row in the W parameter matrix.  
-    ##  If single is true then T = t_ is just one vector and W = w_
-    if len(S0_inv.shape) < 3:
-        if len(T.shape) > 1:
-            T = T[0]
-        if not len(S0_inv) > 1 :
-            S0_inv = S0_inv[0]
-        
-        print(' Phi = %s\n T = %s\n W = %s\n S0_inv = %s' %(Phi, T, W, S0_inv) )
-        S, S_inv = S_N_wgt(Phi, alpha, beta, S0_inv)
-        M = m_N_wgt( S, S0_inv, Phi, T, beta, W)
-        W = np.random.multivariate_normal(mean=M, cov=S)
-    else:
-        for i in range(len(S0_inv)):
-            print(alpha, beta)
-            if not isinstance(alpha, np.ndarray):
-                s_N, s_N_inv = S_N_wgt(Phi, alpha, beta, S0_inv[i])
-                m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta, m0=W[i,:])
-            else:
-                s_N, s_N_inv = S_N_wgt(Phi, alpha[i], beta[i], S0_inv[i])
-                m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta[i], m0=W[i,:])
+    
+    for i in range(len(S0_inv)):
+        if alpha is float:
+            s_N, s_N_inv = S_N_wgt(Phi, alpha, beta, S0_inv[i])
+            m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta, m0=W[i,:])
+        else:
+            s_N, s_N_inv = S_N_wgt(Phi, alpha[i], beta[i], S0_inv[i])
+            m_N = m_N_wgt( s_N, S0_inv[i], Phi, T[:,i], beta[i], m0=W[i,:])
 
-            if i == 0:
-                M = np.array([m_N])
-                S = np.array([s_N])
-                S_inv = np.array([s_N_inv])
-            else:
-                M = np.append( M, m_N ).reshape(M.shape[0] + 1, M.shape[1])
-                S = np.append( S, s_N ).reshape(S.shape[0] + 1, S.shape[1], S.shape[2])
-                S_inv = np.append( S_inv, s_N_inv ).reshape(S_inv.shape[0] + 1, S_inv.shape[1], S_inv.shape[2])
-            W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)
+        if i == 0:
+            M = np.array([m_N])
+            S = np.array([s_N])
+            S_inv = np.array([s_N_inv])
+        else:
+            M = np.append( M, m_N ).reshape(M.shape[0] + 1, M.shape[1])
+            S = np.append( S, s_N ).reshape(S.shape[0] + 1, S.shape[1], S.shape[2])
+            S_inv = np.append( S_inv, s_N_inv ).reshape(S_inv.shape[0] + 1, S_inv.shape[1], S_inv.shape[2])
+        W[i,:] = np.random.multivariate_normal(mean=m_N, cov=s_N)
         
     return M, S, S_inv, W
 
@@ -104,7 +88,7 @@ def get_alpha_beta_sc(alpha, beta, Phi, M_N, T):
     Phi_e = np.linalg.eigvals(Phi.T.dot(Phi))
     print('Phi and Phi_e')
     print(Phi, Phi_e)
-    for j in range( len(beta) ):
+    for j in range(len(beta)):
 
         Phi_eig = beta[j] * Phi_e
         gamma = np.sum( [ Phi_eig[i]/(Phi_eig[i] + alpha[j])  for i in range(len(Phi_eig))] ) #vector of gamma 
@@ -160,40 +144,31 @@ def bayesian_check(n, noise, deg):
     ##  This is the target data
     y = t + np.random.normal(0.5, noise, n)
     
-    alpha   = 10
-    beta    = 1./noise**2
-    M       = np.ones(deg + 1) * 5 
-    W       = np.ones(deg + 1)
-    T       = np.array([])
-    Phi     = np.array([])
-    S       = np.diag( [ 1. / beta for i in range(deg + 1) ] ) 
-    S_inv   = np.diag( [  beta for i in range(deg + 1) ] )
-    xrlist  = []
-    yrlist  = []
-    mlist   = []
-    oneD    = True
-    for k in range(100):
-        print('Iter  %s' %(k))
+    alpha = 10
+    beta = 1./noise**2
+    M = np.array( [  np.ones(6)  ]  )
+    S = np.array( [ np.diag( [ 1. / beta for i in range(deg + 1) ] ) ] )
+    xrlist = []
+    mlist = []
+    
+    for k in range(3):
         ind = np.random.choice( range( len(y) ) )
-        xr  = x[ind]
-        yr  = y[ind]
-        tr  = [t[ind]]
+        xr = x[ind]
+        yr = y[ind]
         phi = np.array([ xr**i for i in range(deg + 1)  ] )
         M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
-                                                                 W, tr, T, 
+                                                                 W, t, T, 
                                                                  phi, Phi, 
-                                                                 alpha, beta, oneD )
+                                                                 alpha, beta  )
         mlist.append(M[0])
         xrlist.append(xr)
         yrlist.append(yr)
-        ybayes = poly(W, x, deg)
         print('parameter matrix = %s' %(W) )
-        xp =     [x, x, xrlist, x ]
-        yp =     [t, y, yrlist, ybayes ]
-        colour = ['r--', 'g--', 'b^', 'k-']
-        if k % 10 == 1:
-            g.plot_function(4, xp, yp, colour, 'Bayesian Linear regression.', 
-                                'x parameter', 'y')
+        xp =     [x, x, xrlist ]
+        yp =     [t, y, yrlist ]
+        colour = ['r--', 'g--', 'b^']
+        g.plot_function(3, xp, yp, colour, 'Bayesian Linear regression.', 
+                            'x parameter', 'y')
     return M
     
 
