@@ -326,6 +326,101 @@ def bayesian_check_gauss(iters, n, noise, deg):
 def ref_func_2D(x,z):
     return  2* np.sin(x) +  np.cos(3 * z) 
 
+def bayesian_check_2D2(iters, n, noise, deg):
+    ## Want first target to be sin(x) and second to see if we can regress to fit both with one design matrix.
+    x = np.linspace(-5,5, n)
+    z = np.linspace(-5,5, n)
+    t1 = 2 * np.sin(x) 
+    t2 = (z - 5)**2
+    ##  This is the target data
+    t_ = np.asarray([t1, t2])
+
+    y_ = np.asarray([ t1 + np.random.normal(0, noise, n), t2 + np.random.normal(0, noise, n)] ) 
+    
+    
+    alpha   = 10
+    beta    = 1./noise**2
+    M       = np.ones((2, deg + 1) ) 
+    Mu1     = np.linspace(-5,5, deg) 
+    Mu2     = np.linspace(-5,5, deg)   #np.linspace(-deg/2., deg/2., deg)
+    W       = np.ones((2, deg + 1) )
+    T       = np.array([])
+    Phi     = np.array([])
+    S       = np.asarray( [ np.diag( [ 1. / beta for i in range(deg + 1) ] ), 
+                            np.diag( [ 1. / beta for i in range(deg + 1) ] ) ] )
+    S_inv   = np.asarray( [ np.diag( [  beta for i in range(deg + 1) ]), 
+                            np.diag( [  beta for i in range(deg + 1) ])  ] )
+    xrlist  = []
+    yrlist  = []
+    mlist   = []
+    oneD    = False
+    reg     = False
+    update  = False
+    sx      = 1
+    sy      = 1
+    for k in range(iters):
+        print(W)
+        print('Iter  %s' %(k))
+        ind = np.random.choice( range( len(t1) ) )
+        xr  = np.array( [ x[ind], z[ind] ] )
+        yr  = y_[:,ind]
+        tr  = t_[:,ind]
+        print(T)
+        phi = np.append( np.asarray( [ gauss_basis2D( xr[0], Mu1[i], sx, xr[1], Mu2[i], sy ) for i in range(len(Mu1)) ] ), 1. )
+        phi = np.roll(phi, 1)
+
+        M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
+                                                                 W, tr, T, 
+                                                                 phi, Phi, 
+                                                                 alpha, beta, 
+                                                                 oneD, reg, update )
+        W2 = np.random.multivariate_normal(M[0], S[0])
+        W3 = np.random.multivariate_normal(M[0], S[0])
+        W4 = np.random.multivariate_normal(M[1], S[1])
+        W5 = np.random.multivariate_normal(M[1], S[1])      
+        xrlist.append(xr)
+        yrlist.append(yr)
+        ybayes = []
+        ybayes2 = []
+        ybayes3 = []
+        ybayes4 = []; ybayes5 = []; ybayes6 = []
+        for cc in range(len(x)):
+            app = np.append( np.asarray( 
+                       [ gauss_basis2D( x[cc], Mu1[i], sx, z[cc], Mu2[i], sy ) for i in range(len(Mu1))   ] ), 1. )
+
+            app = np.roll(app, 1)
+            prod = W.dot(app)
+            ybayes.append(prod[0])
+            prod = W2.dot(app)
+            ybayes2.append(prod) 
+            prod = W3.dot(app)
+            ybayes3.append(prod)
+        for cc in range(len(z)):
+            app = np.append( np.asarray( 
+                       [ gauss_basis2D( x[cc], Mu1[i], sx, z[cc], Mu2[i], sy ) for i in range( len(Mu1) )   ] ), 1. )
+            app = np.roll(app, 1)
+            prod = W.dot(app)
+            ybayes6.append(prod[1])
+            prod = W4.dot(app)
+            ybayes4.append(prod)
+            prod = W5.dot(app)
+            ybayes5.append(prod)
+        #print('parameter matrix = %s' %(W) )  
+        print('parameter matrix = %s' %(W) )
+        xp =     [x, x,      np.asarray(xrlist)[:,0], x,      x,       x,     ]
+        yp =     [t1, y_[0], np.asarray(yrlist)[:,0], ybayes, ybayes2, ybayes3]
+        colour = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-']
+        xp2 =     [z, z,      np.asarray(xrlist)[:,1], z,      z,       z     ]
+        yp2 =     [t2, y_[1], np.asarray(yrlist)[:,1], ybayes4, ybayes5, ybayes6]
+        colour2 = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-']
+        if k %2 == 0:
+            g.plot_function(6, xp, yp, colour, 'Bayesian Linear regression.', 
+                                'x parameter', 'y')
+            g.plot_function(6, xp2, yp2, colour2, 'Bayesian Linear regression.', 
+                                'z parameter', 'y')
+ 
+    return M
+
 def bayesian_check_2D(iters, n, noise, deg):
     ## Want first target to be sin(x) and second to be cos(3z) so then should optimise to be sum of both
     x = np.linspace(0,10, n)
@@ -380,15 +475,16 @@ def bayesian_check_2D(iters, n, noise, deg):
         ybayes = []; ybayes2 = []; ybayes3 = []
         ybayes4 = []; ybayes5 = []; ybayes6 = []
         X, Y = np.meshgrid(x,z)
-        ybayes = np.zeros( (len(x), len(z) ) )
-        for j in range( len(x) ):
-            for k in range( len(z) ):
-                app = np.append( np.asarray( 
-                           [ gauss_basis2D( x[j], Mu1[i], sx, z[k], Mu2[l], sy ) for i in range(len(Mu1)) for l in range(len(Mu2))   ] 
-                                        ), 1. )
-                app = np.roll(app, 1)
-                prod = W.dot(app)
-                ybayes[j][k] = np.sum(prod)  
+
+        app = np.asarray( 
+                   [ gauss_basis2D( X, Mu1[i], sx, Y, Mu2[l], sy ) for i in range(len(Mu1)) for l in range(len(Mu2))   ] )
+
+        zrs = np.ones( (app.shape[0], app.shape[1] + 1) )
+        zrs[:, :-1] = app
+
+        app = np.roll(app, 1)
+        prod = W.dot(app)
+        ybayes = np.sum(prod)  
         #print('parameter matrix = %s' %(W) )
          
         fig = plt.figure()
@@ -608,10 +704,10 @@ def gaussian_process_regression(self):
     var_pred_tnp1 = self.var_pred_next_target(C_N_inv, k_, beta)
 
 iters = 200
-n=20
-noise = 0.2
-deg = 5
-bayesian_check_2D(iters, n, noise, deg)
+n=100
+noise = 0.3
+deg = 10
+bayesian_check_2D2(iters, n, noise, deg)
 
 deg = 5
 #bayesian_check(iters, n, noise, deg)
