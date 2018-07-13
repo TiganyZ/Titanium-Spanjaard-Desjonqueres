@@ -317,75 +317,6 @@ def bayesian_check_gauss(iters, n, noise, deg):
     return M
     
 
-def ref_fun_2D(x,z):
-    return  np.sin(x) +  np.cos(3 * z) )
-
-def bayesian_check_2D(iters, n, noise, deg):
-    ## Want first target to be sin(x) and second to be cos(3z) so then should optimise to be sum of both
-    x = np.linspace(0,10, n)
-    z = np.linspace(-5,5, n)
-    t = ref_func_2D(x,z)
-    ##  This is the target data
-    y = t + np.random.normal(0, noise, n)
-    
-    alpha   = 10
-    beta    = 1./noise**2
-    M       = np.arange(deg + 1) 
-    Mu      = np.arange(deg) 
-    W       = np.ones(deg + 1)
-    T       = np.array([])
-    Phi     = np.array([])
-    S       = np.diag( [ 1. / beta for i in range(deg + 1) ] ) 
-    S_inv   = np.diag( [  beta for i in range(deg + 1) ] )
-    xrlist  = []
-    yrlist  = []
-    mlist   = []
-    oneD    = True
-    reg     = False
-    update  = False
-    s       = 1
-    for k in range(iters):
-        print(W)
-        print('Iter  %s' %(k))
-        ind = np.random.choice( range( len(y) ) )
-        xr  = x[ind]
-        yr  = y[ind]
-        tr  = [t[ind]]
-        phi = np.append( np.asarray( [ gauss_basis( xr, Mu[i], s ) for i in range(deg)  ] ), 1. )
-        phi = np.roll(phi, 1)
-
-        M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
-                                                                 W, tr, T, 
-                                                                 phi, Phi, 
-                                                                 alpha, beta, 
-                                                                 oneD, reg, update )
-        W2 = np.random.multivariate_normal(M, S)
-        W3 = np.random.multivariate_normal(M, S)
-        W4 = np.random.multivariate_normal(M, S)
-        W5 = np.random.multivariate_normal(M, S)
-        W6 = np.random.multivariate_normal(M, S)
-        xrlist.append(xr)
-        yrlist.append(yr)
-        ybayes = []; ybayes2 = []; ybayes3 = []
-        ybayes4 = []; ybayes5 = []; ybayes6 = []
-        for j in range( len(x)):
-            app =  np.asarray([ gauss_basis( x[j], Mu[i], s ) for i in range(deg) ])
-            app =  np.append(app, 1.); app = np.roll(app, 1)
-            prod = W.dot(app);   prod2 = W2.dot(app);   prod3 = W3.dot(app)
-            ybayes.append(prod); ybayes2.append(prod2); ybayes3.append(prod3)
-            prod = W4.dot(app);   prod5 = W2.dot(app);   prod6 = W3.dot(app)
-            ybayes4.append(prod); ybayes5.append(prod2); ybayes6.append(prod3)    
-        print('parameter matrix = %s' %(W) )
-        xp =     [x, x, xrlist, x,      x,       x,       x,       x,       x      ]
-        yp =     [t, y, yrlist, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
-        zp =     []
-        colour = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-']
-        if k %2 == 0:
-            g.plot_function(9, xp, yp, colour, 'Bayesian Linear regression.', 
-                                'x parameter', 'y')
-    return M
-    
-
 ######################################################################################
 ######################################################################################
 
@@ -470,15 +401,6 @@ def stoc_grad_des_mom(deltaw, gamma, eta, Qi_list):
 
 
 
-def get_design_matrix(self, Phi, phi_v):
-    #This updates the total design matrix
-    if len(Phi) > 1:
-        Phi = np.append(Phi, phi_v).reshape( (Phi.shape[0] + 1, Phi.shape[1]) )
-    else:
-        Phi = np.array([phi_v])
-    return Phi
-
-
 def fpoly_reg(b, deg, reg):
     ##  Have the equation Ax = b that needs to be solved in a polynomial basis 
     ##  This constructs the Vandermond matrix with regularisation specified by reg 
@@ -500,19 +422,19 @@ def fpoly_reg(b, deg, reg):
 ### The kernel function k(x_n, x_m) expresses how strongly y(x_n) and y(x_m)
 ### are correlated for similar points of x_n, x_m
 
-def basis_kernel_nm(self, phi_n, phi_m, alpha):
+def basis_kernel_nm(phi_n, phi_m, alpha):
     return ( 1./alpha ) * phi_n.dot(phi_m)
 
-def parametric_kernel(self, theta, x_n, x_m):
+def parametric_kernel(theta, x_n, x_m):
     return theta[0] * np.exp( -(theta[1]/2.)*np.norm(x_n - x_m)**2 ) + theta[2] + theta[3] * x_n.dot(x_m)
 
 def dC_dtheta_i(C_N, C_N_min_1, theta_i_N, theta_i_N_min_1):
     return (C_N - C_N_min_1)/(theta_i_N - theta_i_N_min_1)
 
-def log_likelihood_t_g_theta(self, N, C_N, C_N_inv, theta_i, t_):
+def log_likelihood_t_g_theta( N, C_N, C_N_inv, theta_i, t_):
     return -0.5 * np.log(np.abs(C_N)) - 0.5 * t_.T.dot( C_N_inv.dot(t_) ) - N/2. * np.log(2*pi)
 
-def d_log_likelihood_t_g_thetai(self, N, C_N, theta_i, t_):
+def d_log_likelihood_t_g_thetai( N, C_N, theta_i, t_):
     dC_dtheta_i = self.dC_dtheta_i(C_N, theta_i)
     return -0.5 * np.trace( C_N_inv.dot( dC_dtheta_i ) ) + 0.5 * t_.T.dot( C_N_inv.dot( dC_dtheta_i.dot( C_N_inv.dot(t_) ) ) ) 
 
@@ -543,49 +465,121 @@ def conjugate_gradient(self, A, x_k, b, tol):
 
 ##  p(t_N+1) = N (tN+1|0, CN+1)
 
-def get_next_k_(self, x_, x_np1):
+def get_next_k_(theta, x_, x_np1):
     # x_np1 is the next input vector for the distribution
     # x_ is a vector of previous N input vectors. 
-    return np.array([ self.parametric_kernel(theta, x_n, x_np1)  for x_n in x_ ])
+    return np.array([ parametric_kernel(theta, x_n, x_np1)  for x_n in x_ ])
 
-def m_pred_next_target(self, k_, C_N_inv, t_):
+def m_pred_next_target( k_, C_N_inv, t_):
     return k_.T.dot(C_N_inv.dot(t_))
 
-def var_pred_next_target(self, C_N_inv, k_, beta):
-    c =  self.parametric_kernel(theta, x_np1, x_np1) + 1./beta
+def var_pred_next_target(theta, x_np1, C_N_inv, k_, beta):
+    c =  parametric_kernel(theta, x_np1, x_np1) + 1./beta
     return c - k_.T.dot( C_N_inv.dot( k_ ))
 
-def Gram_matrix(self, N, k_args, basis):
+def Gram_matrix(N, k_args, basis):
     K = np.zeros((N,N))
     for n in range(N):
         for m in range(N):
             if basis:
-                K[n][m] = self.basis_kernel_nm(k_args[0], k_args[1], k_args[2]) 
+                K[n][m] = basis_kernel_nm(k_args[0], k_args[1], k_args[2]) 
                 # k_args = [ phi_n, phi_m, alpha]
             else:
-                K[n][m] = self.parametric_kernel(k_args[0], k_args[1], k_args[2]) 
+                K[n][m] = parametric_kernel(k_args[0], k_args[1], k_args[2]) 
                 # k_args = [theta, x_n, x_m]
     return K
 
+def K_matrix(theta, x_):
+    N = len(x)
+    K = np.zeros((N,N))
+    for n in range(N):
+            for m in range(N):
+                K[n][m] = parametric_kernel(theta, x_n, x_m)
+    return K
 
-
-def C_matrix(self, beta, K):
+def C_matrix( beta, K):
     # kernel (k_nm) defines the Gram Matrix K , giving the covariance matrix C
     # This is the covariance matrix for the marginal distribution over targets p(t_) = N(t_|0_, C) 
     return K + 1./beta * np.eye(len(K))
 
-def gaussian_process_regression(self):
+def gaussian_process_regression(x_, x_np1, t_):
     ## Obtaining the mean and variance of the predictive distribution 
     ## p(t_{n+1}|t_) 
-    k_ = self.get_next_k_(x_, x_np1)
-    m_pred_tnp1 = self.m_pred_next_target(k_, C_N_inv, t_)
-    var_pred_tnp1 = self.var_pred_next_target(C_N_inv, k_, beta)
+
+    k_              =  get_next_k_(theta, x_, x_np1)
+    K               =  K_matrix(theta, x_)
+    C               =  C_matrix(beta, K)
+    C_N_inv         =  np.linalg.inv(C)
+
+    m_pred_tnp1     =  m_pred_next_target(k_, C_N_inv, t_)
+    var_pred_tnp1   =  var_pred_next_target(theta, x_np1, C_N_inv, k_, beta)
+
+    return m_pred_tnp1, var_pred_tnp1, K
+
+def bayesian_check_process(iters, n, noise):
+
+    x = np.linspace(0,10, n)
+    t = np.sin(5*x)
+    ##  This is the target data
+    y = t + np.random.normal(0, noise, n)
+    
+    alpha   = 10
+    beta    = 1./noise**2
+
+    T       = np.array([])
+    Phi     = np.array([])
+    xrlist  = []
+    yrlist  = []
+    ind     = np.random.choice( range( len(y) ) )
+    xr      = x[ind]
+    yr      = y[ind]
+    tr      = np.array( [ t[ind] ] )
+    x_      = np.array( [   xr   ] )
+    for k in range(iters):
+        print(W)
+        print('Iter  %s' %(k))
+        ind = np.random.choice( range( len(y) ) )
+        xn  = x[ind]
+        y   = y[ind]
+        x_  = np.append( x_, xn  )
+        tn  = np.append( t_, t[ind] )
+        
+        phi = np.array( [ xr**i for i in range(deg + 1) ] )
+
+        m_p_tnp1, var_p_tnp1, k_ = gaussian_process_regression(x_, xn, t_)
+        t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1)
+
+        W2 = np.random.multivariate_normal(M, S)
+        W3 = np.random.multivariate_normal(M, S)
+        W4 = np.random.multivariate_normal(M, S)
+        W5 = np.random.multivariate_normal(M, S)
+        W6 = np.random.multivariate_normal(M, S)
+        xrlist.append(xr)
+        yrlist.append(yr)
+        ybayes = []; ybayes2 = []; ybayes3 = []
+        ybayes4 = []; ybayes5 = []; ybayes6 = []
+        for j in range( len(x)):
+            app =  np.asarray([ gauss_basis( x[j], Mu[i], s ) for i in range(deg) ])
+            app =  np.append(app, 1.); app = np.roll(app, 1)
+            prod = W.dot(app);   prod2 = W2.dot(app);   prod3 = W3.dot(app)
+            ybayes.append(prod); ybayes2.append(prod2); ybayes3.append(prod3)
+            prod = W4.dot(app);   prod5 = W2.dot(app);   prod6 = W6.dot(app)
+            ybayes4.append(prod); ybayes5.append(prod2); ybayes6.append(prod6)    
+        print('parameter matrix = %s' %(W) )
+        xp =     [x, x, xrlist, x,      x,       x,       x,       x,       x      ]
+        yp =     [t, y, yrlist, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+        colour = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-']
+        if k %2 == 0:
+            g.plot_function(9, xp, yp, colour, 'Bayesian Linear regression.', 
+                                'x parameter', 'y')
+    return M
 
 iters = 200
 n=100
+theta = np.array( [1., 4., 0., 0.  ] )
 noise = 0.2
 deg = 12
-bayesian_check_gauss(iters, n, noise, deg)
+bayesian_check_process(iters, n, noise)
 
 deg = 5
 #bayesian_check(iters, n, noise, deg)
