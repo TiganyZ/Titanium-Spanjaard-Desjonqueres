@@ -1,6 +1,4 @@
 import numpy as np 
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import axes3d, Axes3D
 import ti_opt_general_sd as g
 #import ti_opt_main_sd_out as out
 
@@ -65,8 +63,7 @@ def W_posterior_update(alpha, beta, Phi, T, W, S0_inv, wreg):
         else:
             W = np.random.multivariate_normal(mean=M, cov=S)
     else:
-        #print(S0_inv[0], T, T[:,0])
-        for i in range(len(W)):
+        for i in range(len(S0_inv)):
 
             if not isinstance(alpha, np.ndarray):
                 s_N, s_N_inv = S_N_wgt(Phi, alpha, beta, S0_inv[i])
@@ -114,9 +111,6 @@ def get_poly_phi(a, x, mu, deg):
 
 def gauss_basis(x, mu_i, s):
     return np.exp( -(x - mu_i)**2 / (2 * s**2) )
-
-def gauss_basis2D(x, mu_x, y, mu_y, sx, sy):
-    return np.exp( - (  ((x - mu_x)**2 / (2. * sx**2)) + ((y - mu_y)**2 / (2. * sy**2))   )  ) 
 
 
 #####################################################################################################
@@ -268,7 +262,7 @@ def bayesian_check_gauss(iters, n, noise, deg):
     
     alpha   = 10
     beta    = 1./noise**2
-    M       = np.zeros(deg + 1) 
+    M       = np.arange(deg + 1) 
     Mu      = np.arange(deg) 
     W       = np.ones(deg + 1)
     T       = np.array([])
@@ -323,51 +317,41 @@ def bayesian_check_gauss(iters, n, noise, deg):
     return M
     
 
-def ref_func_2D(x,z):
-    return  2* np.sin(x) +  np.cos(3 * z) 
+def ref_fun_2D(x,z):
+    return  np.sin(x) +  np.cos(3 * z) )
 
 def bayesian_check_2D(iters, n, noise, deg):
     ## Want first target to be sin(x) and second to be cos(3z) so then should optimise to be sum of both
     x = np.linspace(0,10, n)
     z = np.linspace(-5,5, n)
     t = ref_func_2D(x,z)
-    t1 = 2 * np.sin(x) 
-    t2 = np.cos(3*z)
     ##  This is the target data
-    t_ = np.asarray([t1, t2])
-
-    y_ = np.asarray([ t1 + np.random.normal(0, noise, n), t2 + np.random.normal(0, noise, n)] ) 
-    
+    y = t + np.random.normal(0, noise, n)
     
     alpha   = 10
     beta    = 1./noise**2
-    M       = np.arange(deg*deg + 1) 
-    Mu1     = np.arange(deg) 
-    Mu2     = np.linspace(-deg/2., deg/2., deg)
-    W       = np.ones((2, deg*deg + 1) )
+    M       = np.arange(deg + 1) 
+    Mu      = np.arange(deg) 
+    W       = np.ones(deg + 1)
     T       = np.array([])
     Phi     = np.array([])
-    S       = np.asarray( [ np.diag( [ 1. / beta for i in range(deg*deg + 1) ] ), 
-                            np.diag( [ 1. / beta for i in range(deg*deg + 1) ] ) ] )
-    S_inv   = np.asarray( [ np.diag( [  beta for i in range(deg*deg + 1) ]), 
-                            np.diag( [  beta for i in range(deg*deg + 1) ])  ] )
+    S       = np.diag( [ 1. / beta for i in range(deg + 1) ] ) 
+    S_inv   = np.diag( [  beta for i in range(deg + 1) ] )
     xrlist  = []
     yrlist  = []
     mlist   = []
-    oneD    = False
+    oneD    = True
     reg     = False
     update  = False
-    sx      = 1
-    sy      = 1
+    s       = 1
     for k in range(iters):
         print(W)
         print('Iter  %s' %(k))
-        ind = np.random.choice( range( len(t1) ) )
-        xr  = np.array( [ x[ind], z[ind] ] )
-        yr  = y_[:,ind]
-        tr  = t_[:,ind]
-        print(T)
-        phi = np.append( np.asarray( [ gauss_basis2D( xr[0], Mu1[i], sx, xr[1], Mu2[l], sy ) for i in range(len(Mu1)) for l in range(len(Mu2)) ] ), 1. )
+        ind = np.random.choice( range( len(y) ) )
+        xr  = x[ind]
+        yr  = y[ind]
+        tr  = [t[ind]]
+        phi = np.append( np.asarray( [ gauss_basis( xr, Mu[i], s ) for i in range(deg)  ] ), 1. )
         phi = np.roll(phi, 1)
 
         M, S, S_inv, W, T, Phi, alpha, beta = bayes_lin_regress( M, S, S_inv, 
@@ -375,40 +359,30 @@ def bayesian_check_2D(iters, n, noise, deg):
                                                                  phi, Phi, 
                                                                  alpha, beta, 
                                                                  oneD, reg, update )
+        W2 = np.random.multivariate_normal(M, S)
+        W3 = np.random.multivariate_normal(M, S)
+        W4 = np.random.multivariate_normal(M, S)
+        W5 = np.random.multivariate_normal(M, S)
+        W6 = np.random.multivariate_normal(M, S)
         xrlist.append(xr)
         yrlist.append(yr)
         ybayes = []; ybayes2 = []; ybayes3 = []
         ybayes4 = []; ybayes5 = []; ybayes6 = []
-        X, Y = np.meshgrid(x,z)
-        ybayes = np.zeros( (len(x), len(z) ) )
-        for j in range( len(x) ):
-            for k in range( len(z) ):
-                app = np.append( np.asarray( 
-                           [ gauss_basis2D( x[j], Mu1[i], sx, z[k], Mu2[l], sy ) for i in range(len(Mu1)) for l in range(len(Mu2))   ] 
-                                        ), 1. )
-                app = np.roll(app, 1)
-                prod = W.dot(app)
-                ybayes[j][k] = np.sum(prod)  
-        #print('parameter matrix = %s' %(W) )
-         
-        fig = plt.figure()
-
-        ax = Axes3D(fig)
-        
-        TT= ref_func_2D(X,Y)
-        ax.contour3D(X, Y, TT, 50, cmap='binary')
-        ax.scatter( np.asarray(xrlist)[:,0], 
-                    np.asarray(xrlist)[:,1], 
-                    ref_func_2D(np.asarray(xrlist)[:,0], np.asarray(xrlist)[:,1]),'blue')
-        ax.scatter( x, 
-                    z, 
-                    ybayes ,'green')
-        ax.set_xlabel('x') 
-        ax.set_ylabel('y')
-        ax.set_zlabel('t')  
-        ax.set_title('Bayesian Linear Regression 2 target variables')
-        plt.show()
- 
+        for j in range( len(x)):
+            app =  np.asarray([ gauss_basis( x[j], Mu[i], s ) for i in range(deg) ])
+            app =  np.append(app, 1.); app = np.roll(app, 1)
+            prod = W.dot(app);   prod2 = W2.dot(app);   prod3 = W3.dot(app)
+            ybayes.append(prod); ybayes2.append(prod2); ybayes3.append(prod3)
+            prod = W4.dot(app);   prod5 = W2.dot(app);   prod6 = W3.dot(app)
+            ybayes4.append(prod); ybayes5.append(prod2); ybayes6.append(prod3)    
+        print('parameter matrix = %s' %(W) )
+        xp =     [x, x, xrlist, x,      x,       x,       x,       x,       x      ]
+        yp =     [t, y, yrlist, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+        zp =     []
+        colour = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-']
+        if k %2 == 0:
+            g.plot_function(9, xp, yp, colour, 'Bayesian Linear regression.', 
+                                'x parameter', 'y')
     return M
     
 
@@ -608,10 +582,10 @@ def gaussian_process_regression(self):
     var_pred_tnp1 = self.var_pred_next_target(C_N_inv, k_, beta)
 
 iters = 200
-n=20
+n=100
 noise = 0.2
-deg = 5
-bayesian_check_2D(iters, n, noise, deg)
+deg = 12
+bayesian_check_gauss(iters, n, noise, deg)
 
 deg = 5
 #bayesian_check(iters, n, noise, deg)
