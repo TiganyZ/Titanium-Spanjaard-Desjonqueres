@@ -426,7 +426,11 @@ def basis_kernel_nm(phi_n, phi_m, alpha):
     return ( 1./alpha ) * phi_n.dot(phi_m)
 
 def parametric_kernel(theta, x_n, x_m):
-    return theta[0] * np.exp( -(theta[1]/2.)*np.norm(x_n - x_m)**2 ) + theta[2] + theta[3] * x_n.dot(x_m)
+    if isinstance(x_n, np.ndarray):
+        xx = x_n.dot(x_m)
+    else:
+        xx = x_n * x_m
+    return theta[0] * np.exp( -(theta[1]/2.)*np.linalg.norm(x_n - x_m)**2 ) + theta[2] + theta[3] * xx
 
 def dC_dtheta_i(C_N, C_N_min_1, theta_i_N, theta_i_N_min_1):
     return (C_N - C_N_min_1)/(theta_i_N - theta_i_N_min_1)
@@ -489,12 +493,12 @@ def Gram_matrix(N, k_args, basis):
                 # k_args = [theta, x_n, x_m]
     return K
 
-def K_matrix(theta, x_):
+def K_matrix(theta, x, K):
     N = len(x)
     K = np.zeros((N,N))
     for n in range(N):
             for m in range(N):
-                K[n][m] = parametric_kernel(theta, x_n, x_m)
+                K[n][m] = parametric_kernel(theta, x[n], x[m])
     return K
 
 def C_matrix( beta, K):
@@ -502,12 +506,12 @@ def C_matrix( beta, K):
     # This is the covariance matrix for the marginal distribution over targets p(t_) = N(t_|0_, C) 
     return K + 1./beta * np.eye(len(K))
 
-def gaussian_process_regression(x_, x_np1, t_):
+def gaussian_process_regression(x_, x_np1, t_, K, beta):
     ## Obtaining the mean and variance of the predictive distribution 
     ## p(t_{n+1}|t_) 
 
     k_              =  get_next_k_(theta, x_, x_np1)
-    K               =  K_matrix(theta, x_)
+    K               =  K_matrix(theta, x_, K)
     C               =  C_matrix(beta, K)
     C_N_inv         =  np.linalg.inv(C)
 
@@ -519,9 +523,9 @@ def gaussian_process_regression(x_, x_np1, t_):
 def bayesian_check_process(iters, n, noise):
 
     x = np.linspace(0,10, n)
-    t = np.sin(5*x)
+    t = np.sin(5*x) + np.random.normal(0, noise, n)
     ##  This is the target data
-    y = t + np.random.normal(0, noise, n)
+    y = np.sin(5*x) 
     
     alpha   = 10
     beta    = 1./noise**2
@@ -531,46 +535,42 @@ def bayesian_check_process(iters, n, noise):
     xrlist  = []
     yrlist  = []
     ind     = np.random.choice( range( len(y) ) )
+    ind2     = np.random.choice( range( len(y) ) )
     xr      = x[ind]
     yr      = y[ind]
-    tr      = np.array( [ t[ind] ] )
-    x_      = np.array( [   xr   ] )
-    for k in range(iters):
-        print(W)
-        print('Iter  %s' %(k))
+    t_      = np.array( [ t[ind], t[ind2] ] )
+    x_      = np.array( [ x[ind], x[ind2] ] )
+    K       = np.zeros((1,1))
+    for knt in range(iters):
+        print('Gaussian process regression: Iteration  %s' %(knt))
         ind = np.random.choice( range( len(y) ) )
-        xn  = x[ind]
-        y   = y[ind]
+        xn= x[ind]
+        yn   = y[ind]
         x_  = np.append( x_, xn  )
-        tn  = np.append( t_, t[ind] )
-        
-        phi = np.array( [ xr**i for i in range(deg + 1) ] )
+        t_  = np.append( t_, t[ind] )
+        m_p_tnp1, var_p_tnp1, K = gaussian_process_regression(x_, xn, t_, K, beta)
+        t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
 
-        m_p_tnp1, var_p_tnp1, k_ = gaussian_process_regression(x_, xn, t_)
-        t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1)
-
-        W2 = np.random.multivariate_normal(M, S)
-        W3 = np.random.multivariate_normal(M, S)
-        W4 = np.random.multivariate_normal(M, S)
-        W5 = np.random.multivariate_normal(M, S)
-        W6 = np.random.multivariate_normal(M, S)
         xrlist.append(xr)
         yrlist.append(yr)
-        ybayes = []; ybayes2 = []; ybayes3 = []
-        ybayes4 = []; ybayes5 = []; ybayes6 = []
+        ybayes  = np.array([]); ybayes2 = np.array([]); ybayes3 = np.array([])
+        ybayes4 = np.array([]); ybayes5 = np.array([]); ybayes6 = np.array([])
         for j in range( len(x)):
-            app =  np.asarray([ gauss_basis( x[j], Mu[i], s ) for i in range(deg) ])
-            app =  np.append(app, 1.); app = np.roll(app, 1)
-            prod = W.dot(app);   prod2 = W2.dot(app);   prod3 = W3.dot(app)
-            ybayes.append(prod); ybayes2.append(prod2); ybayes3.append(prod3)
-            prod = W4.dot(app);   prod5 = W2.dot(app);   prod6 = W6.dot(app)
-            ybayes4.append(prod); ybayes5.append(prod2); ybayes6.append(prod6)    
-        print('parameter matrix = %s' %(W) )
-        xp =     [x, x, xrlist, x,      x,       x,       x,       x,       x      ]
-        yp =     [t, y, yrlist, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+            m_p_tnp1, var_p_tnp1, K = gaussian_process_regression(x_, x[j], t_, K, beta)
+
+            t_np1 = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+
+            ybayes = np.append(ybayes, t_np1[0]); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
+            ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])         
+            
+        print( len(x), len(t) , len(x_), len(t_), len(x), len(ybayes2))
+        print( x,t ,x_, t_, ybayes2)
+        print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape)
+        xp =     [x, x, x_, x,      x,       x,       x,       x,       x      ]
+        yp =     [t, y, t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
         colour = ['r--', 'g--', 'b^', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-']
-        if k %2 == 0:
-            g.plot_function(9, xp, yp, colour, 'Bayesian Linear regression.', 
+        if knt %2 == 0:
+            g.plot_function(9, xp, yp, colour, 'Gaussian Process regression.', 
                                 'x parameter', 'y')
     return M
 
