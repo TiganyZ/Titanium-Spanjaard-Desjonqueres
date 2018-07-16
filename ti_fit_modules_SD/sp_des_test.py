@@ -192,9 +192,9 @@ for knt  in range(len(A)):
         yp =     [t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
         colour = [ 'b^', 'k-', 'y-', 'y-', 'y-', 'y-', 'y-']
 
-        if knt %3 == 0:
-            g.plot_function(7, xp, yp, colour, 'GPR: Bulk Modulus vs A.', 
-                                'A', 'Bulk Modulus (GPa)')
+    if knt %3 == 0:
+        g.plot_function(7, xp, yp, colour, 'GPR: Bulk Modulus vs A.', 
+                            'A', 'Bulk Modulus (GPa)')
 
 
 

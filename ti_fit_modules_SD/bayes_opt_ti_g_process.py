@@ -259,15 +259,15 @@ def parametric_kernel(theta, x_n, x_m):
         xx = x_n * x_m
     return theta[0] * np.exp( -(theta[1]/2.)*np.linalg.norm(x_n - x_m)**2 ) + theta[2] + theta[3] * xx
 
-def dC_dtheta_i(C_N, C_N_min_1, theta_i_N, theta_i_N_min_1):
-    return (C_N - C_N_min_1)/(theta_i_N - theta_i_N_min_1)
+def dC_dtheta_i( C_N, C_N_min_1, theta_i_N, theta_i_N_min_1 ):
+    return  ( C_N - C_N_min_1 ) / ( theta_i_N  -  theta_i_N_min_1 )
 
 def log_likelihood_t_g_theta( N, C_N, C_N_inv, theta_i, t_):
     return -0.5 * np.log(np.abs(C_N)) - 0.5 * t_.T.dot( C_N_inv.dot(t_) ) - N/2. * np.log(2*pi)
 
-def d_log_likelihood_t_g_thetai( N, C_N, theta_i, t_):
+def d_log_likelihood_t_g_thetai( N, C_N, C_N_min_, theta_i, t_):
     dC_dtheta_i = dC_dtheta_i(C_N, theta_i)
-    return -0.5 * np.trace( C_N_inv.dot( dC_dtheta_i ) ) + 0.5 * t_.T.dot( C_N_inv.dot( dC_dtheta_i.dot( C_N_inv.dot(t_) ) ) ) 
+    return -0.5 * np.trace( C_N_inv.dot( dC_dtheta_i ) )  +  0.5 * t_.T.dot(  C_N_inv.dot(  dC_dtheta_i.dot(  C_N_inv.dot( t_ )  )  )   ) 
 
 
 
@@ -299,7 +299,7 @@ def fpoly_reg(b, deg, reg):
 #######################################################################################
 ##########################     Conjugate Gradient     #################################
 
-def conjugate_gradient(self, A, x_k, b, tol):
+def linear_CG( A, x_k, b, tol ):
     #This solves the equation Ax = b
     r_k = A.dot(x_k) - b
     p_k = -r_k
@@ -313,6 +313,48 @@ def conjugate_gradient(self, A, x_k, b, tol):
     return x_k
 
 
+########################################################################################
+##########################   Finding Maxima of the evidence   ##########################
+"""
+Here we have completed using a Gaussian Process Regression to ascertain how the target variables vary with changes 
+of the input variables. 
+
+This system may be heteroskedastic, where the noise variance, beta, depends on the input vector x. 
+
+This makes sense as changes to the input variables change how far away we are from particular target variables, and hence, 
+show that there is a change in how mubh belief we can give to a particular data point given it. 
+
+In fact no. This system is actually homoskedastic. The input vectors are the pair potential and bond integral parameters. These give values of the 
+target variables, say the elastic constants. that differ by an amount from ideal. We cannot say that the noise changes with the input parameters 
+UNLESS what we are actually doing is seeing how the input variables produce differences from the ideal target values. But again, these points wil not differ with consequent inputs. 
+
+To find the best parameters for the gaussian process model, we can introduce a prior over the parameters  P(t_|theta_) 
+
+I have to introduce a prior over own parameters and maximise the log likelihood?
+
+I can obtain the partial derivatives of the target variables with respect to an input parameter. I can do this for all of the target variabes. 
+Once this has been done I can evaluate a global ost funtion. 
+
+"""
+
+#########################################################################################
+###############    Optimising method using the gradients   ##############################
+##  Once I have found how each parameter changes the input results we can find a global minima with respect to the ideal vales. 
+##  Every iteration, obtain the gradients and estimate the minima. 
+##  I then use this information to change the input parameters accordingly 
+
+
+
+##  Non-linear Conjugate gradient method
+
+##  The beauty of using the Gaussian process regression to reconstruct the functions is that derivatives at a point become rather easy. 
+##  Finding the right parameters for the kernel will help as they will provide a more faithful construction of the function's underlying form. 
+##  As derivatives are easy, using gradient based methods to find the global minima becomes almost trivial, with minimal computation. 
+
+
+def fletcher_reeves_CG():
+    
+    
 
 
 <<<<<<< HEAD
