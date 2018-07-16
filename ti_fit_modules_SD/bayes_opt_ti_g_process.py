@@ -57,35 +57,47 @@ def gaussian_process_fit( npass, LMarg, args, ext,
         ##  Initialise
         t_      = np.array( [ ] )
         x_      = np.array( [  ] )
-        K       = []
+        K_      = np.zeros( (shape.t,shape.x,shape.x  )  )
         M       = np.zeros( len(t) )
         update  = False
     else:
         update  = True
     
-    M  = np.array([])   
     ##  Array that contains the means for each of the target variables. 
-    
+    M  = np.array([])   
+    ##  Array that contains the variances for each of the target variables. 
+    V  = np.array([])
+
+    if not np.all(X[-1] == x):
+        X = append_vector(X, x)
     
     for i in range( len( K_ ) ):
-        K   =  K_[i]
-        x_  =  np.append( x_,    )
-        t_  =  np.append( t_, t[ind] )
 
-        m_p_tp1, var_p_tp1, K, C_N_inv = gaussian_process_regression(X[i,:], x[i], T[i,:], K, beta[i], update)
+        m_p_tp1, var_p_tp1, K, C_N_inv = gaussian_process_regression(X[i,:], x[i], T[i,:], K_[i], beta[i], update)
     
-        M = np.append(  m_p_tp1  )
-        V = np.append( var_p_tp1 )
+        M = np.append( M,  m_p_tp1  )
+        V = np.append( V, var_p_tp1 )
+
         K_[i] = K
 
     return M, V, K_
 
 
-def process_mappings():
+def gpr_mean_values(x_vals, x_, C_N_inv, t_):
     ##  From the mean and variance defining the distributions of the Gaussian process we can construct lists of the one-to-one 
     ##  mappings that describe how the function varies.
+    m_p_tnpl = []
+    for j in range(len(x_vals)):
+        m_p_tnpl.append( m_pred_xnp1_sum(theta, x_, x_vals[j], C_N_inv, t_) )
     
-    return
+    return m_p_tnpl
+
+def append_vector( T, t_vec):
+    if len(T) > 1:
+        T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
+    else:
+        T = np.array([t_vec])
+    return T  
 
 ###############################################################################################
 ##########################     Kernel Bayesian Regression     #################################
@@ -152,7 +164,7 @@ def m_pred_xnp1_sum(theta, x_, x_np1, C_N_inv, t_):
     kn  = np.array( [ parametric_kernel(theta, xn, x_np1) for xn in x_  ] ) 
     return Ctn.dot(kn) 
 
-def gaussian_process_regression(x_, x_np1, t_, K, beta, update):
+def gaussian_process_regression(x_, x_np1, t_, K, beta, theta, update):
     ## Obtaining the mean and variance of the predictive target distribution p( t_{n+1} | t_, x_, x_np1) 
 
     k_              =  get_next_k_( theta, x_, x_np1    )
@@ -224,7 +236,7 @@ def bayesian_check_process(iters, n, noise):
         print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape, K.shape)
         xp =     [x, x, x_, x,      x,       x,       x,       x,       x      ]
         yp =     [t, y, t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
-        colour = ['r--', 'g--', 'y^', 'k-', 'b-', 'b-', 'b-', 'b-', 'b-']
+        colour = ['r--', 'g--', 'b^', 'k-', 'b-', 'b-', 'b-', 'b-', 'b-']
         if knt %1 == 0:
             g.plot_function(4, xp, yp, colour, 'Gaussian Process regression.', 
                                 'x parameter', 'y')
@@ -254,7 +266,7 @@ def log_likelihood_t_g_theta( N, C_N, C_N_inv, theta_i, t_):
     return -0.5 * np.log(np.abs(C_N)) - 0.5 * t_.T.dot( C_N_inv.dot(t_) ) - N/2. * np.log(2*pi)
 
 def d_log_likelihood_t_g_thetai( N, C_N, theta_i, t_):
-    dC_dtheta_i = self.dC_dtheta_i(C_N, theta_i)
+    dC_dtheta_i = dC_dtheta_i(C_N, theta_i)
     return -0.5 * np.trace( C_N_inv.dot( dC_dtheta_i ) ) + 0.5 * t_.T.dot( C_N_inv.dot( dC_dtheta_i.dot( C_N_inv.dot(t_) ) ) ) 
 
 
@@ -267,7 +279,7 @@ def stoc_grad_des_mom(deltaw, gamma, eta, Qi_list):
     Q_i = np.random.choice(range(len(Qi_list))) #This is the change in the cost function at each step 
     Q_i = Qi_list[Q_i]
     newdeltaw = gamma * deltaw - eta * Q_i 
-    self.deltaw = newdeltaw
+    deltaw = newdeltaw
     return newdeltaw
 
 
@@ -303,14 +315,14 @@ def conjugate_gradient(self, A, x_k, b, tol):
 
 
 
-iters = 200
-n=100
-theta = np.array( [1., 4*4., 0., 0.  ] )
-noise = 0.3
-deg = 12
-bayesian_check_process(iters, n, noise)
+#iters = 200
+#n=100
+#theta = np.array( [1., 4*4., 0., 0.  ] )
+#noise = 0.3
+#deg = 12
+#bayesian_check_process(iters, n, noise)
 
-deg = 5
+#deg = 5
 #bayesian_check(iters, n, noise, deg)
 
 

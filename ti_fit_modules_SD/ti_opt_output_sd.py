@@ -20,7 +20,8 @@ def output_script(  npass,
                     rmx_name, nn_ideal,
                     n_lp, n_grid, n_iter,
                     names_lp, limits_lp, ideals_lp,
-                    n_energies, energy_args):
+                    n_energies, energy_args,
+                    plc):
 
     """
     This script, given a pair potential and bond integrals, gives alat and c/a, the elastic constants, 
@@ -89,13 +90,20 @@ def output_script(  npass,
         etot_ex = g.find_energy( LMarg, args + ppargs + dargs + energy_args[i], 'ex_etot')
         etots   += (etot_ex,)
         
+
+    ###############     Bulk Modulus at equilibrium c_lat and a_lat     ##########
+    vol_coeff = 3**(0.5) / 2. 
+    nbs = 30
+    B = ec.bulk_mod_EV(LMarg, args + ppargs + dargs, min_lps, names_lp, nbs, vol_coeff, plc)
+
+    ###############     Cell volume at equilibrium c_lat and a_lat     ##########
+
     args += ppargs + dargs + lp_args
 
 
     print ('\n Arguments \n %s' %(args) )
 
 
-    ###############     Cell volume at equilibrium c_lat and a_lat     ##########
     print(' Obtaining Cell Volume at ideal c and a \n' )
 
     filename = 'voltest'
@@ -105,16 +113,18 @@ def output_script(  npass,
     cell_vol = float(g.cmd_result( "grep 'Cell vol' " + filename + " | awk '{print $7}'" ))
     print('Cell_Vol = %s' %(cell_vol) )
 
+
+
     ################     Get Elastic Constants     #####################
     print(' Obtaining Elastic Constants at optimised lattice parameters \n' )
 
-    e_consts, e_consts_diff = ec.Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nn_ideal)
+    e_consts, e_consts_diff = ec.Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nn_ideal, plc)
 
 
     print('Elastic Constants: difference = %s' %(e_consts_diff))
 
 
-    return  (npass, args) + min_lps[:n_lp] + lp_diffs + (cell_vol,) +  etots + (e_consts, e_consts_diff)
+    return  (npass, args) + min_lps[:n_lp] + lp_diffs + (cell_vol,) +  etots + (e_consts, e_consts_diff, B)
 
 
 

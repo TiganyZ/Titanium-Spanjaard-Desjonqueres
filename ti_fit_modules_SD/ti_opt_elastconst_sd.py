@@ -29,7 +29,7 @@ def elastic_constant_shear_info( LMarg, args, alpha, strain, rmx_name, nnid):
             args = g.remove_arg(rmx_name, args)
         else:
             alat = g.find_arg_value('alat', args)
-            rmaxh = 1.01 * float(alat)
+            rmaxh = 1.25 * float(alat)
 
         xargs = args  + ' -valpha=' + str(alpha) + ' '  + strain + ' ' 
         nn = g.get_nearest_neighbours(LMarg, xargs + g.construct_cmd_arg(rmx_name, rmaxh),
@@ -60,7 +60,57 @@ def elastic_constant_shear_info( LMarg, args, alpha, strain, rmx_name, nnid):
         return [etot, alpha, xijc, ijv, dil, rmaxh]
 
 
+def bulk_mod_EV(LMarg, args, min_lps, name_lps, ns, vol_coeff, plc):
 
+    vol =  vol_coeff *  min_lps[0]**3  *  min_lps[1] #* min_lps[2]
+
+    ##  for a 5% difference either side we have alat vary between a / (1.05)**(1./3.)  and   a / (0.95)**(1./3.)
+
+    al = np.linspace( min_lps[0] / (0.99)**(1./3.),  min_lps[0] / (1.01)**(1./3.), ns+1)
+    t_vol = al**3 *  min_lps[1] #* min_lps[2]
+
+    el = []
+    for i in range(len(al)):
+        xx_args = args + g.construct_cmd_arg(name_lps[0], al[i]) + g.construct_cmd_arg(name_lps[1], min_lps[1])
+        #for j in range(1, len(name_lps[1:])):
+        #     xx_args +=  g.construct_cmd_arg(name_lps[i], min_lps[i])
+        etot = g.find_energy(LMarg, xx_args, 'bulkmodtest')
+        el.append(etot)
+
+    ##  Central difference scheme to find the bulk modulus,
+    ##  d2  =  ( t_ip1 - 2*t_i + t_im1 ) / dx
+
+    dx = abs( (t_vol[0] - t_vol[-1])/float(ns) )
+    c_ind = np.argmin(el)
+
+    cds = (  el[ (c_ind + 1) % len(al) ] - 2 * el[c_ind] + el[c_ind - 1]  ) / dx**2
+
+    alatn = ( t_vol[c_ind] / ( vol_coeff * min_lps[1] )  )**(1./3.)
+
+    print('min_E = %s, %s = %s, %s = %s' %(el[c_ind], name_lps[0], al[c_ind], name_lps[1],  min_lps[1] ))
+
+    K = vol * cds
+
+    ##  1 eV/Angstrom3 = 160.21766208 GPa
+    ev_ang3_to_gpa = 160.21766208
+    ##  1 bohr = x angstrom
+    bohr_to_angstrom = 0.529177208 
+    ##  Rydberg to electron volts
+    ryd_to_eV = 13.606
+
+    Kgpa = K * (ryd_to_eV / (bohr_to_angstrom**3 ) ) * ev_ang3_to_gpa
+    print('Bulk Modulus = %s(ryd/bohr^3) \n Bulk Mod (GPa) = %sGPa, Expected = %s' %(K, Kgpa, 110))
+    if plc:
+        g.plot_function(    1, 
+                                t_vol, 
+                                el, 
+                                'r-', 
+                                'Energy-Volume curve for a = %.3f and c/a = %.3f'%(min_lps[0], min_lps[1]), 
+                                r'Volume ($ \AA ^ {3} $)', 
+                                'Energy (Ryd)')
+  
+
+    return K
 
 def fifth_ord_poly(x,a,b,c,d,e,f):
         return a + b*x + c*x**2 + d*x**3 + e*x**4 + f*x**5
@@ -185,7 +235,7 @@ def ec_alpha_cds(LMarg, args,  strain, plotcurve, alphalist, cell_vol, nnid):
 ##########################################################################################
 ########################     Elastic Constant Strain Routines      #######################
 
-def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
+def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid, plc):
     
     print('\n Girshick_Elast Routine \n')
 
@@ -195,7 +245,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
     ##  such that if one shears in a direction where the energy of the structure is lower the curvature obtained if off. 
     ##  Hope it just converges regardless... 
 
-
+    
     alphalist = alphal
     
 
@@ -208,7 +258,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature11, row11 = ec_alpha_poly(LMarg, args, strain11, False, alphal, cell_vol, rmx_name, nnid)  
+    curvature11, row11 = ec_alpha_poly(LMarg, args, strain11, plc, alphal, cell_vol, rmx_name, nnid)  
     
     print(' C11 = %s' %(curvature11) )
     curvature.append(curvature11)                                                     #1
@@ -220,7 +270,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature112, row112 = ec_alpha_poly(LMarg, args, strain112, False, alphal, cell_vol, rmx_name, nnid)   
+    curvature112, row112 = ec_alpha_poly(LMarg, args, strain112, plc, alphal, cell_vol, rmx_name, nnid)   
     print(' C12 = %s' %(curvature112) )
     curvature.append(curvature112)                                                     #2
 
@@ -231,7 +281,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature33, row33 = ec_alpha_poly(LMarg, args, strain33, False, alphal, cell_vol, rmx_name, nnid)   
+    curvature33, row33 = ec_alpha_poly(LMarg, args, strain33, plc, alphal, cell_vol, rmx_name, nnid)   
     print(' C33 = %s' %(curvature33) ) 
     curvature.append(curvature33)                                                     #3
   
@@ -242,7 +292,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature2C112C12, row2C112C22 = ec_alpha_poly(LMarg, args, strain2C112C22, False, alphal, cell_vol, rmx_name, nnid)   
+    curvature2C112C12, row2C112C22 = ec_alpha_poly(LMarg, args, strain2C112C22, plc, alphal, cell_vol, rmx_name, nnid)   
     print(' 2*C11 + 2*C12 = %s' %(curvature2C112C12) ) 
     curvature.append(curvature2C112C12)                                                     #4
   
@@ -253,7 +303,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature5o4C11C12, row5o4C11C12 = ec_alpha_poly(LMarg, args, strain5o4C11C12, False, alphal, cell_vol, rmx_name, nnid)    
+    curvature5o4C11C12, row5o4C11C12 = ec_alpha_poly(LMarg, args, strain5o4C11C12, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' 5/4 * C11 + C12 = %s' %(curvature5o4C11C12) ) 
     curvature.append(curvature5o4C11C12)                                                     #5
   
@@ -264,7 +314,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvatureC11C332C13, rowC11C332C13 = ec_alpha_poly(LMarg, args, strainC11C332C13, False, alphal, cell_vol, rmx_name, nnid)    
+    curvatureC11C332C13, rowC11C332C13 = ec_alpha_poly(LMarg, args, strainC11C332C13, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' C11 + C33 + 2*C13 = %s' %(curvatureC11C332C13) ) 
     curvature.append(curvatureC11C332C13)                                                           #6
   
@@ -275,7 +325,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvatureC11C332C132, rowC11C332C132 = ec_alpha_poly(LMarg, args, strainC11C332C132, False, alphal, cell_vol, rmx_name, nnid)    
+    curvatureC11C332C132, rowC11C332C132 = ec_alpha_poly(LMarg, args, strainC11C332C132, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' C11 + C33 + 2*C13 = %s' %(curvatureC11C332C132) ) 
     curvature.append(curvatureC11C332C132)                                                            #7
     """  
@@ -300,7 +350,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=1' +\
                             ' -vexy=0 '
 
-    curvature4C44, row4C44 = ec_alpha_poly(LMarg, args, strain4C44, False, alphal, cell_vol, rmx_name, nnid)    
+    curvature4C44, row4C44 = ec_alpha_poly(LMarg, args, strain4C44, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' 4*C44 1 = %s' %(curvature4C44) ) 
     curvature.append(curvature4C44)                                                           #9
   
@@ -311,7 +361,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature4C442, row4C442 = ec_alpha_poly(LMarg, args, strain4C442, False, alphal, cell_vol, rmx_name, nnid)    
+    curvature4C442, row4C442 = ec_alpha_poly(LMarg, args, strain4C442, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' 4*C44 2= %s' %(curvature4C442) ) 
     curvature.append(curvature4C442)                                                              #10
   
@@ -322,7 +372,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=1' +\
                             ' -vexy=1 '
 
-    curvature8C44, row8C44 = ec_alpha_poly(LMarg, args, strain8C44, False, alphal, cell_vol, rmx_name, nnid)    
+    curvature8C44, row8C44 = ec_alpha_poly(LMarg, args, strain8C44, plc, alphal, cell_vol, rmx_name, nnid)    
     ##  For some reason, in tbe this is not simply 8C44, but 8*C44 + 4*C66... ? 
     print(' 8*C44,+ 2C11 - 2C12 = %s' %(curvature8C44) ) 
     curvature.append(curvature8C44)                                                           #11
@@ -334,7 +384,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=0 '
 
-    curvature4C66, row4C66 = ec_alpha_poly(LMarg, args, strain4C66, False, alphal, cell_vol, rmx_name, nnid)    
+    curvature4C66, row4C66 = ec_alpha_poly(LMarg, args, strain4C66, plc, alphal, cell_vol, rmx_name, nnid)    
     print(' 4*C66 1 = %s' %(curvature4C66) ) 
     curvature.append(curvature4C66)                                                               #12
   
@@ -345,7 +395,7 @@ def Girshick_Elast(LMarg, args, alphal, cell_vol, ec_exp_arr, rmx_name, nnid):
                             ' -vexz=0' +\
                             ' -vexy=1 '
 
-    curvature4C662, row4C662 = ec_alpha_poly(LMarg, args, strain4C662, False, alphal, cell_vol, rmx_name, nnid)   
+    curvature4C662, row4C662 = ec_alpha_poly(LMarg, args, strain4C662, plc, alphal, cell_vol, rmx_name, nnid)   
     print(' 4*C66 2 = %s' %(curvature4C662) ) 
     #print ('row 4c662', row4C662)
     curvature.append(curvature4C662)                                                           #13

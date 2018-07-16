@@ -31,14 +31,14 @@ pR0 = 8.18
 qR0 = 2.77
 
 
-alat_ideal = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
-clat_ideal = 8.85210082  ## 2.951111 Angstrom R.M. Wood 1962 
-coa_ideal  = (8./3.)**(0.5)       
+alat_ideal  = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
+clat_ideal  = 8.85210082  ## 2.951111 Angstrom R.M. Wood 1962 
+coa_ideal   = (8./3.)**(0.5)       
 
 spanjdec    = qR0/alat_ideal
 spanjdecpp  = pR0/alat_ideal
 
-pair_pot    = np.array( [ 118.485, spanjdecpp, 0, 0  ] )
+pair_pot    = np.array( [ 125., spanjdecpp, 0.001, spanjdecpp/2.  ] ) #np.array( [ 118.485, spanjdecpp, 0, 0  ] )
 ppnames     = [ 'A1TTSDpp', 'C1TTSDpp', 'A2TTSDpp', 'C2TTSDpp' ]
 
 ddcoeffs    = np.array( [ 6., 4., 1., spanjdec] )
@@ -52,7 +52,7 @@ ddnames     = ['ddsigTTSD', 'ddpiTTSD', 'dddelTTSD', 'spanjdec', 'spanjddd']
 names_lp  = ['alatTi'  , 'coa']
 ideals_lp = [alat_ideal, coa_ideal]
 
-rmx_name = 'rmaxh'
+rmx_name  = 'rmaxh'
 
 #########################################################################################
 ########################    Extra Energies to Calculate      ############################
@@ -117,6 +117,9 @@ limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.), False, True]
 ##  Limits for the bandwidth normalisation and tolerance in eV.
 ddnorm_lim  = (5.0, 0.0, 0.02)
 
+##  Plots the Elastic constants and the bulk modulus curves if True. 
+plotECandB = True
+
 npass       = 0
 
 
@@ -135,7 +138,7 @@ min_alat,  min_coa,
 alat_diff, coa_diff,                                    
 min_vol,                                                
 etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
-e_consts, e_consts_diff) = outp.output_script(              npass, 
+e_consts, e_consts_diff, B) = outp.output_script(              npass, 
                                                             ext,
                                                             LMarg, 
                                                             args, 
@@ -145,7 +148,8 @@ e_consts, e_consts_diff) = outp.output_script(              npass,
                                                             rmx_name, nn_ideal,
                                                             n_lp, n_grid, n_iter,
                                                             names_lp, limits_lp, ideals_lp,
-                                                            n_energies, energy_args)
+                                                            n_energies, energy_args,
+                                                            plotECandB)
                                                         
 
 ################################################################################################################################
