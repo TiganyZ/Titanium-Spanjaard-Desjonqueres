@@ -305,7 +305,7 @@ def conjugate_gradient(self, A, x_k, b, tol):
 
 iters = 200
 n=100
-theta = np.array( [1., 4*4., 0., 0.  ] )
+theta = np.array( [1., 1., 0., 0.  ] )
 noise = 0.3
 deg = 12
 bayesian_check_process(iters, n, noise)
