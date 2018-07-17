@@ -217,7 +217,7 @@ def ec_alpha_cds(LMarg, args,  strain, plotcurve, alphalist, cell_vol, nnid):
     ##  Curvature at alpha = 0
 
     dx = abs(   ( alphalist[-1] - alphalist[0] )  /  float( len(alphalist) )   )
-    c_ind = np.argmin(etot_list)
+    c_ind = len(etot_list)//2  #np.argmin(etot_list)
     
     cds = (  etot_list[c_ind + 1]  -  2 * etot_list[c_ind]  +  etot_list[c_ind - 1]  ) / dx**2
     print('dx = %s, cind = %s, curvature = %s' %(dx, c_ind, cds))

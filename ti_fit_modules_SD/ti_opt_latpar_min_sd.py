@@ -78,7 +78,7 @@ def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, 
     ##  This routine makes a grid of lattice parameters of c and a such that the ideal one can be sought. 
     min_lps = find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid)
     limits_lp = np.asarray(limits_lp)
-    ##  Have initial tolerance 4 * width as initially, grid is coarse-graines.
+    ##  Have initial tolerance 4 * width as initially, grid is coarse-grained.
     tol = 4 * np.abs(limits_lp[:,0] - limits_lp[:,1])   /  np.asarray(n_grid)
     for i in range(n_iter):
 
@@ -88,7 +88,7 @@ def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, 
                 ##  Can change the upper limit
                 limits_lp[j][0] =  min_lps[j] - tol[j]
             if not limits_lp[j][3]:
-                ## Cab change the lower limit
+                ##  Can change the lower limit
                 limits_lp[j][1] = min_lps[j] + tol[j]
         tol = tol   /  np.asarray(n_grid)
         min_lps  = find_latpars_grid(LMarg, args, 

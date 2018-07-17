@@ -134,8 +134,13 @@ npass       = 0
 ##  e_c, e_c_d		Elastic constants calculated and their difference from expected values.
 
 
+##  Notes on parameter searches
 
-A = np.linspace(150, 152, 10)
+##  bulk mod deccreases with addition of second exponential
+##  a lat increases with addition of second exponential
+##  coa is still constant
+
+A = np.linspace(0, 0.01, 40)
 t_      = np.array( [ ] )
 x_      = np.array( [ ] )
 t_coa      = np.array( [ ] )
@@ -154,11 +159,19 @@ for knt  in range(len(A)):
     print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
 
 
-    pair_pot    = np.array( [ A[knt], spanjdecpp, 0., 0.  ] )
 
-    theta = np.array( [200., 0.1, 0., 0.  ] )
-    theta_a = np.array( [40, 0.1, 0., 0.  ] )
-    theta_coa = np.array( [40, 0.1, 0., 0.  ] )
+    #pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
+    pair_pot  = np.array( [ 45000*262.4, 2.5*spanjdecpp, A[knt]*262.4, spanjdecpp/2.   ] )
+    
+    #pair_pot  = np.array( [ 0.8*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+    #Okay    pair_pot  = np.array( [ 1.0*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+    # mainly +ve ec, a = 6.2 c/a ideal
+
+    theta     = np.array( [ 200., 0.1, 0., 0. ] )
+    theta_a   = np.array( [ 40,   0.1, 0., 0. ] )
+    theta_coa = np.array( [ 40,   0.1, 0., 0. ] )
+
+    plotECandB = False
 
     outs = outp.output_script(      npass, 
                                     ext,
@@ -264,22 +277,45 @@ for knt  in range(len(A)):
 -vA1TTSDpp=150.0  -vC1TTSDpp=1.4667937029556515  -vA2TTSDpp=0.0  -vC2TTSDpp=0.0  
 -vddsigTTSD=6.0  -vddpiTTSD=4.0  -vdddelTTSD=1.0  -vspanjdec=0.4967015351084541  -vspanjddd=0.21484375  
 -vef=-0.04858 -ef=-0.04858  -valatTi=5.582222222222222  -vcoa=1.632993161855452 
+
+ Arguments 
+  -vfp=0 -vrfile=0 -vppmodti=10 -vB1TTSDpp=0 -vB2TTSDpp=0 
+  -vA1TTSDpp=150.44444444444446  -vC1TTSDpp=1.4667937029556515  -vA2TTSDpp=0.0  -vC2TTSDpp=0.0 
+  -vddsigTTSD=6.0  -vddpiTTSD=4.0  -vdddelTTSD=1.0  -vspanjdec=0.4967015351084541  -vspanjddd=0.21484375 
+  -vef=-0.04858 -ef=-0.04858  -valatTi=5.582222222222222  -vcoa=1.632993161855452 
+
+   C11 = 0.378,   C11_FR = 1.110
+ C33 = 1.513,   C33_FR = 1.196
+ C44 = -0.272,   C44_FR = 0.321
+ C44 = -0.137,   C44_FR = 0.321
+ C66 = -0.539,   C66_FR = 0.287
+ C12 = 1.602,   C12_FR = 0.537
+ C13 = 0.695,   C13_FR = 0.424
+ K = 0.917,   K_FR = 0.687
+ R = 0.371,   R_FR = 0.391
+ H = -0.373,   H_FR = 0.294 
+ 
+
+
 """
 
+    #pair_pot    = np.array( [ 21.215, 1.2, 1.075, 0.6 ] )
+    # with cnaonical band ratios
+    ## Bulk Mod (GPa) = 65.43670576206576
                                                     
 
 ################################################################################################################################
 ######################     Trialled Parameters that work reasonably, with bad elastic constants.     ###########################
 
 ##  This gets c and a with a very good agreement. The elastic constants are 
-#par_arr = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
+#pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
 #ddcoeffs = np.array([6., 4., 1., spanjdec])
 #dddeltanorm =  0.19542694091796875
 
 
 ##  One with the lowest error so far
-#ddcoeffs = np.array([10.20968613,  6.35171468,  1.70161435,  0.44714869])
-#par_arr = np.array( [26.28518485,  1.29113683,  1.04802635,  0.64556841,  1.        ])
+#ddcoeffs = np.array( [ 10.20968613,  6.35171468,  1.70161435,  0.44714869])
+#par_arr =  np.array( [ 26.28518485,  1.29113683,  1.04802635,  0.64556841,  1.        ])
 
 #################################################################################################################################
 
