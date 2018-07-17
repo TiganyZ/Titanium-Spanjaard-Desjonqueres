@@ -110,7 +110,7 @@ def bulk_mod_EV(LMarg, args, min_lps, name_lps, ns, vol_coeff, plc):
                                 'Energy (Ryd)')
   
 
-    return K
+    return Kgpa
 
 def fifth_ord_poly(x,a,b,c,d,e,f):
         return a + b*x + c*x**2 + d*x**3 + e*x**4 + f*x**5

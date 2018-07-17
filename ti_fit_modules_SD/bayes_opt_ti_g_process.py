@@ -57,7 +57,7 @@ def gaussian_process_fit( npass, LMarg, args, ext,
         ##  Initialise
         t_      = np.array( [ ] )
         x_      = np.array( [  ] )
-        K_      = np.zeros( (shape.t,shape.x,shape.x  )  )
+        K_      = np.zeros( ( len(t), len(x), len(x)  )  )
         M       = np.zeros( len(t) )
         update  = False
     else:
@@ -167,15 +167,15 @@ def m_pred_xnp1_sum(theta, x_, x_np1, C_N_inv, t_):
 def gaussian_process_regression(x_, x_np1, t_, K, beta, theta, update):
     ## Obtaining the mean and variance of the predictive target distribution p( t_{n+1} | t_, x_, x_np1) 
 
-    k_              =  get_next_k_( theta, x_, x_np1    )
-    K               =  K_matrix(    theta, x_, update, K)
-    C               =  C_matrix(    beta,  K            )
-    C_N_inv         =  np.linalg.inv(      C            )
+    k_              =  get_next_k_(  theta, x_, x_np1     )
+    K               =  K_matrix(     theta, x_, update, K )
+    C               =  C_matrix(     beta,  K             )
+    C_N_inv         =  np.linalg.inv(       C             )
 
     m_pred_tnp1     =  m_pred_next_target(   k_, C_N_inv, t_  )
     var_pred_tnp1   =  var_pred_next_target( theta, x_np1, C_N_inv, k_, beta)
 
-    return m_pred_tnp1, var_pred_tnp1, K, C_N_inv
+    return m_pred_tnp1, var_pred_tnp1, K, C, C_N_inv
 
 
 
@@ -216,7 +216,7 @@ def bayesian_check_process(iters, n, noise):
         else:
             update = True
 
-        m_p_tnp1, var_p_tnp1, K, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, update)
+        m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, update)
         #t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
 
         xrlist.append(xr)
@@ -265,9 +265,22 @@ def dC_dtheta_i( C_N, C_N_min_1, theta_i_N, theta_i_N_min_1 ):
 def log_likelihood_t_g_theta( N, C_N, C_N_inv, theta_i, t_):
     return -0.5 * np.log(np.abs(C_N)) - 0.5 * t_.T.dot( C_N_inv.dot(t_) ) - N/2. * np.log(2*pi)
 
-def d_log_likelihood_t_g_thetai( N, C_N, C_N_min_, theta_i, t_):
-    dC_dtheta_i = dC_dtheta_i(C_N, theta_i)
+def d_log_likelihood_t_g_thetai( C_N, C_N_min_1, theta_i, theta_i_N_min_1, t_):
+    dC_dtheta_i = dC_dtheta_i(C_N, C_N_min_1, theta_i_N, theta_i_N_min_1 )
     return -0.5 * np.trace( C_N_inv.dot( dC_dtheta_i ) )  +  0.5 * t_.T.dot(  C_N_inv.dot(  dC_dtheta_i.dot(  C_N_inv.dot( t_ )  )  )   ) 
+
+
+
+
+#############################################################################################
+########################     Optimisation of theta kernel parameters     ####################
+
+def optimise_theta(C_N, C_N_min_1, C_N_inv,  ):
+    """
+    Here we optimise the parameters for the kernel to describe the underlying function that the regression is trying to fit to. 
+    We are maximising the log of the likelihood function p(t|theta). 
+    """
+    
 
 
 
@@ -293,7 +306,6 @@ def fpoly_reg(b, deg, reg):
     ##  Where G is the Tikhonov matrix which for quadratic regularisation is alpha * I 
     return 
     
-
 
 
 #######################################################################################
@@ -343,7 +355,25 @@ Once this has been done I can evaluate a global ost funtion.
 ##  Every iteration, obtain the gradients and estimate the minima. 
 ##  I then use this information to change the input parameters accordingly 
 
+def get_a_k():
+    """
+     This is a method to get the step length (minimisation of phi along a search direction p_k)
+     For a non-linear method, this is generalised to a line search that identifies an approximate 
+     minimum for the nonlinear function f along p_k
+    """
 
+    return
+
+def get_df_k( x ):
+    """
+    This obtains the gradient of the objective function at a poink x_k
+
+    """
+    f = obj_func(x)
+    eps = 0.01
+    feps = obj_func( x + eps)
+    df = ( feps - f ) / eps
+    return df
 
 ##  Non-linear Conjugate gradient method
 
@@ -352,26 +382,31 @@ Once this has been done I can evaluate a global ost funtion.
 ##  As derivatives are easy, using gradient based methods to find the global minima becomes almost trivial, with minimal computation. 
 
 
-def fletcher_reeves_CG():
-    
-    
+def fletcher_reeves_CG( x, f, df ):
+    ##  This is a non-linear conjugate gradient method. 
+    ##  f is the objective function evaluated at x, df is the gradient of the objective function at x. 
+    p_k = - df
+    x_k = x
+    cond == True
+    while cond:
+        a_k = get_a_k()
+
+        x_kp1   = x_k  +  a_k*p_k
+        df_kp1  = get_df_k( x_k )
 
 
-<<<<<<< HEAD
-iters = 200
-n=100
-theta = np.array( [1., 1., 0., 0.  ] )
-noise = 0.3
-deg = 12
-bayesian_check_process(iters, n, noise)
-=======
+    
+    return
+
+
+
 #iters = 200
 #n=100
 #theta = np.array( [1., 4*4., 0., 0.  ] )
 #noise = 0.3
 #deg = 12
 #bayesian_check_process(iters, n, noise)
->>>>>>> f66134b6a5beea8931e2b41e2078541474e8d4b6
+
 
 #deg = 5
 #bayesian_check(iters, n, noise, deg)

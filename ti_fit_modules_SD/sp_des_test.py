@@ -135,70 +135,136 @@ npass       = 0
 
 
 
-A = np.linspace(80, 140)
+A = np.linspace(150, 152, 10)
 t_      = np.array( [ ] )
 x_      = np.array( [ ] )
+t_coa      = np.array( [ ] )
+x_coa      = np.array( [ ] )
+t_a      = np.array( [ ] )
+x_a      = np.array( [ ] )
 K       = []
-beta    = 0.1
+K_coa   = []
+K_a     = []
+
+C_      = []
+C_inv   = [] 
+beta    = 0.0001
 for knt  in range(len(A)):
+
     print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
 
 
     pair_pot    = np.array( [ A[knt], spanjdecpp, 0., 0.  ] )
 
-    theta = np.array( [1., 4*4., 0., 0.  ] )
+    theta = np.array( [200., 0.1, 0., 0.  ] )
+    theta_a = np.array( [40, 0.1, 0., 0.  ] )
+    theta_coa = np.array( [40, 0.1, 0., 0.  ] )
 
+    outs = outp.output_script(      npass, 
+                                    ext,
+                                    LMarg, 
+                                    args, 
+                                    pair_pot, ppnames, 
+                                    ddcoeffs, ddnames, ddnorm_lim,
+                                    ec_exp_arr, 
+                                    rmx_name, nn_ideal,
+                                    n_lp, n_grid, n_iter,
+                                    names_lp, limits_lp, ideals_lp,
+                                    n_energies, energy_args,
+                                    plotECandB   )
     (npass,                                                 
-    args,                                                   
+    itargs,                                                   
     min_alat,  min_coa,                                     
     alat_diff, coa_diff,                                    
-    min_vol,                                                
+    min_vol, B,                                                
     etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
-    e_consts, e_consts_diff, B) = outp.output_script(       npass, 
-                                                            ext,
-                                                            LMarg, 
-                                                            args, 
-                                                            pair_pot, ppnames, 
-                                                            ddcoeffs, ddnames, ddnorm_lim,
-                                                            ec_exp_arr, 
-                                                            rmx_name, nn_ideal,
-                                                            n_lp, n_grid, n_iter,
-                                                            names_lp, limits_lp, ideals_lp,
-                                                            n_energies, energy_args,
-                                                            plotECandB)
+    e_consts, e_consts_diff)                                =   outs
+
+    targets = outs[2] + outs[3] + outs[7] 
 
     x_  = np.append( x_, A[knt]  )
     t_  = np.append( t_, B )
-    if knt == 0:
+
+
+    x_a  = np.append( x_a, A[knt]  )
+    t_a  = np.append( t_a, min_alat )
+    x_coa  = np.append( x_coa, A[knt]  )
+    t_coa  = np.append( t_coa, min_coa )
+
+    if knt == 1:
         update = False
     else:
         update = True
 
 
-    m_p_tnp1, var_p_tnp1, K, C_N_inv = gpr.gaussian_process_regression(x_, A[knt], t_, K, beta, theta,  update)
+    m_p_tnp1,     var_p_tnp1,     K,     C_N,     C_N_inv     = gpr.gaussian_process_regression(x_,    A[knt], t_,    K,     beta, theta,  update)
+    m_p_tnp1_coa, var_p_tnp1_a,   K_a,   C_N_a,   C_N_inv_a   = gpr.gaussian_process_regression(x_a,   A[knt], t_a,   K_a,   beta, theta_a,  update)
+    m_p_tnp1_coa, var_p_tnp1_coa, K_coa, C_N_coa, C_N_inv_coa = gpr.gaussian_process_regression(x_coa, A[knt], t_coa, K_coa, beta, theta_coa,  update)
 
 
     ybayes  = np.array([]); ybayes2 = np.array([]); ybayes3 = np.array([])
     ybayes4 = np.array([]); ybayes5 = np.array([]); ybayes6 = np.array([])
-    for j in range( len(A)):
 
-        m_p_tnp1 = gpr.m_pred_xnp1_sum(theta, x_, A[j], C_N_inv, t_)
-        t_np1    = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+    ybayes_a  = np.array([]); ybayes2_a = np.array([]); ybayes3_a = np.array([])
+    ybayes4_a = np.array([]); ybayes5_a = np.array([]); ybayes6_a = np.array([])
+
+    ybayes_coa  = np.array([]); ybayes2_coa = np.array([]); ybayes3_coa = np.array([])
+    ybayes4_coa = np.array([]); ybayes5_coa = np.array([]); ybayes6_coa = np.array([])
+
+    As = np.linspace(120, 160, 200)
+    for j in range( len(As)):
+
+        m_p_tnp1     = gpr.m_pred_xnp1_sum(theta, x_,    As[j], C_N_inv,     t_)
+        m_p_tnp1_a   = gpr.m_pred_xnp1_sum(theta_a, x_a,   As[j], C_N_inv_a,   t_a)
+        m_p_tnp1_coa = gpr.m_pred_xnp1_sum(theta_coa, x_coa, As[j], C_N_inv_coa, t_coa)
+
+        t_np1        = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+        t_np1_a      = np.random.normal(m_p_tnp1_a, var_p_tnp1_a, 6)
+        t_np1_coa    = np.random.normal(m_p_tnp1_coa, var_p_tnp1_coa, 6)
 
         ybayes  = np.append(ybayes,  m_p_tnp1); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
-        ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])         
-            
-        xp =     [x_, A,      A,       A,       A,       A,       A      ]
-        yp =     [t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
-        colour = [ 'b^', 'k-', 'y-', 'y-', 'y-', 'y-', 'y-']
+        ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])     
 
-    if knt %3 == 0:
-        g.plot_function(7, xp, yp, colour, 'GPR: Bulk Modulus vs A.', 
+        ybayes_a  = np.append(ybayes_a,  m_p_tnp1_a); ybayes2_a = np.append(ybayes2_a, t_np1_a[1]); ybayes3_a = np.append(ybayes3_a, t_np1_a[2])
+        ybayes4_a = np.append(ybayes4_a, t_np1_a[3]); ybayes5_a = np.append(ybayes5_a, t_np1_a[4]); ybayes6_a = np.append(ybayes6_a, t_np1_a[5])  
+
+        ybayes_coa  = np.append(ybayes_coa,  m_p_tnp1_coa); ybayes2_coa = np.append(ybayes2_coa, t_np1_coa[1]); ybayes3_coa = np.append(ybayes3_coa, t_np1_coa[2])
+        ybayes4_coa = np.append(ybayes4_coa, t_np1_coa[3]); ybayes5_coa = np.append(ybayes5_coa, t_np1_coa[4]); ybayes6_coa = np.append(ybayes6_coa, t_np1_coa[5])      
+            
+    xp =     [x_, As,      As,       As,       As,       As,       As      ]
+    yp =     [t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+
+    xp_a =     [x_a, As,      As,       As,       As,       As,       As      ]
+    yp_a =     [t_a, ybayes_a, ybayes2_a, ybayes3_a, ybayes4_a, ybayes5_a, ybayes6_a]
+
+    xp_coa =     [x_coa, As,      As,       As,       As,       As,       As      ]
+    yp_coa =     [t_coa, ybayes_coa, ybayes2_coa, ybayes3_coa, ybayes4_coa, ybayes5_coa, ybayes6_coa]
+
+    colour = [ 'b^', 'k-', 'y-', 'y-', 'y-', 'y-', 'y-']
+
+    print(len(ybayes), len(As), len(ybayes_a), len(x_coa), len(t_coa))
+    if knt  == len(A) - 1:
+        g.plot_function(2, xp, yp, colour, 'GPR: Bulk Modulus vs A.', 
                             'A', 'Bulk Modulus (GPa)')
 
+        g.plot_function(2, xp_a, yp_a, colour, 'GPR: a lattice parameter vs A.', 
+                            'A', 'alat (Bohr)')
+
+        g.plot_function(2, xp_coa, yp_coa, colour, 'GPR: c/a lattice parameter vs A.', 
+                            'A', 'c/a ratio')
 
 
+################################################################################################################################
+################################################################################################################################
+##############################     Results with good bulk modulus and IDEAL c/a ratio     ######################################
 
+##  Arguments 
+""" 
+-vfp=0 -vrfile=0 -vppmodti=10 -vB1TTSDpp=0 -vB2TTSDpp=0  
+-vA1TTSDpp=150.0  -vC1TTSDpp=1.4667937029556515  -vA2TTSDpp=0.0  -vC2TTSDpp=0.0  
+-vddsigTTSD=6.0  -vddpiTTSD=4.0  -vdddelTTSD=1.0  -vspanjdec=0.4967015351084541  -vspanjddd=0.21484375  
+-vef=-0.04858 -ef=-0.04858  -valatTi=5.582222222222222  -vcoa=1.632993161855452 
+"""
 
                                                     
 

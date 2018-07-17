@@ -124,7 +124,7 @@ def output_script(  npass,
     print('Elastic Constants: difference = %s' %(e_consts_diff))
 
 
-    return  (npass, args) + min_lps[:n_lp] + lp_diffs + (cell_vol,) +  etots + (e_consts, e_consts_diff, B)
+    return  (npass, args) + min_lps[:n_lp] + lp_diffs + (cell_vol, B) +  etots + (e_consts, e_consts_diff)
 
 
 

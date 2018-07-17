@@ -46,7 +46,7 @@ No atoms of type C were found in the structure. Discarding pair C Fe.
 No atoms of type Fe were found in the structure. Discarding pair Fe H.
 No atoms of type H were found in the structure. Discarding pair H C.
 No atoms of type C were found in the structure. Discarding pair C H.
- ii           1 ppmode(ii)=          10 nset          14 vpp   80.000000000000000        0.0000000000000000        1.4667937029556515        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000     
+ ii           1 ppmode(ii)=          10 nset          14 vpp   152.00000000000000        0.0000000000000000        1.4667937029556515        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000     
  iexp           1           0           1
  iexp           2           0           1
  iexp           3           0           1
@@ -90,7 +90,7 @@ No atoms of type C were found in the structure. Discarding pair C H.
  SHOTBM: 14 rules for pair potential
  Ti,Ti:
    type 10 (Exp x Power law), V0(d) = sum [a d^b exp(-c d)]
-   coeffs: a1=  80       b1=  0      c1= 1.4668
+   coeffs: a1=  152      b1=  0      c1= 1.4668
            a2=  0        b2=  0      c2= 0
            a3=  0        b3=  0      c3= 0
            n/a=  0        n/a=  0      n/a= 0
@@ -193,11 +193,11 @@ Atom Ti
  Tr[rho][H_0]            :       -0.66831388
  band structure energy   :       -0.66831388
  E_2                     :        0.00000000
- pair potential energy   :        0.09723310
+ pair potential energy   :        0.18474289
  reference energy        :        0.00000000
- total energy            :       -0.57108078
- free energy             :       -0.57108078
- 3PV              pair   :        0.83200182
+ total energy            :       -0.48357099
+ free energy             :       -0.48357099
+ 3PV              pair   :        1.58080346
 
  TBZINT: defer force calculation until self consistent
 
@@ -238,11 +238,11 @@ Atom Ti
  Tr[rho][H_0]            :       -0.66831388
  band structure energy   :       -0.66831388
  E_2                     :        0.00000000
- pair potential energy   :        0.09723310
+ pair potential energy   :        0.18474289
  reference energy        :        0.00000000
- total energy            :       -0.57108078
- free energy             :       -0.57108078
- 3PV              pair   :        0.83200182
+ total energy            :       -0.48357099
+ free energy             :       -0.48357099
+ 3PV              pair   :        1.58080346
 
 
  BZWTS : --- Tetrahedron Integration ---
@@ -274,10 +274,10 @@ Atom Ti
   Coordinates        :    0.00000000    0.00000000    0.00000000
   From bands         :    0.00000000    0.00000000   -0.00000000
   From e'stx         :    0.00000000    0.00000000   -0.00000000
-  From pairs         :    0.00000000   -0.00000000   -0.00000000
-  Total              :    0.00000000   -0.00000000   -0.00000000
+  From pairs         :    0.00000000    0.00000000    0.00000000
+  Total              :    0.00000000    0.00000000   -0.00000000
   
- tbtote: sum of all forces =  0.4851E-34 -0.6939E-17 -0.6939E-17
+ tbtote: sum of all forces =  0.4851E-34  0.1113E-66 -0.1299E-34
 
  Atom    1   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
@@ -287,16 +287,16 @@ Atom Ti
  Tr[rho][H_0]            :       -0.66831388
  band structure energy   :       -0.66831388
  E_2                     :       -0.00000000
- pair potential energy   :        0.09723310
+ pair potential energy   :        0.18474289
  reference energy        :        0.00000000
- total energy            :       -0.57108078
- free energy             :       -0.57108078
- 3PV              pair   :        0.83200182
+ total energy            :       -0.48357099
+ free energy             :       -0.48357099
+ 3PV              pair   :        1.58080346
                  bands   :       -1.94254463
                  charges :       -0.00000000
-                 total   :       -1.11054280
+                 total   :       -0.36174117
 
 
-c fp=0 rfile=0 ppmodti=10 b1ttsdpp=0 b2ttsdpp=0 a1ttsdpp=80 c1ttsdpp=1.46679 a2ttsdpp=0 c2ttsdpp=0 ddsigttsd=6 ddpittsd=4 dddelttsd=1 spanjdec=.496702 spanjddd=.214844 ef=-.04858 nbas=1 fccs=1 alatti=8.20137 mmom=0 sev=-.668314 erep=.097233 etot=-.571081 emad=0 3pv=-1.110543 TS=0
+c fp=0 rfile=0 ppmodti=10 b1ttsdpp=0 b2ttsdpp=0 a1ttsdpp=152 c1ttsdpp=1.46679 a2ttsdpp=0 c2ttsdpp=0 ddsigttsd=6 ddpittsd=4 dddelttsd=1 spanjdec=.496702 spanjddd=.214844 ef=-.04858 nbas=1 fccs=1 alatti=8.20137 mmom=0 sev=-.668314 erep=.184743 etot=-.483571 emad=0 3pv=-.361741 TS=0
  Exit 0 TBE 
- CPU time:  0.077s   Wall clock 0.164s  at  12:34:49 16.07.2018  on
+ CPU time:  0.120s   Wall clock 0.311s  at  14:43:04 17.07.2018  on
