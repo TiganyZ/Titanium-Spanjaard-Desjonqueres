@@ -186,9 +186,9 @@ def gaussian_process_regression(x_, x_np1, t_, K, beta, theta, update):
 def bayesian_check_process(iters, n, noise):
 
     x = np.linspace(0,10, n)
-    t = np.sin(4*x) + 3 * np.cos(x) + 1.5 * np.cos(10 * x) + np.random.normal(0, noise, n)
+    t = np.sin(4*x) + 3 * np.cos(x) + np.random.normal(0, noise, n)
     ##  This is the target data
-    y = np.sin(4*x) + 3 * np.cos(x) + 1.5 * np.cos(10 * x)
+    y = np.sin(4*x) + 3 * np.cos(x)  
     
     alpha   = 10
     beta    = 1./noise**2
@@ -206,39 +206,47 @@ def bayesian_check_process(iters, n, noise):
     K       = []
     for knt in range(iters):
         print('Gaussian process regression: Iteration  %s' %(knt))
-        ind = np.random.choice( range( len(y) ) )
-        xn= x[ind]
-        yn   = y[ind]
+        if knt == 0:
+            ind = np.random.choice( range( len(y) ) )
+            xn= x[ind]
+            yn   = y[ind]
+        else:
+            ind = np.argmax(EI_l)
+            xn= x[ind]
+            yn   = y[ind]
         x_  = np.append( x_, xn  )
         t_  = np.append( t_, t[ind] )
         if knt == 0:
             update = False
         else:
             update = True
-
-        m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, update)
+        theta     = np.array( [ 1., 4, 0., 0. ] )
+        m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, theta, update)
         #t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
 
         xrlist.append(xr)
         yrlist.append(yr)
         ybayes  = np.array([]); ybayes2 = np.array([]); ybayes3 = np.array([])
         ybayes4 = np.array([]); ybayes5 = np.array([]); ybayes6 = np.array([])
+        y_EI    = np.array([])
         for j in range( len(x)):
             #m_p_tnp1, var_p_tnp1, Kx = gaussian_process_regression( np.append(x_, x[j]), x[j], np.append(t_,t[j]), K, beta, update)
             m_p_tnp1 = m_pred_xnp1_sum(theta, x_, x[j], C_N_inv, t_)
             t_np1    = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
 
             ybayes  = np.append(ybayes,  m_p_tnp1); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
-            ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])         
-            
+            ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])  
+
+        EI_l = expected_improvement( x, x_, var_p_tnp1, C_N_inv, t_, theta, 200)       
+        y_EI    = np.append(y_EI, EI_l )
         print( len(x), len(t) , len(x_), len(t_), len(x), len(ybayes2))
         print( x,t ,x_, t_, ybayes2)
         print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape, K.shape)
-        xp =     [x, x, x_, x,      x,       x,       x,       x,       x      ]
-        yp =     [t, y, t_, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
-        colour = ['r--', 'g--', 'b^', 'k-', 'b-', 'b-', 'b-', 'b-', 'b-']
+        xp =     [x, x, x_, x,      x,       x,       x,       x,       x,      x      ]
+        yp =     [t, y, t_, y_EI, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+        colour = ['r--', 'g--', 'b^', 'c-', 'k-', 'b-', 'b-', 'b-', 'b-', 'r-']
         if knt %1 == 0:
-            g.plot_function(4, xp, yp, colour, 'Gaussian Process regression.', 
+            g.plot_function(5, xp, yp, colour, 'Gaussian Process regression.', 
                                 'x parameter', 'y')
     return M
 
@@ -386,13 +394,13 @@ def get_df_k( x ):
 ##  Can use the Expected Improvement to improve the regression and find a minimum faster also. 
 ##  alpha_EI( x_; theta, K) = int_y { max( y_min - y ) * p( y_ | theta, K  ) }  dy
 
-def expected_improvement(x, x_, C_N, C_N_inv, t_, theta):
+def expected_improvement(x_, x, var, C_N_inv, t_, theta, ngauss):
 
-    tl   = np.zeros(shape.t_)
-    EI_l = np.zeros(shape.t_)
+    tl   = np.zeros(len(x_))
+    EI_l = np.zeros(len(x_))
 
     for i in range( len( x_ ) ):
-        tl[i] = m_pred_xnp1_sum(theta, x_, x_[i], C_N_inv, t_)
+        tl[i] = m_pred_xnp1_sum(theta, x, x_[i], C_N_inv, t_)
     
     t_min = np.min(tl)
 
@@ -401,13 +409,20 @@ def expected_improvement(x, x_, C_N, C_N_inv, t_, theta):
     ##  as we would want y + variance to be LESS than the y_min, for a large improvement. 
 
     for i in range( len( x_ ) ):
-        EI = (t_min - tl[i]) * np.random.multivariate_gaussian( t_, C_N )
+        t_dist = np.random.normal( tl[i], var, ngauss)
+        EI = 0
+        for t in t_dist:
+            EI += (t_min - t) * float( len( t_dist[ t < tl[i] ] ) ) * (np.max(t_dist) - np.min(t_dist)  )/ float( ngauss )
+        EI_l[i] = EI
     ##  p(t_np1_) = N( t_, C_N )
+    
+    return EI_l
+    
 
+def wolfe_conditions(x_k, a_k, p_k, f_k ):
+    return
 
-def wolfe_conditions(x_k, a_k, p_k, f_k,  )
-
-def polak-ribere_CG( x, f, df ):
+def polak_ribere_CG( x, f, df ):
     ##  This is a non-linear conjugate gradient method. 
     ##  f is the objective function evaluated at x, df is the gradient of the objective function at x. 
     p_k  = -df
@@ -428,12 +443,12 @@ def polak-ribere_CG( x, f, df ):
 
 
 
-#iters = 200
-#n=100
-#theta = np.array( [1., 4*4., 0., 0.  ] )
-#noise = 0.3
-#deg = 12
-#bayesian_check_process(iters, n, noise)
+iters = 200
+n=200
+theta = np.array( [1., 4*4., 0., 0.  ] )
+noise = 0.3
+deg = 12
+bayesian_check_process(iters, n, noise)
 
 
 #deg = 5
