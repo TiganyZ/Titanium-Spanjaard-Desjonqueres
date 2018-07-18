@@ -380,20 +380,48 @@ def get_df_k( x ):
 ##  The beauty of using the Gaussian process regression to reconstruct the functions is that derivatives at a point become rather easy. 
 ##  Finding the right parameters for the kernel will help as they will provide a more faithful construction of the function's underlying form. 
 ##  As derivatives are easy, using gradient based methods to find the global minima becomes almost trivial, with minimal computation. 
+##  Convergence of Fletcher-Reeves Conjugate gradient is not that fast. 
+##  Polak-Ribere is a better method. 
+
+##  Can use the Expected Improvement to improve the regression and find a minimum faster also. 
+##  alpha_EI( x_; theta, K) = int_y { max( y_min - y ) * p( y_ | theta, K  ) }  dy
+
+def expected_improvement(x, x_, C_N, C_N_inv, t_, theta):
+
+    tl   = np.zeros(shape.t_)
+    EI_l = np.zeros(shape.t_)
+
+    for i in range( len( x_ ) ):
+        tl[i] = m_pred_xnp1_sum(theta, x_, x_[i], C_N_inv, t_)
+    
+    t_min = np.min(tl)
+
+    ##  Now need to integrate over the gaussian distribution for the target value for each point
+    ##  If the expected improvement will be greater if the variance is large and the point is close to the minimum 
+    ##  as we would want y + variance to be LESS than the y_min, for a large improvement. 
+
+    for i in range( len( x_ ) ):
+        EI = (t_min - tl[i]) * np.random.multivariate_gaussian( t_, C_N )
+    ##  p(t_np1_) = N( t_, C_N )
 
 
-def fletcher_reeves_CG( x, f, df ):
+def wolfe_conditions(x_k, a_k, p_k, f_k,  )
+
+def polak-ribere_CG( x, f, df ):
     ##  This is a non-linear conjugate gradient method. 
     ##  f is the objective function evaluated at x, df is the gradient of the objective function at x. 
-    p_k = - df
-    x_k = x
+    p_k  = -df
+    x_k  = x
+    df_k = df
     cond == True
     while cond:
-        a_k = get_a_k()
+        a_k     = get_a_k()
 
         x_kp1   = x_k  +  a_k*p_k
         df_kp1  = get_df_k( x_k )
 
+        beta_pr = df_kp1.T.dot( df_kp1 - df ) / ( df.T.dot( df ))
+ 
 
     
     return
