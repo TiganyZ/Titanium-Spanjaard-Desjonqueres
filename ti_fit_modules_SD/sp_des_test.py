@@ -143,8 +143,8 @@ npass       = 0
 
 A = np.linspace(400, 1400 , 5)
 # 1200 2 0.2
-B = np.linspace(1.8, 2.5, 10)
-C = np.linspace(0., 2, 10)
+B = np.linspace(1., 2.5, 5)
+C = np.linspace(0., 2, 5)
 #D = np.linspace(0.01)
 
 t_      = np.array( [ ] )
@@ -162,6 +162,12 @@ C_inv   = []
 beta    = 0.0001
 for knt  in range(len(C)):
     for BB  in range(len(B)):
+        if BB == 0:
+            A = np.linspace(1,2.5, 10)
+        elif BB == 1:
+            A = np.linspace(10, 25, 10)
+        elif BB > 2:
+            A = np.linspace(1000, 1700, 10)
         for AA  in range(len(A)):
 
             print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
