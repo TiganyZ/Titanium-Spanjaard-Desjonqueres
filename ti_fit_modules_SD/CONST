@@ -3,7 +3,7 @@
         NdTi=7 alatTi=5.58411 coa=1.5873 coaRutile=0.645 coabcc=sqrt(3/8)
 # cut-offs in a.u.
 	alatRutil=8.6625 clatRutil=alatRutil*coaRutile uRutile={uRutilec} hpluRut={0.5+{uRutilec}} hminuRut={-{uRutilec}+0.5} #0.303 0.3053  0.8053 0.1947
-    rmaxh=alatTi*1.0001 #0.9*alatRutil #{1.01*{alatRutilc}}
+    rmaxh=alatTi*1.25 #0.9*alatRutil #{1.01*{alatRutilc}}
 % ifdef scale
         fixscale=abcc
 % else

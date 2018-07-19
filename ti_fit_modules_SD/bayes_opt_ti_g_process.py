@@ -140,7 +140,12 @@ def K_matrix(theta, x, update, Kp):
     K = np.zeros((N,N))
 
     if update:
-      
+        #if K.shape[0] < N:
+        #    l = N - K.shape[0]
+        #    K[:-l,:-l] = Kp
+        #elif K.shape[0] == N:
+        #    ##  Updating the last kernel products
+        #     K[:-1,:-1] = Kp[:-1,:-1]
         K[:-1,:-1] = Kp
         for n in range(N):
             K[-1, n] = parametric_kernel(theta, x[n], x[-1])
@@ -168,7 +173,10 @@ def gaussian_process_regression(x_, x_np1, t_, K, beta, theta, update):
     ## Obtaining the mean and variance of the predictive target distribution p( t_{n+1} | t_, x_, x_np1) 
 
     k_              =  get_next_k_(  theta, x_, x_np1     )
+
+
     K               =  K_matrix(     theta, x_, update, K )
+
     C               =  C_matrix(     beta,  K             )
     C_N_inv         =  np.linalg.inv(       C             )
 
@@ -192,28 +200,38 @@ def bayesian_check_process(iters, n, noise):
     
     alpha   = 10
     beta    = 1./noise**2
-
+    ngauss  = 200
     T       = np.array([])
     Phi     = np.array([])
     xrlist  = []
     yrlist  = []
     ind     = np.random.choice( range( len(y) ) )
-    ind2     = np.random.choice( range( len(y) ) )
+    ind2    = np.random.choice( range( len(y) ) )
     xr      = x[ind]
     yr      = y[ind]
     t_      = np.array( [ ] )
-    x_      = np.array( [  ] )
+    x_      = np.array( [ ] )
+    m_      = np.array( [ ] )
+    v_      = np.array( [ ] )
     K       = []
     for knt in range(iters):
         print('Gaussian process regression: Iteration  %s' %(knt))
-        if knt == 0:
+        if knt < 2:
             ind = np.random.choice( range( len(y) ) )
-            xn= x[ind]
-            yn   = y[ind]
+            xn  = x[ind]
+            yn  = y[ind]
         else:
-            ind = np.argmax(EI_l)
-            xn= x[ind]
-            yn   = y[ind]
+            if np.random.uniform() > 0.9:
+                ind = np.argmax(y_EI)
+            else:
+                ind = np.random.choice( range( len(y) ) )
+            #if ind2 == ind:
+            #    if np.random.uniform() > 0.5:
+            #        ind2 +=1
+            #    else:
+            #        ind2 -= 1
+            xn  = x[ind]
+            yn  = y[ind]
         x_  = np.append( x_, xn  )
         t_  = np.append( t_, t[ind] )
         if knt == 0:
@@ -223,6 +241,8 @@ def bayesian_check_process(iters, n, noise):
         theta     = np.array( [ 1., 4, 0., 0. ] )
         m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, theta, update)
         #t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+        m_ = np.append( m_, m_p_tnp1 )
+        v_ = np.append( v_, var_p_tnp1)
 
         xrlist.append(xr)
         yrlist.append(yr)
@@ -232,13 +252,19 @@ def bayesian_check_process(iters, n, noise):
         for j in range( len(x)):
             #m_p_tnp1, var_p_tnp1, Kx = gaussian_process_regression( np.append(x_, x[j]), x[j], np.append(t_,t[j]), K, beta, update)
             m_p_tnp1 = m_pred_xnp1_sum(theta, x_, x[j], C_N_inv, t_)
+            k_              =  get_next_k_(  theta, x_, x[j]     )
+            var_p_tnp1   =  var_pred_next_target( theta, x[j], C_N_inv, k_, beta)
+            #m_p_tnp1, var_p_tnp1, K1, C_N1, C_N_inv1 = gaussian_process_regression( np.append(x_, x[j]) , x[j], np.append(t_, t[j]), K, beta, theta, update)
+
+            y_EI = np.append( y_EI, EI_point(m_p_tnp1, var_p_tnp1, t[j], t_, n) )
+
             t_np1    = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
 
             ybayes  = np.append(ybayes,  m_p_tnp1); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
             ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])  
 
-        EI_l = expected_improvement( x, x_, var_p_tnp1, C_N_inv, t_, theta, 200)       
-        y_EI    = np.append(y_EI, EI_l )
+        #EI_l = expected_improvement( x, x_, var_p_tnp11, C_N_inv, t_, theta, 200)       
+        #y_EI    = np.append(y_EI, EI_l )
         print( len(x), len(t) , len(x_), len(t_), len(x), len(ybayes2))
         print( x,t ,x_, t_, ybayes2)
         print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape, K.shape)
@@ -417,6 +443,48 @@ def expected_improvement(x_, x, var, C_N_inv, t_, theta, ngauss):
     ##  p(t_np1_) = N( t_, C_N )
     
     return EI_l
+
+
+
+def EI_Snoek(m, var, s):
+    return
+
+def EI_point(m, var, tl, t_, ngauss):
+
+    t_min = np.min(t_)
+    t_dist = np.random.normal( m, var, ngauss)
+
+    EI = 0
+    for t in t_dist:
+        EI += (t_min - t) * float( len( t_dist[ t < m ] ) ) * (np.max(t_dist) - np.min(t_dist)  )/ float( ngauss )
+
+    
+    return EI
+
+
+def expected_improvement(x_, x, var, C_N_inv, t_, theta, ngauss):
+
+    tl   = np.zeros(len(x_))
+    EI_l = np.zeros(len(x_))
+
+    for i in range( len( x_ ) ):
+        tl[i] = m_pred_xnp1_sum(theta, x, x_[i], C_N_inv, t_)
+    
+    t_min = np.min(tl)
+
+    ##  Now need to integrate over the gaussian distribution for the target value for each point
+    ##  If the expected improvement will be greater if the variance is large and the point is close to the minimum 
+    ##  as we would want y + variance to be LESS than the y_min, for a large improvement. 
+
+    for i in range( len( x_ ) ):
+        t_dist = np.random.normal( tl[i], var, ngauss)
+        EI = 0
+        for t in t_dist:
+            EI += (t_min - t) * float( len( t_dist[ t < tl[i] ] ) ) * (np.max(t_dist) - np.min(t_dist)  )/ float( ngauss )
+        EI_l[i] = EI
+    ##  p(t_np1_) = N( t_, C_N )
+    
+    return EI_l
     
 
 def wolfe_conditions(x_k, a_k, p_k, f_k ):
@@ -442,15 +510,14 @@ def polak_ribere_CG( x, f, df ):
     return
 
 
-
+"""
 iters = 200
-n=200
+n=300
 theta = np.array( [1., 4*4., 0., 0.  ] )
 noise = 0.3
 deg = 12
 bayesian_check_process(iters, n, noise)
-
-
+"""
 #deg = 5
 #bayesian_check(iters, n, noise, deg)
 

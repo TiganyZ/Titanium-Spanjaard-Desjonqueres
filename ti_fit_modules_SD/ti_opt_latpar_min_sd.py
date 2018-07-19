@@ -48,6 +48,16 @@ def find_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, n_grid):
                     if etot is not str:
                         etot_a[i][j][k] = etot
 
+
+
+    #print('Energies', etot_a)
+    #ran = np.arange(n_grid[1])
+    #xp =     [ran,ran,ran,ran,ran,ran,ran,ran,ran,ran     ]
+    #yp =     [ etot_a[0,:], etot_a[1,:], etot_a[2,:], etot_a[3,:], etot_a[4,:], etot_a[5,:], etot_a[6,:], etot_a[7,:], etot_a[8,:], etot_a[9,:]]
+    #colour = ['b-', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-', 'b-']
+    #g.plot_function(10, xp, yp, colour, 'Energy vs coa ratio', 
+    #                            'coa ratio', 'Energy')
+
     min_ind = np.unravel_index( np.argmin(etot_a), sz )
     print('\n Minimum lattice parameters')
 
@@ -102,7 +112,7 @@ def opt_latpars_grid(LMarg, args, n_lp, names_lp, limits_lp, ideals_lp, n_grid, 
     lp_diff = np.asarray(lps) - ideals_lp
     ret = lps + tuple(lp_diff) + (min_lps[-1],)
 
-    print('latpar', ret)
+
     return ret
 
 def latpar_energy_range(LMarg, args, latpars, latpar):

@@ -30,6 +30,7 @@ args    = ' -vfp=0 -vrfile=0 -vppmodti=10 -vB1TTSDpp=0 -vB2TTSDpp=0 '
 
 pR0 = 8.18
 qR0 = 2.77
+pqr = pR0/qR0
 
 
 alat_ideal  = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
@@ -116,7 +117,7 @@ n_iter      = 2
 limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.), False, False] ]
 
 ##  Limits for the bandwidth normalisation and tolerance in eV.
-ddnorm_lim  = (5.0, 0.0, 0.02)
+ddnorm_lim  = (100.0, 0.0, 0.02)
 
 ##  Plots the Elastic constants and the bulk modulus curves if True. 
 plotECandB = False
@@ -140,13 +141,18 @@ npass       = 0
 ##  a lat increases with addition of second exponential
 ##  coa is still constant
 
-A = np.linspace(0, 0.01, 40)
+A = np.linspace(400, 1400 , 5)
+# 1200 2 0.2
+B = np.linspace(1.8, 2.5, 10)
+C = np.linspace(0., 2, 10)
+#D = np.linspace(0.01)
+
 t_      = np.array( [ ] )
 x_      = np.array( [ ] )
-t_coa      = np.array( [ ] )
-x_coa      = np.array( [ ] )
-t_a      = np.array( [ ] )
-x_a      = np.array( [ ] )
+t_coa   = np.array( [ ] )
+x_coa   = np.array( [ ] )
+t_a     = np.array( [ ] )
+x_a     = np.array( [ ] )
 K       = []
 K_coa   = []
 K_a     = []
@@ -154,47 +160,58 @@ K_a     = []
 C_      = []
 C_inv   = [] 
 beta    = 0.0001
-for knt  in range(len(A)):
+for knt  in range(len(C)):
+    for BB  in range(len(B)):
+        for AA  in range(len(A)):
 
-    print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
+            print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
+
+            #Pair potential  = [5.95219592e+05 3.66698426e+00 1.34564103e-01 7.33396851e-01]
+            #Pair potential  = [5.95219592e+05 3.66698426e+00 2.69128205e-01 7.33396851e-01]
+            ##
+            ## Right c/a wrong a
+            ##  Pair potential  = [5.95219592e+05, 3.66698426e+00, 9.41948718e-01, 7.33396851e-01]
 
 
 
-    #pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
-    pair_pot  = np.array( [ 45000*262.4, 2.5*spanjdecpp, A[knt]*262.4, spanjdecpp/2.   ] )
-    
-    #pair_pot  = np.array( [ 0.8*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
-    #Okay    pair_pot  = np.array( [ 1.0*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
-    # mainly +ve ec, a = 6.2 c/a ideal
+            #pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
+            pair_pot  = np.array( [ A[AA]*262.4, B[BB] * spanjdecpp, C[knt] , B[BB] * spanjdecpp/2.   ] )
 
-    theta     = np.array( [ 200., 0.1, 0., 0. ] )
-    theta_a   = np.array( [ 40,   0.1, 0., 0. ] )
-    theta_coa = np.array( [ 40,   0.1, 0., 0. ] )
+            ddcoeffs    = np.array( [ 6., 4., 1., B[BB] * spanjdecpp / pqr] )
+            
+            #pair_pot  = np.array( [ 0.8*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+            #Okay    
+            #pair_pot  = np.array( [ 1.0*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+            # mainly +ve ec, a = 6.2 c/a ideal
 
-    plotECandB = False
+            theta     = np.array( [ 200., 0.1, 0., 0. ] )
+            theta_a   = np.array( [ 40,   0.1, 0., 0. ] )
+            theta_coa = np.array( [ 40,   0.1, 0., 0. ] )
 
-    outs = outp.output_script(      npass, 
-                                    ext,
-                                    LMarg, 
-                                    args, 
-                                    pair_pot, ppnames, 
-                                    ddcoeffs, ddnames, ddnorm_lim,
-                                    ec_exp_arr, 
-                                    rmx_name, nn_ideal,
-                                    n_lp, n_grid, n_iter,
-                                    names_lp, limits_lp, ideals_lp,
-                                    n_energies, energy_args,
-                                    plotECandB   )
-    (npass,                                                 
-    itargs,                                                   
-    min_alat,  min_coa,                                     
-    alat_diff, coa_diff,                                    
-    min_vol, B,                                                
-    etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
-    e_consts, e_consts_diff)                                =   outs
+            plotECandB = True
 
-    targets = outs[2] + outs[3] + outs[7] 
+            outs = outp.output_script(      npass, 
+                                            ext,
+                                            LMarg, 
+                                            args, 
+                                            pair_pot, ppnames, 
+                                            ddcoeffs, ddnames, ddnorm_lim,
+                                            ec_exp_arr, 
+                                            rmx_name, nn_ideal,
+                                            n_lp, n_grid, n_iter,
+                                            names_lp, limits_lp, ideals_lp,
+                                            n_energies, energy_args,
+                                            plotECandB   )
+            (npass,                                                 
+            itargs,                                                   
+            min_alat,  min_coa,                                     
+            alat_diff, coa_diff,                                    
+            min_vol, B,                                                
+            etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
+            e_consts, e_consts_diff)                                =   outs
 
+            targets = outs[2] + outs[3] + outs[7] 
+    """
     x_  = np.append( x_, A[knt]  )
     t_  = np.append( t_, B )
 
@@ -265,7 +282,7 @@ for knt  in range(len(A)):
 
         g.plot_function(2, xp_coa, yp_coa, colour, 'GPR: c/a lattice parameter vs A.', 
                             'A', 'c/a ratio')
-
+    """
 
 ################################################################################################################################
 ################################################################################################################################

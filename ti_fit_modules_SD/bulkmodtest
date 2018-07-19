@@ -1,24 +1,24 @@
  -------------------  START TBE v7.12.1 -------------------
 
  TBE:      nbas = 2  nspec = 1  vn 7.11.j(TBE 10.1)  verb 31
- TB:       rmaxh = 5.568724, s-c multipoles, trh, rho
+ TB:       rmaxh = 6.949135, s-c multipoles, trh, rho
  bz:       metal(3), tetra 
 
                 Plat                                  Qlat
    0.866025  -0.500000   0.000000        1.154701   0.000000   0.000000
    0.000000   1.000000   0.000000        0.577350   1.000000   0.000000
-   0.000000   0.000000   1.632993        0.000000   0.000000   0.612372
-   alat = 5.568168  Cell vol = 244.147287
+   0.000000   0.000000   1.691510        0.000000   0.000000   0.591188
+   alat = 5.559308  Cell vol = 251.690886
 
- LATTC:  as= 2.000   tol=1.00e-24   alat= 5.56817   awald= 0.320
-         r1=  5.101   nkd= 385      q1=  4.967   nkg= 701
+ LATTC:  as= 2.000   tol=1.00e-24   alat= 5.55931   awald= 0.317
+         r1=  5.159   nkd= 373      q1=  4.907   nkg= 713
 
  SGROUP: 1 symmetry operations from 0 generators
  SYMLAT: Bravais system is hexagonal with 24 symmetry operations.
  SYMCRY: crystal invariant under 24 symmetry operations for tol=1e-5
  GROUPG: the following are sufficient to generate the space group:
-         i*r3z r2z:(0,0,-0.8164966) r2(1/2,sqrt(3)/2,0):(0,0,-0.8164966)
-         i*r3z r2z::(0,0,-1/2) r2(1/2,sqrt(3)/2,0)::(0,0,-1/2)
+         i*r3z r2z:(0,0,0.8457551) r2(1/2,sqrt(3)/2,0):(0,0,-0.8457551)
+         i*r3z r2z::(0,0,1/2) r2(1/2,sqrt(3)/2,0)::(0,0,-1/2)
  MKSYM:  found 24 space group operations ... includes inversion
  rdctrl: (warning) class "O" not in class table
  rdctrl: (warning) class "Fe" not in class table
@@ -46,7 +46,7 @@ No atoms of type C were found in the structure. Discarding pair C Fe.
 No atoms of type Fe were found in the structure. Discarding pair Fe H.
 No atoms of type H were found in the structure. Discarding pair H C.
 No atoms of type C were found in the structure. Discarding pair C H.
- ii           1 ppmode(ii)=          10 nset          14 vpp   11807999.999999998        0.0000000000000000        3.6669842573891289       0.52479999999999993        0.0000000000000000       0.73339685147782574        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000     
+ ii           1 ppmode(ii)=          10 nset          14 vpp   104959.99999999999        0.0000000000000000        2.6402286653201728        0.0000000000000000        0.0000000000000000        1.3201143326600864        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000     
  iexp           1           0           1
  iexp           2           0           1
  iexp           3           0           1
@@ -90,8 +90,8 @@ No atoms of type C were found in the structure. Discarding pair C H.
  SHOTBM: 14 rules for pair potential
  Ti,Ti:
    type 10 (Exp x Power law), V0(d) = sum [a d^b exp(-c d)]
-   coeffs: a1=  11808000 b1=  0      c1= 3.667
-           a2=  0.5248   b2=  0      c2= 0.7334
+   coeffs: a1=  104960   b1=  0      c1= 2.6402
+           a2=  0        b2=  0      c2= 1.3201
            a3=  0        b3=  0      c3= 0
            n/a=  0        n/a=  0      n/a= 0
    cutoff type 2 (multiplicative), 5th order polynomial, range [5.8582, 9.0707]
@@ -113,8 +113,8 @@ No atoms of type C were found in the structure. Discarding pair C H.
  Ti,Ti:
    type 2 (Exp. decay), V(d) = a exp (- b d)
              sss    sps    pps    ppp    sds    pds    pdp    dds    ddp    ddd
-   coeff:   0.00   0.00   0.00   0.00   0.00   0.00   0.00  -1.29   0.86  -0.21
-   decay:   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.50   0.50   0.50
+   coeff:   0.00   0.00   0.00   0.00   0.00   0.00   0.00 -10.66   7.10  -1.78
+   decay:   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.89   0.89   0.89
    cutoff type 2 (multiplicative), 5th order polynomial, range [r1, rc]
              sss    sps    pps    ppp    sds    pds    pdp    dds    ddp    ddd
    r1:      0.00   0.00   0.00   0.00   0.00   0.00   0.00   5.86   5.86   5.86
@@ -142,8 +142,8 @@ Atom 2 Ti
    by l:   2  0  2
    by L:   2  0  0  0  0.4  0.4  0.4  0.4  0.4
 
- pairc, ib=  1:  13 neighbors in range  1.000*alat =   5.57
- pairc, ib=  2:  13 neighbors in range  1.000*alat =   5.57
+ pairc, ib=  1:  13 neighbors in range  1.250*alat =   6.95
+ pairc, ib=  2:  13 neighbors in range  1.250*alat =   6.95
  pairc:  26 pairs total  13 is max cluster size
  TBZINT: defer force calculation until self consistent
 
@@ -171,17 +171,17 @@ Atom Ti
  TBZINT: defer force calculation until self consistent
 
  BZWTS : --- Tetrahedron Integration ---
- BZINTS: Fermi energy:     -0.050070;   8.000000 electrons;  D(Ef):   22.054
-         Sum occ. bands:   -1.4873844  incl. Bloechl correction:   -0.004066
+ BZINTS: Fermi energy:     -0.038845;   8.000000 electrons;  D(Ef):   20.752
+         Sum occ. bands:   -1.2870735  incl. Bloechl correction:   -0.002304
 
  SECMTB:  kpt 1 of 28, k=  0.00000  0.00000  0.00000
- -0.2704 -0.0946 -0.0451 -0.0451 -0.0158 -0.0158  0.0631  0.0631  0.1803
+ -0.2244 -0.1084 -0.0374 -0.0374 -0.0181 -0.0181  0.0723  0.0723  0.1496
 
- SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.10206
- -0.3350 -0.2477 -0.1467 -0.0435 -0.0383  0.0472  0.1618  0.1628  0.1840
+ SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.09853
+ -0.2869 -0.2125 -0.1369 -0.0415 -0.0199  0.0360  0.1334  0.1488  0.1657
 
- SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.20412
- -0.2899 -0.2257 -0.1831 -0.1095 -0.0518  0.1021  0.1392  0.1654  0.2004
+ SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.19706
+ -0.2478 -0.1972 -0.1611 -0.1063 -0.0371  0.0915  0.1155  0.1464  0.1756
  QMIX mixing multipole moments:
  Broyden iteration   1. 2 elements; mixed 0 of 0, rms diff: 1 (tol: 1e-3)
 
@@ -210,40 +210,40 @@ Atom Ti
 
  Atom    1   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.577350  0.000000  0.408248  Dq/e= -0.000000
+  POS=  0.577350  0.000000  0.422878  Dq/e= -0.000000
 
  Atom    2   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.288675  0.500000  1.224745  Dq/e= -0.000000
+  POS=  0.288675  0.500000  1.268633  Dq/e= -0.000000
 
  Tr[rho]                 :        8.00000000
- Tr[rho][H_0]            :       -1.48738443
- band structure energy   :       -1.48738443
+ Tr[rho][H_0]            :       -1.28707351
+ band structure energy   :       -1.28707351
  E_2                     :        0.00000000
- pair potential energy   :        0.29829151
+ pair potential energy   :        0.45272060
  reference energy        :        0.00000000
- total energy            :       -1.18909292
- free energy             :       -1.18909292
- 3PV              pair   :        4.35775144
+ total energy            :       -0.83435291
+ free energy             :       -0.83435291
+ 3PV              pair   :        6.71086353
 
  TBZINT: defer force calculation until self consistent
 
  BZWTS : --- Tetrahedron Integration ---
- BZINTS: Fermi energy:     -0.050070;   8.000000 electrons;  D(Ef):   22.054
-         Sum occ. bands:   -1.4873844  incl. Bloechl correction:   -0.004066
+ BZINTS: Fermi energy:     -0.038845;   8.000000 electrons;  D(Ef):   20.752
+         Sum occ. bands:   -1.2870735  incl. Bloechl correction:   -0.002304
 
  SECMTB:  kpt 1 of 28, k=  0.00000  0.00000  0.00000
- -0.2704 -0.0946 -0.0451 -0.0451 -0.0158 -0.0158  0.0631  0.0631  0.1803
+ -0.2244 -0.1084 -0.0374 -0.0374 -0.0181 -0.0181  0.0723  0.0723  0.1496
 
- SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.10206
- -0.3350 -0.2477 -0.1467 -0.0435 -0.0383  0.0472  0.1618  0.1628  0.1840
+ SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.09853
+ -0.2869 -0.2125 -0.1369 -0.0415 -0.0199  0.0360  0.1334  0.1488  0.1657
 
- SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.20412
- -0.2899 -0.2257 -0.1831 -0.1095 -0.0518  0.1021  0.1392  0.1654  0.2004
+ SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.19706
+ -0.2478 -0.1972 -0.1611 -0.1063 -0.0371  0.0915  0.1155  0.1464  0.1756
  mixing: mode=B  nmix=5  wc=-1  beta=.1  wgt=-1,-1  betv=0
- broyj:  start  beta=0.1  w0=0.01  isw=0  gmax=2.4e-13
+ broyj:  start  beta=0.1  w0=0.01  isw=0  gmax=6.9e-13
  QMIX mixing multipole moments:
- Broyden iteration   2. 2 elements; mixed 1 of 1, rms diff: 2.37366e-13 (tol: 1e-3)
+ Broyden iteration   2. 2 elements; mixed 1 of 1, rms diff: 6.93223e-13 (tol: 1e-3)
 
  TBESEL (Stone's definitions for Q and V)
 
@@ -253,7 +253,7 @@ Atom Ti
         Qmpol=0,  0 0 0,  0 0 0 0 0
         e dV=  0,  0 0 0,  0 0 0 0 0
         Hubbard potential U=0:  0, dq: 0
-        DH^e_LL=  0,   0  0  0,  0 0 0 0 0
+        DH^e_LL=  0,   0  0  0,   0  0  0  0  0
 
 Atom Ti      
         M=0 0 0 0 0 0 0
@@ -263,42 +263,42 @@ Atom Ti
         Hubbard potential U=0:  0, dq: 0
         DH^e_LL=  0,   0  0  0,   0  0  0  0  0
 
-   (1/2) dQ dV             :    -0.000000
+   (1/2) dQ dV             :     0.000000
    (1/2) U dN^2            :     0.000000
-   E_2                     :    -0.000000
+   E_2                     :     0.000000
   
 
  Atom    1   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.577350  0.000000  0.408248  Dq/e= -0.000000
+  POS=  0.577350  0.000000  0.422878  Dq/e= -0.000000
 
  Atom    2   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.288675  0.500000  1.224745  Dq/e= -0.000000
+  POS=  0.288675  0.500000  1.268633  Dq/e= -0.000000
 
  Tr[rho]                 :        8.00000000
- Tr[rho][H_0]            :       -1.48738443
- band structure energy   :       -1.48738443
- E_2                     :       -0.00000000
- pair potential energy   :        0.29829151
+ Tr[rho][H_0]            :       -1.28707351
+ band structure energy   :       -1.28707351
+ E_2                     :        0.00000000
+ pair potential energy   :        0.45272060
  reference energy        :        0.00000000
- total energy            :       -1.18909292
- free energy             :       -1.18909292
- 3PV              pair   :        4.35775144
+ total energy            :       -0.83435291
+ free energy             :       -0.83435291
+ 3PV              pair   :        6.71086353
 
 
  BZWTS : --- Tetrahedron Integration ---
- BZINTS: Fermi energy:     -0.050070;   8.000000 electrons;  D(Ef):   22.054
-         Sum occ. bands:   -1.4873844  incl. Bloechl correction:   -0.004066
+ BZINTS: Fermi energy:     -0.038845;   8.000000 electrons;  D(Ef):   20.752
+         Sum occ. bands:   -1.2870735  incl. Bloechl correction:   -0.002304
 
  SECMTB:  kpt 1 of 28, k=  0.00000  0.00000  0.00000
- -0.2704 -0.0946 -0.0451 -0.0451 -0.0158 -0.0158  0.0631  0.0631  0.1803
+ -0.2244 -0.1084 -0.0374 -0.0374 -0.0181 -0.0181  0.0723  0.0723  0.1496
 
- SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.10206
- -0.3350 -0.2477 -0.1467 -0.0435 -0.0383  0.0472  0.1618  0.1628  0.1840
+ SECMTB:  kpt 10 of 28, k=  0.38490  0.00000  0.09853
+ -0.2869 -0.2125 -0.1369 -0.0415 -0.0199  0.0360  0.1334  0.1488  0.1657
 
- SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.20412
- -0.2899 -0.2257 -0.1831 -0.1095 -0.0518  0.1021  0.1392  0.1654  0.2004
+ SECMTB:  kpt 20 of 28, k=  0.48113  0.16667  0.19706
+ -0.2478 -0.1972 -0.1611 -0.1063 -0.0371  0.0915  0.1155  0.1464  0.1756
 
  TBESEL (Stone's definitions for Q and V)
 
@@ -325,43 +325,43 @@ Atom Ti
    E_2                     :    -0.000000
 
  Forces on atom    1    Species: Ti  
-  Coordinates        :    0.57735027    0.00000000    0.40824829
+  Coordinates        :    0.57735027    0.00000000    0.42287754
   From bands         :   -0.00000000   -0.00000000   -0.00000000
   From e'stx         :    0.00000000    0.00000000    0.00000000
   From pairs         :    0.00000000    0.00000000   -0.00000000
   Total              :   -0.00000000   -0.00000000   -0.00000000
 
  Forces on atom    2    Species: Ti  
-  Coordinates        :    0.28867513    0.50000000    1.22474487
+  Coordinates        :    0.28867513    0.50000000    1.26863261
   From bands         :    0.00000000    0.00000000    0.00000000
   From e'stx         :   -0.00000000   -0.00000000   -0.00000000
   From pairs         :    0.00000000    0.00000000    0.00000000
   Total              :    0.00000000    0.00000000    0.00000000
   
- tbtote: sum of all forces = -0.1084E-18 -0.2711E-18   0.000    
+ tbtote: sum of all forces = -0.9630E-34   0.000     -0.3388E-20
 
  Atom    1   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.577350  0.000000  0.408248  Dq/e= -0.000000
+  POS=  0.577350  0.000000  0.422878  Dq/e= -0.000000
 
  Atom    2   Species Ti  
   Charges: NL=3:    0.000000   0.000000   4.000000 (Total:   4.000000)
-  POS=  0.288675  0.500000  1.224745  Dq/e= -0.000000
+  POS=  0.288675  0.500000  1.268633  Dq/e= -0.000000
 
  Tr[rho]                 :        8.00000000
- Tr[rho][H_0]            :       -1.48738443
- band structure energy   :       -1.48738443
+ Tr[rho][H_0]            :       -1.28707351
+ band structure energy   :       -1.28707351
  E_2                     :       -0.00000000
- pair potential energy   :        0.29829151
+ pair potential energy   :        0.45272060
  reference energy        :        0.00000000
- total energy            :       -1.18909292
- free energy             :       -1.18909292
- 3PV              pair   :        4.35775144
-                 bands   :       -4.11368501
+ total energy            :       -0.83435291
+ free energy             :       -0.83435291
+ 3PV              pair   :        6.71086353
+                 bands   :       -6.46133424
                  charges :       -0.00000000
-                 total   :        0.24406642
+                 total   :        0.24952929
 
 
-c fp=0 rfile=0 ppmodti=10 b1ttsdpp=0 b2ttsdpp=0 a1ttsdpp=11808000 c1ttsdpp=3.66698 a2ttsdpp=.5248 c2ttsdpp=.733397 ddsigttsd=6 ddpittsd=4 dddelttsd=1 spanjdec=.496702 spanjddd=.214844 ef=-.04858 alatti=5.56817 coa=1.63299 mmom=0 sev=-1.487384 erep=.298292 etot=-1.189093 emad=0 3pv=.244066 TS=0
+c fp=0 rfile=0 ppmodti=10 b1ttsdpp=0 b2ttsdpp=0 a1ttsdpp=104960 c1ttsdpp=2.64023 a2ttsdpp=0 c2ttsdpp=1.32011 ddsigttsd=6 ddpittsd=4 dddelttsd=1 spanjdec=.894063 spanjddd=1.77612 ef=-.04956 alatti=5.55931 coa=1.69151 mmom=0 sev=-1.287074 erep=.452721 etot=-.834353 emad=0 3pv=.249529 TS=0
  Exit 0 TBE 
- CPU time:  0.135s   Wall clock 0.356s  at  18:01:07 17.07.2018  on
+ CPU time:  0.178s   Wall clock 0.486s  at  16:49:04 19.07.2018  on
