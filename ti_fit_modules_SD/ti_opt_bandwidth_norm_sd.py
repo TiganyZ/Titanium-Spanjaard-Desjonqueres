@@ -149,6 +149,11 @@ def band_width_normalise( LMarg, xargs, symmpt, ext, ddnames, ddcoeffs, bond_int
 
             its += 1
             b_width = abs( b_width1 )
+            
+        if its > 50:
+            print('Too many iterations in bandwidth scaling.\n    Exiting... ')
+            Fitting == True
+            break
 
     print("Finished Binary search for bond integral")
     bond_int1 = (bond_int + bond_int_temp)/2.

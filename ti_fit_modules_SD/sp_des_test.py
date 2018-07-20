@@ -35,7 +35,7 @@ pqr = pR0/qR0
 
 alat_ideal  = 5.57678969  ## 2.951111 Angstrom R.M. Wood 1962 
 clat_ideal  = 8.85210082  ## 2.951111 Angstrom R.M. Wood 1962 
-coa_ideal   = (8./3.)**(0.5)       
+coa_ideal   = 1.587       #(8./3.)**(0.5)       
 
 spanjdec    = qR0/alat_ideal
 spanjdecpp  = pR0/alat_ideal
@@ -114,10 +114,10 @@ n_grid      = [10, 10]
 ##  Number of reduced range grid searches to find lattice parameters
 n_iter      = 2
 ##  Limits for the lattice parameters in form [ a_u, a_l ( (optional) , True_if_Fixed_Upper_Limit , True_if_Fixed_Lower_Limit ) ]
-limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.), False, False] ]
+limits_lp   = [  [ 5.2, 6.2, False, False ], [ 1.5, np.sqrt(8./3.) + 0.3, False, False] ]
 
 ##  Limits for the bandwidth normalisation and tolerance in eV.
-ddnorm_lim  = (100.0, 0.0, 0.02)
+ddnorm_lim  = (10.0, 0.0, 0.02)
 
 ##  Plots the Elastic constants and the bulk modulus curves if True. 
 plotECandB = False
@@ -143,8 +143,11 @@ npass       = 0
 
 A = np.linspace(400, 1400 , 5)
 # 1200 2 0.2
-B = np.linspace(1., 2.5, 5)
-C = np.linspace(0., 2, 5)
+
+A = np.linspace(0.8,2000, 2000)*262.4
+B = np.linspace(1., 2.5, 2000)* spanjdecpp
+C = np.linspace(0., 5., 2000)
+D = np.linspace(0, 0.9, 2000  ) * B * spanjdecpp 
 #D = np.linspace(0.01)
 
 t_      = np.array( [ ] )
@@ -153,70 +156,218 @@ t_coa   = np.array( [ ] )
 x_coa   = np.array( [ ] )
 t_a     = np.array( [ ] )
 x_a     = np.array( [ ] )
+
+x_A     = np.array( [ ] )
+x_B     = np.array( [ ] )
+x_C     = np.array( [ ] )
+x_D     = np.array( [ ] )
+
+t_A     = np.array( [ ] )
+t_B     = np.array( [ ] )
+t_C     = np.array( [ ] )
+t_D     = np.array( [ ] )
+
+K_A     = np.array( [ ] )
+K_B     = np.array( [ ] )
+K_C     = np.array( [ ] )
+K_D     = np.array( [ ] )
+
 K       = []
 K_coa   = []
 K_a     = []
-
+inddef = False
 C_      = []
 C_inv   = [] 
 beta    = 0.0001
-for knt  in range(len(C)):
-    for BB  in range(len(B)):
-        if BB == 0:
-            A = np.linspace(1,2.5, 10)
-        elif BB == 1:
-            A = np.linspace(10, 25, 10)
-        elif BB > 2:
-            A = np.linspace(1000, 1700, 10)
-        for AA  in range(len(A)):
 
-            print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
+n = 200
+for knt  in range(2000):
+    if knt < 1:
+        ind_A = np.random.choice( range( len(A) ) )
+        ind_B = np.random.choice( range( len(B) ) )
+        ind_C = np.random.choice( range( len(C) ) )
+        ind_D = np.random.choice( range( len(D) ) )
 
-            #Pair potential  = [5.95219592e+05 3.66698426e+00 1.34564103e-01 7.33396851e-01]
-            #Pair potential  = [5.95219592e+05 3.66698426e+00 2.69128205e-01 7.33396851e-01]
-            ##
-            ## Right c/a wrong a
-            ##  Pair potential  = [5.95219592e+05, 3.66698426e+00, 9.41948718e-01, 7.33396851e-01]
+    print('Gaussian process regression:\n   Bulk Modulus and A pp\n    Iteration  %s' %(knt))
 
+    #Pair potential  = [5.95219592e+05 3.66698426e+00 1.34564103e-01 7.33396851e-01]
+    #Pair potential  = [5.95219592e+05 3.66698426e+00 2.69128205e-01 7.33396851e-01]
+    ##
+    ## Right c/a wrong a
+    ##  Pair potential  = [5.95219592e+05, 3.66698426e+00, 9.41948718e-01, 7.33396851e-01]
 
 
-            #pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
-            pair_pot  = np.array( [ A[AA]*262.4, B[BB] * spanjdecpp, C[knt] , B[BB] * spanjdecpp/2.   ] )
 
-            ddcoeffs    = np.array( [ 6., 4., 1., B[BB] * spanjdecpp / pqr] )
-            
-            #pair_pot  = np.array( [ 0.8*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
-            #Okay    
-            #pair_pot  = np.array( [ 1.0*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
-            # mainly +ve ec, a = 6.2 c/a ideal
+    #pair_pot = np.array([ 24.85, 1.247525, 0.886571, 0.565, 1.  ] )
+    pair_pot  = np.array( [ A[ind_A], B[ind_B] , C[ind_C] , D[ind_D]   ] )
 
-            theta     = np.array( [ 200., 0.1, 0., 0. ] )
-            theta_a   = np.array( [ 40,   0.1, 0., 0. ] )
-            theta_coa = np.array( [ 40,   0.1, 0., 0. ] )
+    ddcoeffs    = np.array( [ 6., 4., 1., B[ind_B] / pqr] )
+    
+    #pair_pot  = np.array( [ 0.8*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+    #Okay    
+    #pair_pot  = np.array( [ 1.0*262.4, spanjdecpp, 0.005*262.4, spanjdecpp/2.   ] )
+    # mainly +ve ec, a = 6.2 c/a ideal
 
-            plotECandB = True
+    theta     = np.array( [ 200., 0.1, 0., 0. ] )
+    theta_a   = np.array( [ 40,   0.1, 0., 0. ] )
+    theta_coa = np.array( [ 40,   0.1, 0., 0. ] )
 
-            outs = outp.output_script(      npass, 
-                                            ext,
-                                            LMarg, 
-                                            args, 
-                                            pair_pot, ppnames, 
-                                            ddcoeffs, ddnames, ddnorm_lim,
-                                            ec_exp_arr, 
-                                            rmx_name, nn_ideal,
-                                            n_lp, n_grid, n_iter,
-                                            names_lp, limits_lp, ideals_lp,
-                                            n_energies, energy_args,
-                                            plotECandB   )
-            (npass,                                                 
-            itargs,                                                   
-            min_alat,  min_coa,                                     
-            alat_diff, coa_diff,                                    
-            min_vol, B,                                                
-            etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
-            e_consts, e_consts_diff)                                =   outs
+    plotECandB = False
 
-            targets = outs[2] + outs[3] + outs[7] 
+    outs = outp.output_script(      npass, 
+                                    ext,
+                                    LMarg, 
+                                    args, 
+                                    pair_pot, ppnames, 
+                                    ddcoeffs, ddnames, ddnorm_lim,
+                                    ec_exp_arr, 
+                                    rmx_name, nn_ideal,
+                                    n_lp, n_grid, n_iter,
+                                    names_lp, limits_lp, ideals_lp,
+                                    n_energies, energy_args,
+                                    plotECandB   )
+    (npass,                                                 
+    itargs,                                                   
+    min_alat,  min_coa,                                     
+    alat_diff, coa_diff,                                    
+    min_vol, Bk,                                                
+    etot_hcp, etot_bcc, etot_bcc2, etot_omega, etot_fcc,    
+    e_consts, e_consts_diff)                                =   outs
+
+
+
+    targets = outs[2] + outs[3] + outs[7] 
+
+    error_lms = alat_diff**2 + coa_diff**2 + np.sum(e_consts_diff**2) + (Bk - 110.)**2
+
+    print('   alat_diff = %s\n   coa_diff = %s\n   e_consts_diff = %s\n   Bk = %s\n   error_lms = %s' %(alat_diff, coa_diff, e_consts_diff, Bk, error_lms) )
+    print('Gaussian process regression: Iteration  %s' %(knt))
+
+
+
+    x_A  = np.append( x_A, A[ind_A]  )
+    x_B  = np.append( x_B, B[ind_B]  )
+    x_C  = np.append( x_C, C[ind_C]  )
+    x_D  = np.append( x_D, D[ind_D]  )
+
+    t_  = np.append( t_, error_lms )
+
+    if npass < 2:
+        update = False
+    else:
+        update = True
+
+    theta     = np.array( [ 1., 4, 0., 0. ] )
+
+    m_A, var_A, K_A, C_N_A, C_N_inv_A = gpr.gaussian_process_regression( x_A, A[ind_A], t_, K_A, beta, theta, update )
+    m_B, var_B, K_B, C_N_B, C_N_inv_B = gpr.gaussian_process_regression( x_B, B[ind_B], t_, K_B, beta, theta, update )
+    m_C, var_C, K_C, C_N_C, C_N_inv_C = gpr.gaussian_process_regression( x_C, C[ind_C], t_, K_C, beta, theta, update )
+    m_D, var_D, K_D, C_N_D, C_N_inv_D = gpr.gaussian_process_regression( x_D, D[ind_D], t_, K_D, beta, theta, update )
+
+
+
+    E_A    = np.array([]); E_B = np.array([]); E_C = np.array([]); E_D = np.array([])
+    y_EI_A = np.array([])
+    y_EI_B = np.array([])
+    y_EI_C = np.array([])
+    y_EI_D = np.array([])
+
+    for j in range( len(A) ):
+        E = np.linspace(0, 20, len(A))
+        m_A    =  gpr.m_pred_xnp1_sum(      theta, x_A, A[j], C_N_inv_A, t_       )
+        k_     =  gpr.get_next_k_(          theta, x_A, A[j]                      )
+        var_A  =  gpr.var_pred_next_target( theta,      A[j], C_N_inv_A, k_, beta )
+
+        y_EI_A = np.append( y_EI_A, gpr.EI_point(m_A, var_A, E[j], t_, n) )
+        E_A  = np.append(E_A,  m_A)
+
+    for j in range( len(B) ):
+        E = np.linspace(0, 20, len(B))
+        m_B    =  gpr.m_pred_xnp1_sum(      theta, x_B, B[j], C_N_inv_B, t_       )
+        k_     =  gpr.get_next_k_(          theta, x_B, B[j]                      )
+        var_B  =  gpr.var_pred_next_target( theta,      B[j], C_N_inv_B, k_, beta )
+
+        y_EI_B = np.append( y_EI_B, gpr.EI_point(m_B, var_B, E[j], t_, n) )
+        E_B  = np.append(E_B,  m_B)
+
+    for j in range( len(C) ):
+        E = np.linspace(0, 20, len(C))
+        m_C    =  gpr.m_pred_xnp1_sum(      theta, x_C, C[j], C_N_inv_C, t_       )
+        k_     =  gpr.get_next_k_(          theta, x_C, C[j]                      )
+        var_C  =  gpr.var_pred_next_target( theta,      C[j], C_N_inv_C, k_, beta )
+
+        y_EI_C = np.append( y_EI_C, gpr.EI_point(m_C, var_C, E[j], t_, n) )
+        E_C  = np.append(E_C,  m_C)
+
+    for j in range( len(D) ):
+        E = np.linspace(0, 20, len(D))
+        m_D    =  gpr.m_pred_xnp1_sum(      theta, x_D, D[j], C_N_inv_D, t_       )
+        k_     =  gpr.get_next_k_(          theta, x_D, D[j]                      )
+        var_D  =  gpr.var_pred_next_target( theta,      D[j], C_N_inv_D, k_, beta )
+
+        y_EI_D = np.append( y_EI_D, gpr.EI_point(m_D, var_D, E[j], t_, n) )
+        E_D  = np.append(E_D,  m_D)
+
+
+    grad_A = ( E[ind_A + 1] - E[ind_A] ) / ( A[ind_A + 1] - A[ind_A] )
+    grad_B = ( E[ind_B + 1] - E[ind_B] ) / ( B[ind_B + 1] - B[ind_B] )
+    grad_C = ( E[ind_C + 1] - E[ind_C] ) / ( C[ind_C + 1] - C[ind_C] )
+    grad_D = ( E[ind_D + 1] - E[ind_D] ) / ( D[ind_D + 1] - D[ind_D] )
+
+    inddef = False
+
+    if npass % 10 == 0:
+        ind_A = np.argmax(y_EI_A)
+        ind_B = np.argmax(y_EI_B)
+        ind_C = np.argmax(y_EI_C)
+        ind_D = np.argmax(y_EI_D)
+
+        print('EI indices:\n    ind = %s, A = %s,\n    ind = %s, B = %s,\n    ind = %s, C = %s,\n    ind = %s, D = %s, ' %(ind_A, A[ind_A],
+                                    ind_B, B[ind_B], ind_C, C[ind_C], ind_D, D[ind_D]))
+
+    elif inddef:
+        pass
+    else:
+        ind_A = np.random.choice( range( len(A) ) )
+        ind_B = np.random.choice( range( len(B) ) )
+        ind_C = np.random.choice( range( len(C) ) )
+        ind_D = np.random.choice( range( len(D) ) )
+
+        print('Random indices:\n    ind = %s, A = %s,\n    ind = %s, B = %s,\n    ind = %s, C = %s,\n    ind = %s, D = %s, ' %(ind_A, A[ind_A],
+                                    ind_B, B[ind_B], ind_C, C[ind_C], ind_D, D[ind_D]) )
+
+    plotgpr = False
+
+    if plotgpr: 
+        fig = plt.figure()
+        ax1 = plt.subplot(221); ax2 = plt.subplot(222); ax3 = plt.subplot(223); ax4 = plt.subplot(224)
+
+        ax1.plot( x_A, t_,  'b^') ; ax1.plot( A,   y_EI_A, 'c-'); 
+        ax1.plot( A,   E_A, 'k-') 
+        ax2.plot( x_B, t_,  'b^') ; ax2.plot( B,   y_EI_B, 'c-'); 
+        ax2.plot( B,   E_B, 'k-') 
+        ax3.plot( x_C, t_,  'b^') ; ax3.plot( C,   y_EI_C, 'c-'); 
+        ax3.plot( C,   E_C, 'k-') 
+        ax4.plot( x_D, t_,  'b^') ; ax4.plot( D,   y_EI_D, 'c-'); 
+        ax4.plot( D,   E_D, 'k-') 
+
+        ax1.set_title( 'GPR: Error vs Pair potential A coeff.' )
+        ax2.set_title( 'GPR: Error vs Pair potential B coeff.' )
+        ax3.set_title( 'GPR: Error vs Pair potential C coeff.' )
+        ax4.set_title( 'GPR: Error vs Pair potential D coeff.' )
+
+        ax1.set_xlabel( 'Pair potential A coeff.' )
+        ax2.set_xlabel( 'Pair potential B coeff.' )
+        ax3.set_xlabel( 'Pair potential C coeff.' )
+        ax4.set_xlabel( 'Pair potential D coeff.' )
+
+        ax1.set_ylabel( 'Squared Error' )
+        ax2.set_ylabel( 'Squared Error' )
+        ax3.set_ylabel( 'Squared Error' )
+        ax4.set_ylabel( 'Squared Error' )
+
+        plt.show()
+
     """
     x_  = np.append( x_, A[knt]  )
     t_  = np.append( t_, B )

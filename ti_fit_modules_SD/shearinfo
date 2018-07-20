@@ -1,5 +1,5 @@
- SHEAR: distortion amplitude = 0.002000  Vol. dilatation = 0.002000
+ SHEAR: distortion amplitude = 0.008000  Vol. dilatation =-0.000064
         The second derivative E/vol w.r.t alpha = W'' = sum_ij x_ij c_ij
         has coefficients x_ij to elastic constants c_ij as shown:
-     11
-    1.000000
+     11          22          12
+    1.000000    1.000000   -2.000000

@@ -188,95 +188,6 @@ def gaussian_process_regression(x_, x_np1, t_, K, beta, theta, update):
 
 
 
-########################################################################################
-###################  Test for gaussian process regression   ############################
-
-def bayesian_check_process(iters, n, noise):
-
-    x = np.linspace(0,10, n)
-    t = np.sin(4*x) + 3 * np.cos(x) + np.random.normal(0, noise, n)
-    ##  This is the target data
-    y = np.sin(4*x) + 3 * np.cos(x)  
-    
-    alpha   = 10
-    beta    = 1./noise**2
-    ngauss  = 200
-    T       = np.array([])
-    Phi     = np.array([])
-    xrlist  = []
-    yrlist  = []
-    ind     = np.random.choice( range( len(y) ) )
-    ind2    = np.random.choice( range( len(y) ) )
-    xr      = x[ind]
-    yr      = y[ind]
-    t_      = np.array( [ ] )
-    x_      = np.array( [ ] )
-    m_      = np.array( [ ] )
-    v_      = np.array( [ ] )
-    K       = []
-    for knt in range(iters):
-        print('Gaussian process regression: Iteration  %s' %(knt))
-        if knt < 2:
-            ind = np.random.choice( range( len(y) ) )
-            xn  = x[ind]
-            yn  = y[ind]
-        else:
-            if np.random.uniform() > 0.9:
-                ind = np.argmax(y_EI)
-            else:
-                ind = np.random.choice( range( len(y) ) )
-            #if ind2 == ind:
-            #    if np.random.uniform() > 0.5:
-            #        ind2 +=1
-            #    else:
-            #        ind2 -= 1
-            xn  = x[ind]
-            yn  = y[ind]
-        x_  = np.append( x_, xn  )
-        t_  = np.append( t_, t[ind] )
-        if knt == 0:
-            update = False
-        else:
-            update = True
-        theta     = np.array( [ 1., 4, 0., 0. ] )
-        m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, theta, update)
-        #t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
-        m_ = np.append( m_, m_p_tnp1 )
-        v_ = np.append( v_, var_p_tnp1)
-
-        xrlist.append(xr)
-        yrlist.append(yr)
-        ybayes  = np.array([]); ybayes2 = np.array([]); ybayes3 = np.array([])
-        ybayes4 = np.array([]); ybayes5 = np.array([]); ybayes6 = np.array([])
-        y_EI    = np.array([])
-        for j in range( len(x)):
-            #m_p_tnp1, var_p_tnp1, Kx = gaussian_process_regression( np.append(x_, x[j]), x[j], np.append(t_,t[j]), K, beta, update)
-            m_p_tnp1 = m_pred_xnp1_sum(theta, x_, x[j], C_N_inv, t_)
-            k_              =  get_next_k_(  theta, x_, x[j]     )
-            var_p_tnp1   =  var_pred_next_target( theta, x[j], C_N_inv, k_, beta)
-            #m_p_tnp1, var_p_tnp1, K1, C_N1, C_N_inv1 = gaussian_process_regression( np.append(x_, x[j]) , x[j], np.append(t_, t[j]), K, beta, theta, update)
-
-            y_EI = np.append( y_EI, EI_point(m_p_tnp1, var_p_tnp1, t[j], t_, n) )
-
-            t_np1    = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
-
-            ybayes  = np.append(ybayes,  m_p_tnp1); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
-            ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])  
-
-        #EI_l = expected_improvement( x, x_, var_p_tnp11, C_N_inv, t_, theta, 200)       
-        #y_EI    = np.append(y_EI, EI_l )
-        print( len(x), len(t) , len(x_), len(t_), len(x), len(ybayes2))
-        print( x,t ,x_, t_, ybayes2)
-        print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape, K.shape)
-        xp =     [x, x, x_, x,      x,       x,       x,       x,       x,      x      ]
-        yp =     [t, y, t_, y_EI, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
-        colour = ['r--', 'g--', 'b^', 'c-', 'k-', 'b-', 'b-', 'b-', 'b-', 'r-']
-        if knt %1 == 0:
-            g.plot_function(5, xp, yp, colour, 'Gaussian Process regression.', 
-                                'x parameter', 'y')
-    return M
-
-
 
 ################################################################################
 ##########################     Kernel Methods     ##############################
@@ -297,7 +208,7 @@ def dC_dtheta_i( C_N, C_N_min_1, theta_i_N, theta_i_N_min_1 ):
     return  ( C_N - C_N_min_1 ) / ( theta_i_N  -  theta_i_N_min_1 )
 
 def log_likelihood_t_g_theta( N, C_N, C_N_inv, theta_i, t_):
-    return -0.5 * np.log(np.abs(C_N)) - 0.5 * t_.T.dot( C_N_inv.dot(t_) ) - N/2. * np.log(2*pi)
+    return - 0.5 * np.log(np.abs(C_N))   -  0.5 * t_.T.dot( C_N_inv.dot(t_) )   - N/2. * np.log(2*pi)
 
 def d_log_likelihood_t_g_thetai( C_N, C_N_min_1, theta_i, theta_i_N_min_1, t_):
     dC_dtheta_i = dC_dtheta_i(C_N, C_N_min_1, theta_i_N, theta_i_N_min_1 )
@@ -313,9 +224,10 @@ def optimise_theta(C_N, C_N_min_1, C_N_inv,  ):
     """
     Here we optimise the parameters for the kernel to describe the underlying function that the regression is trying to fit to. 
     We are maximising the log of the likelihood function p(t|theta). 
+    Can make point parameter estimate for the maximisation of the log likelihood.
     """
-    
-
+    C_matrix( beta, K )
+    linear_CG( A, x_k, b, tol )
 
 
 #############################################################################################
@@ -446,7 +358,14 @@ def expected_improvement(x_, x, var, C_N_inv, t_, theta, ngauss):
 
 
 
-def EI_Snoek(m, var, s):
+def EI_Snoek(m, var, m_, v_, t_):
+    t_min = np.min(t_)
+    sig   = np.sqrt( var )
+    g     = ( t_min - m ) / sig
+
+    EI = sig * ( g * np.sum( ( t_min - m_ ) / np.sqrt(v_) )  )
+
+
     return
 
 def EI_point(m, var, tl, t_, ngauss):
@@ -508,6 +427,95 @@ def polak_ribere_CG( x, f, df ):
 
     
     return
+
+
+########################################################################################
+###################  Test for gaussian process regression   ############################
+
+def bayesian_check_process(iters, n, noise):
+
+    x = np.linspace(0,10, n)
+    t = np.sin(4*x) + 3 * np.cos(x) + np.random.normal(0, noise, n)
+    ##  This is the target data
+    y = np.sin(4*x) + 3 * np.cos(x)  
+    
+    alpha   = 10
+    beta    = 1./noise**2
+    ngauss  = 200
+    T       = np.array([])
+    Phi     = np.array([])
+    xrlist  = []
+    yrlist  = []
+    ind     = np.random.choice( range( len(y) ) )
+    ind2    = np.random.choice( range( len(y) ) )
+    xr      = x[ind]
+    yr      = y[ind]
+    t_      = np.array( [ ] )
+    x_      = np.array( [ ] )
+    m_      = np.array( [ ] )
+    v_      = np.array( [ ] )
+    K       = []
+    for knt in range(iters):
+        print('Gaussian process regression: Iteration  %s' %(knt))
+        if knt < 2:
+            ind = np.random.choice( range( len(y) ) )
+            xn  = x[ind]
+            yn  = y[ind]
+        else:
+            if np.random.uniform() > 0.9:
+                ind = np.argmax(y_EI)
+            else:
+                ind = np.random.choice( range( len(y) ) )
+            #if ind2 == ind:
+            #    if np.random.uniform() > 0.5:
+            #        ind2 +=1
+            #    else:
+            #        ind2 -= 1
+            xn  = x[ind]
+            yn  = y[ind]
+        x_  = np.append( x_, xn  )
+        t_  = np.append( t_, t[ind] )
+        if knt == 0:
+            update = False
+        else:
+            update = True
+        theta     = np.array( [ 1., 4, 0., 0. ] )
+        m_p_tnp1, var_p_tnp1, K, C_N, C_N_inv = gaussian_process_regression(x_, xn, t_, K, beta, theta, update)
+        #t_np1_ = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+        m_ = np.append( m_, m_p_tnp1 )
+        v_ = np.append( v_, var_p_tnp1)
+
+        xrlist.append(xr)
+        yrlist.append(yr)
+        ybayes  = np.array([]); ybayes2 = np.array([]); ybayes3 = np.array([])
+        ybayes4 = np.array([]); ybayes5 = np.array([]); ybayes6 = np.array([])
+        y_EI    = np.array([])
+        for j in range( len(x)):
+            #m_p_tnp1, var_p_tnp1, Kx = gaussian_process_regression( np.append(x_, x[j]), x[j], np.append(t_,t[j]), K, beta, update)
+            m_p_tnp1 = m_pred_xnp1_sum(theta, x_, x[j], C_N_inv, t_)
+            k_              =  get_next_k_(  theta, x_, x[j]     )
+            var_p_tnp1   =  var_pred_next_target( theta, x[j], C_N_inv, k_, beta)
+            #m_p_tnp1, var_p_tnp1, K1, C_N1, C_N_inv1 = gaussian_process_regression( np.append(x_, x[j]) , x[j], np.append(t_, t[j]), K, beta, theta, update)
+
+            y_EI = np.append( y_EI, EI_point(m_p_tnp1, var_p_tnp1, t[j], t_, n) )
+
+            t_np1    = np.random.normal(m_p_tnp1, var_p_tnp1, 6)
+
+            ybayes  = np.append(ybayes,  m_p_tnp1); ybayes2 = np.append(ybayes2, t_np1[1]); ybayes3 = np.append(ybayes3, t_np1[2])
+            ybayes4 = np.append(ybayes4, t_np1[3]); ybayes5 = np.append(ybayes5, t_np1[4]); ybayes6 = np.append(ybayes6, t_np1[5])  
+
+        #EI_l = expected_improvement( x, x_, var_p_tnp11, C_N_inv, t_, theta, 200)       
+        #y_EI    = np.append(y_EI, EI_l )
+        print( len(x), len(t) , len(x_), len(t_), len(x), len(ybayes2))
+        print( x,t ,x_, t_, ybayes2)
+        print( x.shape,t.shape ,x_.shape, t_.shape, ybayes2.shape, K.shape)
+        xp =     [x, x, x_, x,      x,       x,       x,       x,       x,      x      ]
+        yp =     [t, y, t_, y_EI, ybayes, ybayes2, ybayes3, ybayes4, ybayes5, ybayes6]
+        colour = ['r--', 'g--', 'b^', 'c-', 'k-', 'b-', 'b-', 'b-', 'b-', 'r-']
+        if knt %1 == 0:
+            g.plot_function(5, xp, yp, colour, 'Gaussian Process regression.', 
+                                'x parameter', 'y')
+    return M
 
 
 """
