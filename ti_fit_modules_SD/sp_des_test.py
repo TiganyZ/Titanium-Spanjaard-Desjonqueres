@@ -325,8 +325,8 @@ for knt  in range(2000):
         print('EI indices:\n    ind = %s, A = %s,\n    ind = %s, B = %s,\n    ind = %s, C = %s,\n    ind = %s, D = %s, ' %(ind_A, A[ind_A],
                                     ind_B, B[ind_B], ind_C, C[ind_C], ind_D, D[ind_D]))
 
-    elif inddef:
-        pass
+    #elif inddef:
+    #    pass
     else:
         ind_A = np.random.choice( range( len(A) ) )
         ind_B = np.random.choice( range( len(B) ) )
