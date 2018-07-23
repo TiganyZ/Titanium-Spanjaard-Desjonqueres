@@ -41,7 +41,7 @@ def bayes_lin_regress( M, S, S_inv,
   
 
 def append_vector( T, t_vec):
-    if len(T) > 1:
+    if len(T) >= 1:
         T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
     else:
         T = np.array([t_vec])
@@ -119,6 +119,24 @@ def gauss_basis2D(x, mu_x, y, mu_y, sx, sy):
     return np.exp( - (  ((x - mu_x)**2 / (2. * sx**2)) + ((y - mu_y)**2 / (2. * sy**2))   )  ) 
 
 
+
+###########################################################################################
+#################################  Bayes Lin Reg Bulk  ####################################
+
+def blr_poly_fit(x_, t_, deg, lam):
+
+    Phi = np.array([])
+    print('xarr', x_)
+    for xr in x_:
+        phi = np.array( [ xr**i for i in range(deg + 1) ] )
+        Phi = append_vector( Phi, phi )
+
+    
+    Phip = Phi.T.dot( Phi )
+    w_ = np.linalg.inv( lam * np.eye( len(Phip) )  +  Phip ).dot(  Phi.T.dot( t_ )  )
+    return w_
+
+
 #####################################################################################################
 ##############   Self consistent updates to the precision parameters, alpha and beta    #############
 
@@ -193,7 +211,7 @@ def w_ML_reg(Phi, t_, lamb):
 
     except np.linalg.linalg.LinAlgError:
         print('raised exception',Phi, lamb, Phi.T.dot(Phi))
-        inv = np.linalg.pinv( lamb + Phi.T.dot( Phi ) )
+        inv = np.linalg.pinv( l + Phi.T.dot( Phi ) )
     return inv.dot( Phi.T.dot(t_) )
 
 
@@ -207,7 +225,48 @@ def ref_func(x):
     return  np.sin(x) #+ 0.3 * np.cos(5 * x)  #oly([1,2,3,4,5,6,7,8],x, 7)#
 
 def ref_func_poly(x):
-    return poly([11,-2,2],x)
+    return poly([11,0,2, 5, -0.2] ,x-5)
+
+
+def bayesian_check_blr(iters, n, noise, deg, lam):
+    x = np.linspace(0,10, n)
+    t = ref_func_poly(x)
+    ##  This is the target data
+    y = t + np.random.normal(0, noise, n)
+    
+    alpha   = 10
+    beta    = 1./noise**2
+
+    Phi     = np.array([])
+    xrlist  = []
+    yrlist  = []
+    mlist   = []
+
+    for k in range(iters):
+
+        print('Iter  %s' %(k))
+        ind = np.random.choice( range( len(y) ) )
+        xr  = x[ind]
+        yr  = y[ind]
+
+        xrlist.append(xr)
+        yrlist.append(yr)
+
+        W = blr_poly_fit( xrlist, yrlist, deg,  lam )
+
+
+
+        ybayes = poly(W, x)  #poly(W, x, deg)
+
+        print('parameter matrix = %s' %(W) )
+        xp =     [x,     x,    xrlist, x   ]
+        yp =     [t,     y,    yrlist, ybayes]
+        colour = ['r--', 'g--', 'b^', 'k-']
+        if k %1 == 0:
+            g.plot_function(4, xp, yp, colour, 'Bayesian Linear regression. Polyfit', 
+                                'x parameter', 'y') 
+    return M
+
 
 def bayesian_check(iters, n, noise, deg):
 
@@ -707,9 +766,9 @@ iters = 200
 n=100
 noise = 0.3
 deg = 10
-bayesian_check_2D2(iters, n, noise, deg)
-
+#bayesian_check_2D2(iters, n, noise, deg)
+lam = 0.01
 deg = 5
-#bayesian_check(iters, n, noise, deg)
+bayesian_check_blr(iters, n, noise, deg, lam)
 
 

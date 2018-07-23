@@ -242,29 +242,16 @@ def stoc_grad_des_mom(deltaw, gamma, eta, Qi_list):
     return newdeltaw
 
 
-###########################################################################################
-#################################  Regularised Polyfit  ####################################
 
-def append_vector( T, t_vec):
-    if len(T) >= 1:
-        T = np.append(T, t_vec).reshape( (T.shape[0] + 1, T.shape[1]) )
-    else:
-        T = np.array([t_vec])
-    return T  
-
-
-def blr_poly_fit(x_, t_, deg, lam):
-    ##  This returns coefficients for the polynomial from a0, until a_deg
-    Phi = np.array([])
-    print('xarr', x_)
-    for xr in x_:
-        phi = np.array( [ xr**i for i in range(deg + 1) ] )
-        Phi = append_vector( Phi, phi )
-
+def fpoly_reg(b, deg, reg):
+    ##  Have the equation Ax = b that needs to be solved in a polynomial basis 
+    ##  This constructs the Vandermond matrix with regularisation specified by reg 
+    ##  deg is the degree of the polynomial for the fitting. 
+    ##  With regularisation (e.g. Weight decay/ridge/quadratic) this becomes
+    ##  x = np.inv( (A.T.dot(A) + G.T.dot(G)) ).dot( A.dot(b) )
+    ##  Where G is the Tikhonov matrix which for quadratic regularisation is alpha * I 
+    return 
     
-    Phip = Phi.T.dot( Phi )
-    w_ = np.linalg.inv( lam * np.eye( len(Phip) )  +  Phip ).dot(  Phi.T.dot( t_ )  )
-    return w_
 
 
 #######################################################################################
@@ -531,14 +518,14 @@ def bayesian_check_process(iters, n, noise):
     return M
 
 
-"""
+#"""
 iters = 200
 n=300
 theta = np.array( [1., 4*4., 0., 0.  ] )
 noise = 0.3
 deg = 12
 bayesian_check_process(iters, n, noise)
-"""
+#"""
 #deg = 5
 #bayesian_check(iters, n, noise, deg)
 
