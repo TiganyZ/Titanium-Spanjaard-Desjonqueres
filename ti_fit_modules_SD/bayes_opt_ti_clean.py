@@ -764,10 +764,10 @@ def gaussian_process_regression(self):
 
 iters = 200
 n=100
-noise = 0.3
+noise = 50
 deg = 10
 #bayesian_check_2D2(iters, n, noise, deg)
-lam = 0.01
+lam = 0.1
 deg = 5
 bayesian_check_blr(iters, n, noise, deg, lam)
 
